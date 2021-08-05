@@ -1,0 +1,6 @@
+framework module Pods_BeerCalendar {
+  umbrella header "Pods-BeerCalendar-umbrella.h"
+
+  export *
+  module * { export * }
+}

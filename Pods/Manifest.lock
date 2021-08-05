@@ -1,0 +1,20 @@
+PODS:
+  - DataCache (1.6.0)
+  - Kingfisher (6.3.0)
+
+DEPENDENCIES:
+  - DataCache
+  - Kingfisher
+
+SPEC REPOS:
+  trunk:
+    - DataCache
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  DataCache: 5f24b356848a37469dbebec89c28ca88b4ef9294
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
+
+PODFILE CHECKSUM: a1e1b43121cb98da611cb3a29d8c1f9984b66433
+
+COCOAPODS: 1.10.0
