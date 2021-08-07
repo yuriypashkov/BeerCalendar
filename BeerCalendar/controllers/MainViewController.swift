@@ -27,6 +27,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var untappdButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var goToTodayButton: UIButton!
+    
     
     
     var calendarModel: CalendarModel?
@@ -34,6 +36,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     let activityIndicatorView = UIActivityIndicatorView()
     var currentBeerID: Int = 0
     var favoriteBeersModel = FavoriteBeersModel()
+    var soundService = SoundService() // воспроизведение звуков
+    let generator = UIImpactFeedbackGenerator(style: .heavy) // генератор вибрации
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +59,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     @objc func swipeUp(_ recognizer: UISwipeGestureRecognizer) {
         if let nextBeer = calendarModel?.getNextBeer() {
+
+            soundService.playRandomSound()
+            
             switch recognizer.state {
             case .ended:
                     UIView.transition(with: beerLabelView,
@@ -69,12 +76,22 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             // показываем сообщение что следующее пиво можно увидеть только на следующий день
             if !messageViewModel.isMessageViewShow {
                 messageViewModel.showMessageView()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    if self.messageViewModel.isMessageViewShow {
+                        self.messageViewModel.hideMessageView()
+                    }
+                }
+                
             }
         }
     }
     
     @objc func swipeDown(_ recognizer: UIGestureRecognizer) {
         if let previousBeer = calendarModel?.getPreviousBeer() {
+
+            soundService.playRandomSound()
+            
             switch recognizer.state {
             case .ended:
                 if messageViewModel.isMessageViewShow {
@@ -92,23 +109,25 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     @objc func doubleTapOnImage() {
-        print("DOUBLE TAP")
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         } else {
+            generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
     }
     
     func goToChoosenFavoriteBeer(beer: BeerData) {
+        // если находимся на нём же, то переворачивать страничку не надо
+        guard let id = beer.id, let calendar = calendarModel, id != currentBeerID else { return }
+        
         //перелистываем страничку
-        
         //обновляем UI
-        
         //устанавливаем currentIndex в модели
-        if let id = beer.id, let calendar = calendarModel, calendar.setCurrentIndexForChoosenFavoriteBeer(beerID: id) {
+        if calendar.setCurrentIndexForChoosenFavoriteBeer(beerID: id) {
+            soundService.playRandomSound()
             UIView.transition(with: beerLabelView,
                               duration: 0.7,
                               options: [.transitionCurlUp],
@@ -144,6 +163,44 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         doubleTapGesture.numberOfTapsRequired = 2
         beerLabelImage.isUserInteractionEnabled = true
         beerLabelImage.addGestureRecognizer(doubleTapGesture)
+    }
+    
+    private func goToTodayBeer() {
+        if let calendar = calendarModel, let beer = calendar.getCurrentBeer(), let secondBeer = calendar.getBeerForID(id: currentBeerID) {
+            //если разница в один день, то просто вызвать обычный оборот странички
+            if calendar.haveOneDayBetweenTwoBeers(firstBeer: beer, secondBeer: secondBeer) {
+                soundService.playRandomSound()
+                UIView.transition(with: beerLabelView,
+                              duration: 0.7,
+                              options: [.transitionCurlUp],
+                              animations: {
+                                self.setUI(beer: beer)
+                              })
+
+            }
+            else {
+            //если разницы больше одного дня, то
+                setElementsAlpha(value: 0)
+                soundService.playShortSound()
+                UIView.transition(with: beerLabelView,
+                              duration: 0.3,
+                              options: .transitionCurlUp) {
+                                        self.beerLabelView.backgroundColor = .systemGray4
+                            } completion: { final in
+                                self.soundService.playShortSound()
+                                UIView.transition(with: self.beerLabelView, duration: 0.3, options: .transitionCurlUp) {
+                                    self.beerLabelView.backgroundColor = .systemGray5
+                                } completion: { final in
+                                    self.soundService.playShortSound()
+                                    UIView.transition(with: self.beerLabelView, duration: 0.3, options: .transitionCurlUp) {
+                                        self.setUI(beer: beer)
+                                    } completion: { final in }
+                                }
+
+                            }
+            }
+        }
+        
     }
     
     private func loadData() {
@@ -214,25 +271,38 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             beerLabelImage.kf.setImage(with: url)
         }
         
-        setButtonsAlpha(value: 1)
+        setElementsAlpha(value: 1)
         
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         } else {
             addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
+        
+        if calendarModel?.currentIndex == calendarModel?.borderIndex {
+            goToTodayButton.isEnabled = false
+        } else {
+            goToTodayButton.isEnabled = true
+        }
     }
     
-    private func setButtonsAlpha(value: CGFloat) {
+    private func setElementsAlpha(value: CGFloat) {
         addToFavoriteButton.alpha = value
         untappdButton.alpha = value
         favoritesButton.alpha = value
         infoButton.alpha = value
         shareButton.alpha = value
+        beerLabelImage.alpha = value
+        beerNameLabel.alpha = value
+        beerTypeLabel.alpha = value
+        beerManufacturerLabel.alpha = value
+        beerDateDayLabel.alpha = value
+        beerDateMonthLabel.alpha = value
+        goToTodayButton.alpha = value
     }
     
     private func prepareUI() {
-        setButtonsAlpha(value: 0)
+        setElementsAlpha(value: 0)
         
         activityIndicatorView.center = view.center
         activityIndicatorView.hidesWhenStopped = true
@@ -242,14 +312,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         switch view.frame.size.height {
         case 0...568:
-            print("SE 1th")
+            //print("SE 1th")
             beerInfoTopConstraint.constant = 8
             dateStackViewTopConstraint.constant = 8
             beerDateDayLabel.font = beerDateDayLabel.font.withSize(48) //64 and 36
             beerDateMonthLabel.font = beerDateDayLabel.font.withSize(22)
             beerInfoStackView.spacing = 4
         case 568...750:
-            print("SE 2th and Plus")
+            //print("SE 2th and Plus")
             beerInfoTopConstraint.constant = 12
             dateStackViewTopConstraint.constant = 12
             beerDateDayLabel.font = beerDateDayLabel.font.withSize(56)
@@ -278,6 +348,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         } else {
+            generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
@@ -293,44 +364,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
     }
     
-    var i = 0
     
-    @IBAction func infoButtonTap(_ sender: UIButton) {
+    @IBAction func shareButtonTap(_ sender: UIButton) {
         
-        UIDevice.vibrate()
-        
-        i += 1
-        print("Running \(i)")
-
-        switch i {
-        case 1:
-                    let generator = UINotificationFeedbackGenerator()
-                    generator.notificationOccurred(.error)
-
-                case 2:
-                    let generator = UINotificationFeedbackGenerator()
-                    generator.notificationOccurred(.success)
-
-                case 3:
-                    let generator = UINotificationFeedbackGenerator()
-                    generator.notificationOccurred(.warning)
-        case 4:
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-
-                case 5:
-                    let generator = UIImpactFeedbackGenerator(style: .medium)
-                    generator.impactOccurred()
-
-                case 6:
-                    let generator = UIImpactFeedbackGenerator(style: .heavy)
-                    generator.impactOccurred()
-
-                default:
-                    let generator = UISelectionFeedbackGenerator()
-                    generator.selectionChanged()
-                    i = 0
-        }
+    }
+    
+    
+    @IBAction func goToTodayButtonTap(_ sender: UIButton) {
+        goToTodayBeer()
     }
     
 

@@ -148,7 +148,23 @@
                                             </preferredSymbolConfiguration>
                                         </state>
                                         <connections>
-                                            <action selector="infoButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qfl-78-568"/>
+                                            <action selector="shareButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qfl-78-568"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHt-Pf-fUw">
+                                        <rect key="frame" x="60" y="52" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="ERF-NE-mpu"/>
+                                            <constraint firstAttribute="width" secondItem="nHt-Pf-fUw" secondAttribute="height" multiplier="1:1" id="jBq-14-6mx"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" image="t.circle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToTodayButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tQ4-2f-qQc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -166,7 +182,9 @@
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="centerX" secondItem="PIJ-SQ-M2M" secondAttribute="centerX" id="eYA-QW-zxD"/>
                                     <constraint firstItem="OWG-tf-nxg" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="f5H-QR-7Re"/>
                                     <constraint firstItem="LyK-3l-gIr" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="8" id="fKl-x0-Et4"/>
+                                    <constraint firstItem="nHt-Pf-fUw" firstAttribute="leading" secondItem="VhG-c7-EXu" secondAttribute="trailing" constant="12" id="i9d-9W-QAC"/>
                                     <constraint firstItem="VhG-c7-EXu" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="12" id="oz4-oh-gUq"/>
+                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="nHt-Pf-fUw" secondAttribute="bottom" constant="4" id="yZQ-u7-T1X"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -193,6 +211,7 @@
                         <outlet property="beerTypeLabel" destination="0tu-Sm-RgB" id="M0S-xJ-G3g"/>
                         <outlet property="dateStackViewTopConstraint" destination="NBg-6d-jCL" id="LnA-Me-LpZ"/>
                         <outlet property="favoritesButton" destination="VhG-c7-EXu" id="8hB-rt-kdO"/>
+                        <outlet property="goToTodayButton" destination="nHt-Pf-fUw" id="Tas-qT-n0I"/>
                         <outlet property="infoButton" destination="JAM-bT-RNy" id="t5O-AX-Wa1"/>
                         <outlet property="shareButton" destination="7xa-Uf-jfi" id="qgN-Ay-u2T"/>
                         <outlet property="untappdButton" destination="4k7-Zm-4di" id="b9c-Rf-evm"/>
@@ -215,14 +234,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteBeerCell" id="BMu-B5-XXN" customClass="FavoriteBeerCell" customModule="BeerCalendar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="53.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="53.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BMu-B5-XXN" id="iub-8A-sQt">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="53.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="53.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEc-7q-cWR">
-                                                    <rect key="frame" x="16" y="15.999999999999998" width="358" height="21.333333333333329"/>
+                                                    <rect key="frame" x="16" y="16" width="358" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -269,6 +288,7 @@
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="t.circle" catalog="system" width="128" height="121"/>
         <image name="u.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

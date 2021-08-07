@@ -47,6 +47,15 @@ class CalendarModel {
         return nil
     }
     
+    func getBeerForID(id: Int) -> BeerData? {
+        for i in 0..<beers.count {
+            if beers[i].id == id {
+                return beers[i]
+            }
+        }
+        return nil
+    }
+    
     func updateBorderIndex() {
         //borderIndex += 1
         // метод который должен увеличить borderIndex с наступлением новых суток для того, чтобы можно было перелистнуть календарь вперед
@@ -75,6 +84,18 @@ class CalendarModel {
             }
         }
         return resultArray
+    }
+    
+    func haveOneDayBetweenTwoBeers(firstBeer: BeerData, secondBeer: BeerData) -> Bool {
+        if let firstDateArray = firstBeer.getIntDate(), let secondDateArray = secondBeer.getIntDate() {
+            guard firstDateArray[1] == secondDateArray[1] else { return false }
+            if firstDateArray[0] - secondDateArray[0] == 1 {
+                return true
+            } else {
+                return false
+            }
+        }
+        return false
     }
     
     private func dateToString() -> String? {

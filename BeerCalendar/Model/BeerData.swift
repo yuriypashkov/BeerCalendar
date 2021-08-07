@@ -43,6 +43,16 @@ struct BeerData: Codable {
         return nil
     }
     
+    func getIntDate() -> [Int]? {
+        if let beerDate = beerDate {
+            let components = beerDate.components(separatedBy: ".")
+            if let day = Int(components[0]), let month = Int(components[1]) {
+                return [day, month]
+            }
+        }
+        return nil
+    }
+    
     
 }
 

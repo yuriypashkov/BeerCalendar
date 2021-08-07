@@ -23,6 +23,13 @@
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
 		21CC351A26BAD855000E0596 /* FavoriteBeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351926BAD855000E0596 /* FavoriteBeerCell.swift */; };
+		21CC352126BD4F85000E0596 /* pageSound4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC351C26BD4F85000E0596 /* pageSound4.mp3 */; };
+		21CC352226BD4F85000E0596 /* pageSound5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC351D26BD4F85000E0596 /* pageSound5.mp3 */; };
+		21CC352326BD4F85000E0596 /* pageSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC351E26BD4F85000E0596 /* pageSound2.mp3 */; };
+		21CC352426BD4F85000E0596 /* pageSound3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC351F26BD4F85000E0596 /* pageSound3.mp3 */; };
+		21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC352026BD4F85000E0596 /* pageSound1.mp3 */; };
+		21CC352726BD4FBB000E0596 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC352626BD4FBB000E0596 /* SoundService.swift */; };
+		21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC352826BECB17000E0596 /* shortSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +50,13 @@
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		21CC351926BAD855000E0596 /* FavoriteBeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeerCell.swift; sourceTree = "<group>"; };
+		21CC351C26BD4F85000E0596 /* pageSound4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound4.mp3; sourceTree = "<group>"; };
+		21CC351D26BD4F85000E0596 /* pageSound5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound5.mp3; sourceTree = "<group>"; };
+		21CC351E26BD4F85000E0596 /* pageSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound2.mp3; sourceTree = "<group>"; };
+		21CC351F26BD4F85000E0596 /* pageSound3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound3.mp3; sourceTree = "<group>"; };
+		21CC352026BD4F85000E0596 /* pageSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound1.mp3; sourceTree = "<group>"; };
+		21CC352626BD4FBB000E0596 /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundService.swift; path = BeerCalendar/View/SoundService.swift; sourceTree = SOURCE_ROOT; };
+		21CC352826BECB17000E0596 /* shortSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shortSound.mp3; sourceTree = "<group>"; };
 		60991F36888268AA1F37C508 /* Pods-BeerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerCalendar.release.xcconfig"; path = "Target Support Files/Pods-BeerCalendar/Pods-BeerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		A5FD2682AEA366B57B0E8504 /* Pods-BeerCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerCalendar.debug.xcconfig"; path = "Target Support Files/Pods-BeerCalendar/Pods-BeerCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +95,7 @@
 		217BA5D126AEE48600E642F2 /* BeerCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				21CC351B26BD4E5B000E0596 /* Sounds */,
 				21CC351826BAD838000E0596 /* View */,
 				21CC351526BAD5A5000E0596 /* controllers */,
 				217BA5E826AEE4D200E642F2 /* Network */,
@@ -139,6 +154,20 @@
 				21CC351926BAD855000E0596 /* FavoriteBeerCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		21CC351B26BD4E5B000E0596 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				21CC352826BECB17000E0596 /* shortSound.mp3 */,
+				21CC352026BD4F85000E0596 /* pageSound1.mp3 */,
+				21CC351E26BD4F85000E0596 /* pageSound2.mp3 */,
+				21CC351F26BD4F85000E0596 /* pageSound3.mp3 */,
+				21CC351C26BD4F85000E0596 /* pageSound4.mp3 */,
+				21CC351D26BD4F85000E0596 /* pageSound5.mp3 */,
+				21CC352626BD4FBB000E0596 /* SoundService.swift */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		4E3F39138DA28395A446785F /* Frameworks */ = {
@@ -217,8 +246,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */,
 				217BA5DF26AEE48A00E642F2 /* LaunchScreen.storyboard in Resources */,
 				217BA5DC26AEE48A00E642F2 /* Assets.xcassets in Resources */,
+				21CC352126BD4F85000E0596 /* pageSound4.mp3 in Resources */,
+				21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */,
+				21CC352226BD4F85000E0596 /* pageSound5.mp3 in Resources */,
+				21CC352326BD4F85000E0596 /* pageSound2.mp3 in Resources */,
+				21CC352426BD4F85000E0596 /* pageSound3.mp3 in Resources */,
 				217BA5DA26AEE48600E642F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21CC352726BD4FBB000E0596 /* SoundService.swift in Sources */,
 				217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */,
 				21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */,
 				217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */,
