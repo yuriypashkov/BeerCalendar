@@ -11,21 +11,31 @@ import AVFoundation
 class SoundService {
     
     var sounds: [AVAudioPlayer] = []
-    var soundNames = ["pageSound1", "pageSound2", "pageSound3", "playSound4", "playSound5"]
+    var soundNames = ["pageSound1", "pageSound2", "pageSound3", "pageSound4", "pageSound5"]
     var shortSound: AVAudioPlayer?
     
     init() {
+        
         // выставляем категорию audiosession чтобы не прерывать фоновую музыку при воспроизведении звуков
         try? AVAudioSession.sharedInstance().setCategory(.ambient)
         try? AVAudioSession.sharedInstance().setActive(true)
+        
         // инициализируем массив звуков для перелистывания страничек
         for name in soundNames {
+            
             if let file = Bundle.main.path(forResource: name, ofType: "mp3") {
                 do {
+                    //print("Create audio player instance")
+                    
                     let sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: file))
+                    
                     sound.volume = 0.5
+                    sound.prepareToPlay()
+                    
                     sounds.append(sound)
-                } catch  { () }
+                } catch  {
+                    print(error.localizedDescription)
+                }
             }
         }
         // инициализируем короткий звук для быстрого перелистывания
@@ -33,7 +43,10 @@ class SoundService {
             do {
                 shortSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: shortSoundFile))
                 shortSound?.volume = 0.5
-            } catch  { () }
+                shortSound?.prepareToPlay()
+            } catch  {
+                print(error.localizedDescription)
+            }
         }
     }
     

@@ -12,6 +12,6 @@ class NetworkConfiguration {
     static let shared = NetworkConfiguration()
     
     var token = ""
-    //var apiUrl = "https://api.untappd.com/v4/beer/info/BID"
-    var apiUrl = "http://12d2db6f3f41.ngrok.io/beer"
+    //var apiUrl = "http://localhost:3000/beer"
+    var apiUrl = "http://c44d78eb5a82.ngrok.io/beer"
 }

@@ -224,6 +224,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                     } else {
                         self.beerLabelView.backgroundColor = .systemGray
                         self.beerNameLabel.text = "Не найдено пиво на текущую дату"
+                        self.beerNameLabel.alpha = 1
                     }
                 case .failure(let requestError):
                     print(requestError)
@@ -234,8 +235,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                         guard let beerData = beerDataFromCache else {
                             self.activityIndicatorView.stopAnimating()
                             self.beerLabelView.backgroundColor = .systemGray
-                            self.beerTypeLabel.text = "Проблема с подключением к интернету"
-                            self.messageViewModel.isMessageViewShow = true
+                            self.beerNameLabel.text = "Проблема с подключением к интернету"
+                            self.beerNameLabel.alpha = 1
+                            self.messageViewModel.isMessageViewShow = true // ???
                             return
                         }
                         self.calendarModel = CalendarModel(beerData: beerData)
@@ -245,6 +247,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                         } else {
                             self.beerLabelView.backgroundColor = .systemGray
                             self.beerNameLabel.text = "Не найдено пиво на текущую дату"
+                            self.beerNameLabel.alpha = 1
                         }
                     } catch {
                         print(error.localizedDescription)
@@ -360,8 +363,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         guard let favoritesViewController = storyboard.instantiateViewController(identifier: "FavoritesViewController") as? FavoritesViewController else {return}
         favoritesViewController.favoritesBeer = calendarModel?.getListOfFavoritesBeers(listOfBeersID: favoriteBeersModel.listOfFavoriteBeers) ?? [BeerData]()
         favoritesViewController.delegate = self
+        favoritesViewController.transitioningDelegate = self
+        favoritesViewController.modalPresentationStyle = .custom
         present(favoritesViewController, animated: true, completion: nil)
-        
     }
     
     
@@ -376,5 +380,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
 
 
+}
+
+extension MainViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return PartialSizePresentViewController(presentedViewController: presented, presenting: presenting, withRatio: 0.8)
+    }
+    
 }
 

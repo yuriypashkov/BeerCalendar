@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C04651605BDCC17DC33F898 /* Pods_BeerCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */; };
+		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
 		217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D226AEE48600E642F2 /* AppDelegate.swift */; };
 		217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D426AEE48600E642F2 /* SceneDelegate.swift */; };
 		217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D626AEE48600E642F2 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
 		217BA5CF26AEE48600E642F2 /* BeerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BA5D226AEE48600E642F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217BA5D426AEE48600E642F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				217BA5D626AEE48600E642F2 /* MainViewController.swift */,
 				21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */,
+				21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */,
 				217BA5EE26AEE65A00E642F2 /* NetworkService.swift in Sources */,
 				217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */,
+				21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
