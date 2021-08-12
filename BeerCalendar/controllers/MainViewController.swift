@@ -32,6 +32,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     var calendarModel: CalendarModel?
+    var breweriesModel: BreweriesModel?
     var messageViewModel: MessageViewModel!
     let activityIndicatorView = UIActivityIndicatorView()
     var currentBeerID: Int = 0
@@ -49,7 +50,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         prepareUI()
         
-        loadData()
+        //loadData()
+        loadBeersAndBrewries()
     }
     
 
@@ -109,14 +111,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     @objc func doubleTapOnImage() {
-        if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
-            favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-        } else {
-            generator.impactOccurred()
-            favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        }
+        addToFavorites()
     }
     
     func goToChoosenFavoriteBeer(beer: BeerData) {
@@ -166,7 +161,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     private func goToTodayBeer() {
-        if let calendar = calendarModel, let beer = calendar.getCurrentBeer(), let secondBeer = calendar.getBeerForID(id: currentBeerID) {
+        if let calendar = calendarModel, let beer = calendar.getTodayBeer(), let secondBeer = calendar.getBeerForID(id: currentBeerID) {
             //если разница в один день, то просто вызвать обычный оборот странички
             if calendar.haveOneDayBetweenTwoBeers(firstBeer: beer, secondBeer: secondBeer) {
                 soundService.playRandomSound()
@@ -185,11 +180,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                 UIView.transition(with: beerLabelView,
                               duration: 0.3,
                               options: .transitionCurlUp) {
-                                        self.beerLabelView.backgroundColor = .systemGray4
+                                        self.beerLabelView.backgroundColor = .systemGray2
                             } completion: { final in
                                 self.soundService.playShortSound()
                                 UIView.transition(with: self.beerLabelView, duration: 0.3, options: .transitionCurlUp) {
-                                    self.beerLabelView.backgroundColor = .systemGray5
+                                    self.beerLabelView.backgroundColor = .systemGray2
                                 } completion: { final in
                                     self.soundService.playShortSound()
                                     UIView.transition(with: self.beerLabelView, duration: 0.3, options: .transitionCurlUp) {
@@ -203,10 +198,111 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
     }
     
+    private func sayAboutInternetError() {
+        activityIndicatorView.stopAnimating()
+        beerLabelView.backgroundColor = .systemGray
+        beerNameLabel.text = "Проблема с подключением"
+        beerNameLabel.textAlignment = .center
+        beerNameLabel.alpha = 1
+        messageViewModel.isMessageViewShow = true
+    }
+    
+    
+    private func loadBeersAndBrewries() {
+        activityIndicatorView.startAnimating()
+        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        
+        NetworkService.shared.requestBeerData { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let beerData):
+                    self.calendarModel = CalendarModel(beerData: beerData)
+                    //пишем в кэш полученные данные о пивах
+                    do {
+                        try DataCache.instance.write(codable: beerData, forKey: "beerDataArray")
+                    } catch {
+                        print(error)
+                    }
+                case .failure(let requestError): // если ошибка запроса - читаем данные из кэша и инициализируем модель. Если в кэше ничего нет - выводим ошибку о проблеме с подключением
+                    print("Beers error: \(requestError)")
+                    do {
+                        let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
+                        guard let beerData = beerDataFromCache else {
+                            // здесь обработка ситуации: нет инета и нет ничего в кэше по пивам, в .notify не улетаем
+                            self.sayAboutInternetError()
+                            print("Beers don't cached")
+                            return
+                        }
+                        self.calendarModel = CalendarModel(beerData: beerData)
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.enter()
+        NetworkService.shared.requestBreweryData { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let breweryData):
+                    self.breweriesModel = BreweriesModel(breweryData: breweryData)
+                    //пишем в кэш полученные данные о пивоварнях
+                    do {
+                        try DataCache.instance.write(codable: breweryData, forKey: "breweryDataArray")
+                    } catch {
+                        print(error)
+                    }
+                case .failure(let requestError):
+                    print("Breweries error: \(requestError)")
+                    do {
+                        let breweryDataFromCache: [BreweryData]? = try DataCache.instance.readCodable(forKey: "breweryDataArray")
+                        guard let breweries = breweryDataFromCache else {
+                            // здесь обработка ситуации: нет инета и нет ничего в кэше по пивоварням, в .notify не улетаем
+                            self.sayAboutInternetError()
+                            // если модель пив инициализирована - то надо рисовать UI, а на пивоварни просто в инфо не отображать
+                            print("Brewery don't cached")
+                            return
+                        }
+                        self.breweriesModel = BreweriesModel(breweryData: breweries)
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("All requests completed")
+            // рисуем UI
+
+            let item = self.calendarModel?.getTodayBeer()
+            if let item = item {
+                self.setUI(beer: item)
+            } else {
+                self.beerLabelView.backgroundColor = .systemGray
+                self.beerNameLabel.text = "Не найдено пиво на текущую дату"
+                self.beerNameLabel.alpha = 1
+            }
+            
+            self.activityIndicatorView.stopAnimating()
+        }
+        
+        
+    }
+    
     private func loadData() {
         activityIndicatorView.startAnimating()
         
-        NetworkService.shared.requestData { result in
+        NetworkService.shared.requestBeerData { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let beerData):
@@ -218,7 +314,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                     }
                     //грузим данные в модель, рисуем UI на текущую дату
                     self.calendarModel = CalendarModel(beerData: beerData)
-                    let item = self.calendarModel?.getCurrentBeer()
+                    let item = self.calendarModel?.getTodayBeer()
                     if let item = item {
                         self.setUI(beer: item)
                     } else {
@@ -237,11 +333,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                             self.beerLabelView.backgroundColor = .systemGray
                             self.beerNameLabel.text = "Проблема с подключением к интернету"
                             self.beerNameLabel.alpha = 1
-                            self.messageViewModel.isMessageViewShow = true // ???
+                            self.messageViewModel.isMessageViewShow = true // чтобы ошибка про следующий день не вылазила
                             return
                         }
                         self.calendarModel = CalendarModel(beerData: beerData)
-                        let item = self.calendarModel?.getCurrentBeer()
+                        let item = self.calendarModel?.getTodayBeer()
                         if let item = item {
                             self.setUI(beer: item)
                         } else {
@@ -261,7 +357,20 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
-        beerLabelView.backgroundColor = UIColor(hex: beer.backgroundColor!)
+        
+        // вычисляем светлость фона и в зависимости от этого цвет лейблов выставляем
+        if let backgroundColor = beer.backgroundColor {
+            beerLabelView.backgroundColor = UIColor(hex: backgroundColor)
+            if let arrayOfColors = ColorService.shared.getFontColors(backgroundColor: UIColor(hex: backgroundColor)) {
+                beerDateDayLabel.textColor = arrayOfColors[0]
+                beerDateMonthLabel.textColor = arrayOfColors[0]
+                beerNameLabel.textColor = arrayOfColors[1]
+                beerManufacturerLabel.textColor = arrayOfColors[2]
+                beerTypeLabel.textColor = arrayOfColors[3]
+            }
+        }
+        
+        
         beerNameLabel.text = beer.beerName
         beerTypeLabel.text = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? 0) IBU"
         beerManufacturerLabel.text = beer.beerManufacturer
@@ -332,21 +441,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
     }
     
-    @IBAction func untappdButtonTap(_ sender: UIButton) {
-        if let calendar = calendarModel {
-            let currentIndex = calendar.currentIndex
-            let currentBeer = calendar.beers[currentIndex]
-            if let untappdUrl = currentBeer.untappdURL {
-                let url = URL(string: untappdUrl)!
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:])
-                }
-            }
-        }
-    }
-    
-    @IBAction func addToFavoriteButtonTap(_ sender: UIButton) {
-
+    private func addToFavorites() {
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
@@ -355,6 +450,31 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
+    }
+    
+    @IBAction func untappdButtonTap(_ sender: UIButton) {
+        if let calendar = calendarModel {
+            let currentBeer = calendar.beers[calendar.currentIndex]
+            if let untappdUrl = currentBeer.untappdURL {
+                let components = untappdUrl.components(separatedBy: "/")
+                
+                let urlForUntappd = URL(string: "untappd://beer/\(components.last ?? "0")")! //url format for untappd, scheme "untappd" in info.plist
+                if UIApplication.shared.canOpenURL(urlForUntappd) {
+                    
+                    UIApplication.shared.open(urlForUntappd, options: [:])
+                } else {
+                    let basicUrl = URL(string: untappdUrl)!
+                    if UIApplication.shared.canOpenURL(basicUrl) {
+                        UIApplication.shared.open(basicUrl, options: [:])
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    @IBAction func addToFavoriteButtonTap(_ sender: UIButton) {
+        addToFavorites()
     }
     
     
@@ -378,7 +498,18 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         goToTodayBeer()
     }
     
-
+    @IBAction func infoButtonTap(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let infoViewController = storyboard.instantiateViewController(identifier: "InfoViewController") as? InfoViewController else {return}
+        if let currentBeer = calendarModel?.getBeerForID(id: currentBeerID) {
+            infoViewController.currentBeer = currentBeer
+            infoViewController.currentBrewery = breweriesModel?.getCurrentBrewery(id: currentBeer.breweryID ?? 0)
+            present(infoViewController, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
 
 }
 

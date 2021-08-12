@@ -13,5 +13,5 @@ class NetworkConfiguration {
     
     var token = ""
     //var apiUrl = "http://localhost:3000/beer"
-    var apiUrl = "http://c44d78eb5a82.ngrok.io/beer"
+    var apiUrl = "http://c44d78eb5a82.ngrok.io"
 }

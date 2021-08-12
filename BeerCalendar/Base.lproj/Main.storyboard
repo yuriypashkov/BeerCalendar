@@ -80,9 +80,7 @@
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="star" catalog="system" symbolScale="default"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                    </preferredSymbolConfiguration>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="addToFavoriteButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7VK-fA-Qtp"/>
@@ -95,9 +93,7 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                                                 <state key="normal" image="u.circle" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                    </preferredSymbolConfiguration>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="untappdButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtR-IE-LK9"/>
@@ -110,10 +106,11 @@
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" image="info.circle" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                    </preferredSymbolConfiguration>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="infoButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fts-je-hNy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -303,19 +300,170 @@
             </objects>
             <point key="canvasLocation" x="904" y="89"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="pE8-WQ-if6">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewController" id="LZR-pT-P6M" customClass="InfoViewController" customModule="BeerCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bbd-Wk-KXH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaF-pI-3Su">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnF-ui-GP3" userLabel="MainSubview">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пиве" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHX-vV-RvR">
+                                                <rect key="frame" x="12" y="12.000000000000002" width="351" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about beer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-ON-CGw">
+                                                <rect key="frame" x="12" y="45.666666666666671" width="351" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пивоварне" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-an-vqd">
+                                                <rect key="frame" x="12" y="77" width="351" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about brewery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-6g-e3y">
+                                                <rect key="frame" x="12" y="110.66666666666666" width="351" height="19.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Cfn-nq-07S" userLabel="SocialButtonsStackView">
+                                                <rect key="frame" x="12" y="142" width="268" height="64"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-fY-tsd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="a9H-fY-tsd" secondAttribute="height" multiplier="1:1" id="gp5-1V-BTX"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Site" image="wwwIcon">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="socialButtonTap:" destination="LZR-pT-P6M" eventType="touchUpInside" id="EaO-Ae-Vwf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mec-WX-WeE">
+                                                        <rect key="frame" x="68" y="0.0" width="64" height="64"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="mec-WX-WeE" secondAttribute="height" multiplier="1:1" id="UXw-8V-AFN"/>
+                                                        </constraints>
+                                                        <state key="normal" image="instaIcon">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="socialButtonTap:" destination="LZR-pT-P6M" eventType="touchUpInside" id="zpf-fn-TBD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLG-zP-PbE">
+                                                        <rect key="frame" x="136" y="0.0" width="64" height="64"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="fLG-zP-PbE" secondAttribute="height" multiplier="1:1" id="bVd-vf-csa"/>
+                                                        </constraints>
+                                                        <state key="normal" title="VK" image="vkIcon">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="socialButtonTap:" destination="LZR-pT-P6M" eventType="touchUpInside" id="XcQ-7h-SOh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vS-Lq-Suf">
+                                                        <rect key="frame" x="204" y="0.0" width="64" height="64"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="7vS-Lq-Suf" secondAttribute="height" multiplier="1:1" id="ORt-Z9-8px"/>
+                                                        </constraints>
+                                                        <state key="normal" title="FB" image="fbIcon">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="socialButtonTap:" destination="LZR-pT-P6M" eventType="touchUpInside" id="nJ2-E5-S9D"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="Psv-gH-5Gh"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="qo3-an-vqd" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="9Mu-be-1iO"/>
+                                            <constraint firstItem="OHX-vV-RvR" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="9Yg-xE-Uk6"/>
+                                            <constraint firstItem="FEk-6g-e3y" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="CRA-i6-AWw"/>
+                                            <constraint firstItem="9Kg-ON-CGw" firstAttribute="top" secondItem="OHX-vV-RvR" secondAttribute="bottom" constant="12" id="DFa-dR-y5O"/>
+                                            <constraint firstAttribute="bottom" secondItem="Cfn-nq-07S" secondAttribute="bottom" constant="12" id="Fmb-qJ-u6H"/>
+                                            <constraint firstItem="qo3-an-vqd" firstAttribute="top" secondItem="9Kg-ON-CGw" secondAttribute="bottom" constant="12" id="GQS-dV-Swv"/>
+                                            <constraint firstAttribute="trailing" secondItem="FEk-6g-e3y" secondAttribute="trailing" constant="12" id="Jk8-c2-boh"/>
+                                            <constraint firstAttribute="trailing" secondItem="qo3-an-vqd" secondAttribute="trailing" constant="12" id="Jlr-qe-qmQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Kg-ON-CGw" secondAttribute="trailing" constant="12" id="Oj9-CQ-A65"/>
+                                            <constraint firstItem="Cfn-nq-07S" firstAttribute="top" secondItem="FEk-6g-e3y" secondAttribute="bottom" constant="12" id="RTR-nz-aM1"/>
+                                            <constraint firstItem="OHX-vV-RvR" firstAttribute="top" secondItem="fnF-ui-GP3" secondAttribute="top" constant="12" id="U8I-ZE-EYU"/>
+                                            <constraint firstItem="Cfn-nq-07S" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="WgQ-wx-eGj"/>
+                                            <constraint firstAttribute="trailing" secondItem="OHX-vV-RvR" secondAttribute="trailing" constant="12" id="YT2-t3-Q4D"/>
+                                            <constraint firstItem="9Kg-ON-CGw" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="kbW-mb-Xkc"/>
+                                            <constraint firstItem="FEk-6g-e3y" firstAttribute="top" secondItem="qo3-an-vqd" secondAttribute="bottom" constant="12" id="vUJ-M1-OUq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fnF-ui-GP3" firstAttribute="width" secondItem="aaF-pI-3Su" secondAttribute="width" id="EcI-jq-YDf"/>
+                                    <constraint firstAttribute="trailing" secondItem="fnF-ui-GP3" secondAttribute="trailing" id="Gpi-T8-MfA"/>
+                                    <constraint firstItem="fnF-ui-GP3" firstAttribute="leading" secondItem="aaF-pI-3Su" secondAttribute="leading" id="Sbn-Uq-GXa"/>
+                                    <constraint firstAttribute="bottom" secondItem="fnF-ui-GP3" secondAttribute="bottom" id="aU5-YO-auo"/>
+                                    <constraint firstItem="fnF-ui-GP3" firstAttribute="top" secondItem="aaF-pI-3Su" secondAttribute="top" id="aWh-KZ-b5d"/>
+                                    <constraint firstItem="fnF-ui-GP3" firstAttribute="height" secondItem="aaF-pI-3Su" secondAttribute="height" priority="250" id="muw-W8-Swv"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DjE-WF-vZW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aaF-pI-3Su" firstAttribute="leading" secondItem="DjE-WF-vZW" secondAttribute="leading" id="JrW-hN-vHd"/>
+                            <constraint firstItem="DjE-WF-vZW" firstAttribute="bottom" secondItem="aaF-pI-3Su" secondAttribute="bottom" id="RxP-Xg-oBM"/>
+                            <constraint firstItem="aaF-pI-3Su" firstAttribute="top" secondItem="DjE-WF-vZW" secondAttribute="top" id="aYi-pc-xAj"/>
+                            <constraint firstItem="DjE-WF-vZW" firstAttribute="trailing" secondItem="aaF-pI-3Su" secondAttribute="trailing" id="rCa-Bv-2uG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutBeerLabel" destination="9Kg-ON-CGw" id="UWc-cD-VT4"/>
+                        <outlet property="aboutBreweryLabel" destination="FEk-6g-e3y" id="hU5-sn-EHj"/>
+                        <outlet property="fbButton" destination="7vS-Lq-Suf" id="rdc-wI-sBf"/>
+                        <outlet property="instaButton" destination="mec-WX-WeE" id="wOH-JD-mzb"/>
+                        <outlet property="siteButton" destination="a9H-fY-tsd" id="ogS-8L-hqK"/>
+                        <outlet property="vkButton" destination="fLG-zP-PbE" id="joQ-7w-OuK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Kw-Mp-Ziz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744.8" y="88.669950738916256"/>
+        </scene>
     </scenes>
     <resources>
         <image name="f.circle" catalog="system" width="32" height="32"/>
+        <image name="fbIcon" width="64" height="64"/>
         <image name="info.circle" catalog="system" width="32" height="32"/>
+        <image name="instaIcon" width="100" height="100"/>
         <image name="square.and.arrow.up" catalog="system" width="32" height="32"/>
         <image name="star" catalog="system" width="32" height="32"/>
         <image name="t.circle" catalog="system" width="32" height="32"/>
         <image name="u.circle" catalog="system" width="32" height="32"/>
+        <image name="vkIcon" width="96" height="96"/>
+        <image name="wwwIcon" width="96" height="96"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

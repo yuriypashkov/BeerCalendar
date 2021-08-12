@@ -18,7 +18,7 @@ class CalendarModel {
         beers = beerData
     }
     
-    func getCurrentBeer() -> BeerData? {
+    func getTodayBeer() -> BeerData? {
         guard let currentDate = dateToString() else {return nil}
         for i in 0..<beers.count {
             let beer = beers[i]

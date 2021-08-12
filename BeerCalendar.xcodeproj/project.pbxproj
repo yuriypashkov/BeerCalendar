@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1C04651605BDCC17DC33F898 /* Pods_BeerCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */; };
 		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
+		21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5526C1AF5500A70CEA /* ColorService.swift */; };
+		21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5726C2C78000A70CEA /* InfoViewController.swift */; };
+		21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5926C2CBF700A70CEA /* BreweryData.swift */; };
+		21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */; };
 		217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D226AEE48600E642F2 /* AppDelegate.swift */; };
 		217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D426AEE48600E642F2 /* SceneDelegate.swift */; };
 		217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D626AEE48600E642F2 /* MainViewController.swift */; };
@@ -20,6 +24,7 @@
 		217BA5EE26AEE65A00E642F2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5ED26AEE65A00E642F2 /* NetworkService.swift */; };
 		217BA5F526B1942700E642F2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F426B1942700E642F2 /* Utils.swift */; };
 		217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F626B2E39E00E642F2 /* CalendarModel.swift */; };
+		218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E526C556270095FC98 /* CrowdFindingViewController.swift */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -35,6 +40,10 @@
 
 /* Begin PBXFileReference section */
 		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
+		21606D5526C1AF5500A70CEA /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
+		21606D5726C2C78000A70CEA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		21606D5926C2CBF700A70CEA /* BreweryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryData.swift; sourceTree = "<group>"; };
+		21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesModel.swift; sourceTree = "<group>"; };
 		217BA5CF26AEE48600E642F2 /* BeerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BA5D226AEE48600E642F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217BA5D426AEE48600E642F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +57,7 @@
 		217BA5ED26AEE65A00E642F2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		217BA5F426B1942700E642F2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		217BA5F626B2E39E00E642F2 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		218149E526C556270095FC98 /* CrowdFindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingViewController.swift; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 				217BA5D426AEE48600E642F2 /* SceneDelegate.swift */,
 				217BA5DD26AEE48A00E642F2 /* LaunchScreen.storyboard */,
 				217BA5F426B1942700E642F2 /* Utils.swift */,
+				21606D5526C1AF5500A70CEA /* ColorService.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -128,6 +139,8 @@
 				217BA5F626B2E39E00E642F2 /* CalendarModel.swift */,
 				21CC351126B9CADF000E0596 /* MessageViewModel.swift */,
 				21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */,
+				21606D5926C2CBF700A70CEA /* BreweryData.swift */,
+				21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +160,8 @@
 				217BA5D626AEE48600E642F2 /* MainViewController.swift */,
 				21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */,
 				21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */,
+				21606D5726C2C78000A70CEA /* InfoViewController.swift */,
+				218149E526C556270095FC98 /* CrowdFindingViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -316,13 +331,18 @@
 				217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */,
 				217BA5EC26AEE53A00E642F2 /* NetworkConfiguration.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
+				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
 				217BA5F526B1942700E642F2 /* Utils.swift in Sources */,
 				21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */,
 				21CC351A26BAD855000E0596 /* FavoriteBeerCell.swift in Sources */,
+				21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */,
+				21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */,
 				217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */,
 				21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */,
 				217BA5EE26AEE65A00E642F2 /* NetworkService.swift in Sources */,
 				217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */,
+				21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */,
+				21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */,
 				21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

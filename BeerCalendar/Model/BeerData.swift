@@ -21,6 +21,8 @@ struct BeerData: Codable {
     var beerLabelPreviewURL: String?
     var backgroundColor: String?
     var untappdURL: String?
+    var breweryID: Int?
+    var aboutBeer: String?
     
     func getStrDate() -> [String]? {
         if let beerDate = beerDate {
