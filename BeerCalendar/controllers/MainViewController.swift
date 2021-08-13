@@ -71,7 +71,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                                       options: [.transitionCurlUp],
                                       animations: {
                                         self.setUI(beer: nextBeer)
-                                      })
+                                      }) { finished in
+                        if let calendar = self.calendarModel, calendar.showCrowdFinding() {
+                            // показать рекламу
+                            self.showCrowdFindingController()
+                        }
+                    }
             default: break
             }
         } else {
@@ -101,8 +106,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                 }
                 UIView.transition(with: beerLabelView,
                                   duration: 0.7,
-                                  options: [.transitionCurlDown]) {
-                    self.setUI(beer: previousBeer)
+                                  options: [.transitionCurlDown],
+                                  animations: {self.setUI(beer: previousBeer)}) { finished in
+                    if let calendar = self.calendarModel, calendar.showCrowdFinding() {
+                        // показать рекламу
+                        self.showCrowdFindingController()
+                    }
                 }
 
             default: break
@@ -112,6 +121,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     @objc func doubleTapOnImage() {
         addToFavorites()
+    }
+    
+    private func showCrowdFindingController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let crowdFindingController = storyboard.instantiateViewController(identifier: "CrowdFindingViewController") as? CrowdFindingViewController {
+            present(crowdFindingController, animated: true, completion: nil)
+        }
     }
     
     func goToChoosenFavoriteBeer(beer: BeerData) {
@@ -299,61 +315,61 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
     }
     
-    private func loadData() {
-        activityIndicatorView.startAnimating()
-        
-        NetworkService.shared.requestBeerData { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let beerData):
-                    //пишем в кэш полученные данные
-                    do {
-                        try DataCache.instance.write(codable: beerData, forKey: "beerDataArray")
-                    } catch {
-                        print(error)
-                    }
-                    //грузим данные в модель, рисуем UI на текущую дату
-                    self.calendarModel = CalendarModel(beerData: beerData)
-                    let item = self.calendarModel?.getTodayBeer()
-                    if let item = item {
-                        self.setUI(beer: item)
-                    } else {
-                        self.beerLabelView.backgroundColor = .systemGray
-                        self.beerNameLabel.text = "Не найдено пиво на текущую дату"
-                        self.beerNameLabel.alpha = 1
-                    }
-                case .failure(let requestError):
-                    print(requestError)
-                    // если запрос ничего не вернул - вытягиваем данные из кэша
-                     do {
-                        let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
-                        
-                        guard let beerData = beerDataFromCache else {
-                            self.activityIndicatorView.stopAnimating()
-                            self.beerLabelView.backgroundColor = .systemGray
-                            self.beerNameLabel.text = "Проблема с подключением к интернету"
-                            self.beerNameLabel.alpha = 1
-                            self.messageViewModel.isMessageViewShow = true // чтобы ошибка про следующий день не вылазила
-                            return
-                        }
-                        self.calendarModel = CalendarModel(beerData: beerData)
-                        let item = self.calendarModel?.getTodayBeer()
-                        if let item = item {
-                            self.setUI(beer: item)
-                        } else {
-                            self.beerLabelView.backgroundColor = .systemGray
-                            self.beerNameLabel.text = "Не найдено пиво на текущую дату"
-                            self.beerNameLabel.alpha = 1
-                        }
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-                
-                self.activityIndicatorView.stopAnimating()
-            }
-        }
-    }
+//    private func loadData() {
+//        activityIndicatorView.startAnimating()
+//
+//        NetworkService.shared.requestBeerData { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let beerData):
+//                    //пишем в кэш полученные данные
+//                    do {
+//                        try DataCache.instance.write(codable: beerData, forKey: "beerDataArray")
+//                    } catch {
+//                        print(error)
+//                    }
+//                    //грузим данные в модель, рисуем UI на текущую дату
+//                    self.calendarModel = CalendarModel(beerData: beerData)
+//                    let item = self.calendarModel?.getTodayBeer()
+//                    if let item = item {
+//                        self.setUI(beer: item)
+//                    } else {
+//                        self.beerLabelView.backgroundColor = .systemGray
+//                        self.beerNameLabel.text = "Не найдено пиво на текущую дату"
+//                        self.beerNameLabel.alpha = 1
+//                    }
+//                case .failure(let requestError):
+//                    print(requestError)
+//                    // если запрос ничего не вернул - вытягиваем данные из кэша
+//                     do {
+//                        let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
+//
+//                        guard let beerData = beerDataFromCache else {
+//                            self.activityIndicatorView.stopAnimating()
+//                            self.beerLabelView.backgroundColor = .systemGray
+//                            self.beerNameLabel.text = "Проблема с подключением к интернету"
+//                            self.beerNameLabel.alpha = 1
+//                            self.messageViewModel.isMessageViewShow = true // чтобы ошибка про следующий день не вылазила
+//                            return
+//                        }
+//                        self.calendarModel = CalendarModel(beerData: beerData)
+//                        let item = self.calendarModel?.getTodayBeer()
+//                        if let item = item {
+//                            self.setUI(beer: item)
+//                        } else {
+//                            self.beerLabelView.backgroundColor = .systemGray
+//                            self.beerNameLabel.text = "Не найдено пиво на текущую дату"
+//                            self.beerNameLabel.alpha = 1
+//                        }
+//                    } catch {
+//                        print(error.localizedDescription)
+//                    }
+//                }
+//
+//                self.activityIndicatorView.stopAnimating()
+//            }
+//        }
+//    }
     
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0

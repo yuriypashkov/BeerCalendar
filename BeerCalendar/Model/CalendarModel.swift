@@ -13,9 +13,12 @@ class CalendarModel {
     
     var currentIndex = -1
     var borderIndex = -1
+    var swipesCount = 0
+    var isCrowdFindingADShow = true
     
     init(beerData: [BeerData]) {
         beers = beerData
+        // здесь можно послать запрос на инфо 
     }
     
     func getTodayBeer() -> BeerData? {
@@ -33,6 +36,7 @@ class CalendarModel {
     
     func getPreviousBeer() -> BeerData? {
         if currentIndex > 0 {
+            swipesCount += 1
             currentIndex -= 1
             return beers[currentIndex]
         }
@@ -41,6 +45,7 @@ class CalendarModel {
     
     func getNextBeer() -> BeerData? {
         if currentIndex < beers.count - 1, currentIndex < borderIndex {
+            swipesCount += 1
             currentIndex += 1
             return beers[currentIndex]
         }
@@ -106,6 +111,15 @@ class CalendarModel {
             return "\(day).\(month).\(year)"
         }
         return nil
+    }
+    
+    func showCrowdFinding() -> Bool {
+        guard isCrowdFindingADShow else {return false}
+        if swipesCount > 5 {
+            swipesCount = 0
+            return true
+        }
+        return false
     }
     
 }

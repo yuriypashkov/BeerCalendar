@@ -25,6 +25,7 @@
 		217BA5F526B1942700E642F2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F426B1942700E642F2 /* Utils.swift */; };
 		217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F626B2E39E00E642F2 /* CalendarModel.swift */; };
 		218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E526C556270095FC98 /* CrowdFindingViewController.swift */; };
+		218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E726C5794E0095FC98 /* CrowdFindingADData.swift */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -58,6 +59,7 @@
 		217BA5F426B1942700E642F2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		217BA5F626B2E39E00E642F2 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		218149E526C556270095FC98 /* CrowdFindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingViewController.swift; sourceTree = "<group>"; };
+		218149E726C5794E0095FC98 /* CrowdFindingADData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingADData.swift; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */,
 				21606D5926C2CBF700A70CEA /* BreweryData.swift */,
 				21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */,
+				218149E726C5794E0095FC98 /* CrowdFindingADData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */,
 				21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */,
 				217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */,
+				218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */,
 				217BA5EC26AEE53A00E642F2 /* NetworkConfiguration.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
 				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,

@@ -447,6 +447,39 @@
             </objects>
             <point key="canvasLocation" x="1744.8" y="88.669950738916256"/>
         </scene>
+        <!--Crowd Finding View Controller-->
+        <scene sceneID="a6m-FY-0oi">
+            <objects>
+                <viewController storyboardIdentifier="CrowdFindingViewController" id="Qn9-xJ-ppu" customClass="CrowdFindingViewController" customModule="BeerCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KbP-s9-1mw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CrowdFinding AD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfl-Gu-ufY">
+                                <rect key="frame" x="111" y="394" width="153" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0De-gr-TS2">
+                                <rect key="frame" x="324" y="56" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oPx-bo-bHa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mfl-Gu-ufY" firstAttribute="centerX" secondItem="KbP-s9-1mw" secondAttribute="centerX" id="a12-1z-5Mc"/>
+                            <constraint firstItem="0De-gr-TS2" firstAttribute="top" secondItem="oPx-bo-bHa" secondAttribute="top" constant="12" id="akL-fX-yNr"/>
+                            <constraint firstItem="Mfl-Gu-ufY" firstAttribute="centerY" secondItem="KbP-s9-1mw" secondAttribute="centerY" id="dPc-DV-YlF"/>
+                            <constraint firstItem="oPx-bo-bHa" firstAttribute="trailing" secondItem="0De-gr-TS2" secondAttribute="trailing" constant="12" id="kZB-qm-rKL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6a3-YY-ofM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="89"/>
+        </scene>
     </scenes>
     <resources>
         <image name="f.circle" catalog="system" width="32" height="32"/>
