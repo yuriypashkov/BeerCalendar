@@ -22,7 +22,7 @@ class ColorService {
             if average  > 0.5 {
                 return [UIColor.black, UIColor(hex: "#232020"), UIColor(hex: "#3f3f3f"), UIColor(hex:"#464545")] // темные шрифты для светлого фона
             } else {
-                return [UIColor(hex: "#FFFAFA"), UIColor(hex: "#cec8c8"), UIColor(hex: "#d8d2d2"), UIColor.white] // светлые шрифты для темного фона
+                return [UIColor(hex: "#FFFAFA"), UIColor(hex: "#cec8c8"), UIColor(hex: "#d8d2d2"), UIColor(hex: "#d8d2d9")] // светлые шрифты для темного фона
             }
             
         }

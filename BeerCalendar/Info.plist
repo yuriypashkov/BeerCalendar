@@ -58,10 +58,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>LSApplicationQueriesSchemes</key>
-        <array>
-            <string>untappd</string>
-        </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>untappd</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) необходим доступ к Фото для сохранения картинки для инстаграм</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 class CalendarModel {
     
@@ -14,11 +15,24 @@ class CalendarModel {
     var currentIndex = -1
     var borderIndex = -1
     var swipesCount = 0
-    var isCrowdFindingADShow = true
+    var isCrowdFindingADShow = true // поправить потом на false, по дефолту не показываем рекламный VC
+    var crowdFindingData: CrowdFindingADData?
     
     init(beerData: [BeerData]) {
         beers = beerData
-        // здесь можно послать запрос на инфо 
+        // здесь можно послать запрос на инфо
+        NetworkService.shared.requestCrowdFindingData { result in
+            switch result {
+            case .success(let resultData):
+                if let showing = resultData.isADShow, let urlString = resultData.imgUrl {
+                    self.crowdFindingData = resultData
+                    self.isCrowdFindingADShow = showing
+                    self.downloadImage(urlString: urlString)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func getTodayBeer() -> BeerData? {
@@ -120,6 +134,20 @@ class CalendarModel {
             return true
         }
         return false
+    }
+    
+    private func downloadImage(urlString: String) {
+        guard let url = URL(string: urlString) else {return}
+        let resource = ImageResource(downloadURL: url)
+        KingfisherManager.shared.retrieveImage(with: resource) { result in
+            switch result {
+            case .success(let value):
+                print("Image: \(value.image), get from \(value.cacheType)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
     }
     
 }

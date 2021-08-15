@@ -34,6 +34,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     var calendarModel: CalendarModel?
     var breweriesModel: BreweriesModel?
     var messageViewModel: MessageViewModel!
+    var shareViewModel: ShareViewModel!
     let activityIndicatorView = UIActivityIndicatorView()
     var currentBeerID: Int = 0
     var favoriteBeersModel = FavoriteBeersModel()
@@ -45,6 +46,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         messageViewModel = MessageViewModel(x: view.frame.size.width, y: view.frame.size.height, width: view.frame.size.width, height: 100)
         view.addSubview(messageViewModel.messageView)
+        
+        shareViewModel = ShareViewModel(frameWidth: view.frame.size.width, frameHeight: view.frame.size.height)
+        view.addSubview(shareViewModel.shareView)
 
         addGestures()
         
@@ -66,6 +70,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             
             switch recognizer.state {
             case .ended:
+                if shareViewModel.isViewShowing {
+                    shareViewModel.hideView()
+                }
                     UIView.transition(with: beerLabelView,
                                       duration: 0.7,
                                       options: [.transitionCurlUp],
@@ -101,6 +108,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             
             switch recognizer.state {
             case .ended:
+                if shareViewModel.isViewShowing {
+                    shareViewModel.hideView()
+                }
                 if messageViewModel.isMessageViewShow {
                     messageViewModel.hideMessageView()
                 }
@@ -125,7 +135,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     private func showCrowdFindingController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let crowdFindingController = storyboard.instantiateViewController(identifier: "CrowdFindingViewController") as? CrowdFindingViewController {
+        if let crowdFindingController = storyboard.instantiateViewController(identifier: "CrowdFindingViewController") as? CrowdFindingViewController, let calendar = calendarModel {
+            crowdFindingController.imageURL = calendar.crowdFindingData?.imgUrl
             present(crowdFindingController, animated: true, completion: nil)
         }
     }
@@ -315,62 +326,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
     }
     
-//    private func loadData() {
-//        activityIndicatorView.startAnimating()
-//
-//        NetworkService.shared.requestBeerData { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let beerData):
-//                    //пишем в кэш полученные данные
-//                    do {
-//                        try DataCache.instance.write(codable: beerData, forKey: "beerDataArray")
-//                    } catch {
-//                        print(error)
-//                    }
-//                    //грузим данные в модель, рисуем UI на текущую дату
-//                    self.calendarModel = CalendarModel(beerData: beerData)
-//                    let item = self.calendarModel?.getTodayBeer()
-//                    if let item = item {
-//                        self.setUI(beer: item)
-//                    } else {
-//                        self.beerLabelView.backgroundColor = .systemGray
-//                        self.beerNameLabel.text = "Не найдено пиво на текущую дату"
-//                        self.beerNameLabel.alpha = 1
-//                    }
-//                case .failure(let requestError):
-//                    print(requestError)
-//                    // если запрос ничего не вернул - вытягиваем данные из кэша
-//                     do {
-//                        let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
-//
-//                        guard let beerData = beerDataFromCache else {
-//                            self.activityIndicatorView.stopAnimating()
-//                            self.beerLabelView.backgroundColor = .systemGray
-//                            self.beerNameLabel.text = "Проблема с подключением к интернету"
-//                            self.beerNameLabel.alpha = 1
-//                            self.messageViewModel.isMessageViewShow = true // чтобы ошибка про следующий день не вылазила
-//                            return
-//                        }
-//                        self.calendarModel = CalendarModel(beerData: beerData)
-//                        let item = self.calendarModel?.getTodayBeer()
-//                        if let item = item {
-//                            self.setUI(beer: item)
-//                        } else {
-//                            self.beerLabelView.backgroundColor = .systemGray
-//                            self.beerNameLabel.text = "Не найдено пиво на текущую дату"
-//                            self.beerNameLabel.alpha = 1
-//                        }
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//
-//                self.activityIndicatorView.stopAnimating()
-//            }
-//        }
-//    }
-    
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
         
@@ -412,6 +367,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         } else {
             goToTodayButton.isEnabled = true
         }
+        
+        shareViewModel.currentBeer = beer
     }
     
     private func setElementsAlpha(value: CGFloat) {
@@ -506,7 +463,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     @IBAction func shareButtonTap(_ sender: UIButton) {
-        
+        if shareViewModel.isViewShowing {
+            shareViewModel.hideView()
+        } else {
+            shareViewModel.showView()
+        }
     }
     
     

@@ -455,26 +455,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CrowdFinding AD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfl-Gu-ufY">
-                                <rect key="frame" x="111" y="394" width="153" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0De-gr-TS2">
-                                <rect key="frame" x="324" y="56" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCh-uT-d18">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oPx-bo-bHa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Mfl-Gu-ufY" firstAttribute="centerX" secondItem="KbP-s9-1mw" secondAttribute="centerX" id="a12-1z-5Mc"/>
-                            <constraint firstItem="0De-gr-TS2" firstAttribute="top" secondItem="oPx-bo-bHa" secondAttribute="top" constant="12" id="akL-fX-yNr"/>
-                            <constraint firstItem="Mfl-Gu-ufY" firstAttribute="centerY" secondItem="KbP-s9-1mw" secondAttribute="centerY" id="dPc-DV-YlF"/>
-                            <constraint firstItem="oPx-bo-bHa" firstAttribute="trailing" secondItem="0De-gr-TS2" secondAttribute="trailing" constant="12" id="kZB-qm-rKL"/>
+                            <constraint firstItem="jCh-uT-d18" firstAttribute="leading" secondItem="oPx-bo-bHa" secondAttribute="leading" id="4Da-pL-xaM"/>
+                            <constraint firstItem="oPx-bo-bHa" firstAttribute="trailing" secondItem="jCh-uT-d18" secondAttribute="trailing" id="8rR-mj-oeZ"/>
+                            <constraint firstItem="jCh-uT-d18" firstAttribute="top" secondItem="KbP-s9-1mw" secondAttribute="top" id="OAh-si-Pqq"/>
+                            <constraint firstAttribute="bottom" secondItem="jCh-uT-d18" secondAttribute="bottom" id="dkW-1e-9FO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainImageView" destination="jCh-uT-d18" id="9bU-ba-WnN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6a3-YY-ofM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
