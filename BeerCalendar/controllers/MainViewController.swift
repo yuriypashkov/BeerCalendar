@@ -91,7 +91,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             if !messageViewModel.isMessageViewShow {
                 messageViewModel.showMessageView()
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     if self.messageViewModel.isMessageViewShow {
                         self.messageViewModel.hideMessageView()
                     }
@@ -169,11 +169,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         swipeUpGesture.direction = .up
         beerLabelView.addGestureRecognizer(swipeUpGesture)
         
-        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown(_:)))
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeUp(_:)))
         swipeLeftGesture.direction = .left
         beerLabelView.addGestureRecognizer(swipeLeftGesture)
         
-        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeUp(_:)))
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown(_:)))
         swipeRightGesture.direction = .right
         beerLabelView.addGestureRecognizer(swipeRightGesture)
         
