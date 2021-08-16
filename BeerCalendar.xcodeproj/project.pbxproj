@@ -27,6 +27,14 @@
 		218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E526C556270095FC98 /* CrowdFindingViewController.swift */; };
 		218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E726C5794E0095FC98 /* CrowdFindingADData.swift */; };
 		218149EC26C6CC650095FC98 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149EB26C6CC650095FC98 /* ShareViewModel.swift */; };
+		218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */; };
+		218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */; };
+		218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */; };
+		218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */; };
+		218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F626CA88720095FC98 /* OktaNeue-Light.ttf */; };
+		218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */; };
+		218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */; };
+		218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -62,6 +70,14 @@
 		218149E526C556270095FC98 /* CrowdFindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingViewController.swift; sourceTree = "<group>"; };
 		218149E726C5794E0095FC98 /* CrowdFindingADData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingADData.swift; sourceTree = "<group>"; };
 		218149EB26C6CC650095FC98 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-SemiBold.ttf"; sourceTree = "<group>"; };
+		218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Regular.ttf"; sourceTree = "<group>"; };
+		218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Normal.ttf"; sourceTree = "<group>"; };
+		218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Medium.ttf"; sourceTree = "<group>"; };
+		218149F626CA88720095FC98 /* OktaNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Light.ttf"; sourceTree = "<group>"; };
+		218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Bold.ttf"; sourceTree = "<group>"; };
+		218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-MediumItalic.ttf"; sourceTree = "<group>"; };
+		218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-LightItalic.ttf"; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +127,7 @@
 		217BA5D126AEE48600E642F2 /* BeerCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				218149ED26CA88230095FC98 /* fonts */,
 				21CC351B26BD4E5B000E0596 /* Sounds */,
 				21CC351826BAD838000E0596 /* View */,
 				21CC351526BAD5A5000E0596 /* controllers */,
@@ -158,6 +175,21 @@
 				217BA5ED26AEE65A00E642F2 /* NetworkService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		218149ED26CA88230095FC98 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */,
+				218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */,
+				218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */,
+				218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */,
+				218149F626CA88720095FC98 /* OktaNeue-Light.ttf */,
+				218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */,
+				218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */,
+				218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		21CC351526BAD5A5000E0596 /* controllers */ = {
@@ -270,15 +302,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */,
 				21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */,
+				218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */,
 				217BA5DF26AEE48A00E642F2 /* LaunchScreen.storyboard in Resources */,
+				218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */,
+				218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */,
+				218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */,
 				217BA5DC26AEE48A00E642F2 /* Assets.xcassets in Resources */,
 				21CC352126BD4F85000E0596 /* pageSound4.mp3 in Resources */,
 				21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */,
 				21CC352226BD4F85000E0596 /* pageSound5.mp3 in Resources */,
 				21CC352326BD4F85000E0596 /* pageSound2.mp3 in Resources */,
 				21CC352426BD4F85000E0596 /* pageSound3.mp3 in Resources */,
+				218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */,
 				217BA5DA26AEE48600E642F2 /* Main.storyboard in Resources */,
+				218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */,
+				218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

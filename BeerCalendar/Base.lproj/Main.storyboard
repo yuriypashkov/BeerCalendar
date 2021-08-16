@@ -49,7 +49,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH">
                                                 <rect key="frame" x="293" y="0.0" width="50" height="50"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -68,18 +68,18 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-3l-gIr" userLabel="AdditionalButtonsStackView">
-                                        <rect key="frame" x="8" y="475" width="160" height="48"/>
+                                        <rect key="frame" x="8" y="475" width="136" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-ah-6vr">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9RI-ah-6vr" secondAttribute="height" multiplier="1:1" id="5vE-qg-l4W"/>
-                                                    <constraint firstAttribute="width" constant="48" id="67N-xn-9dE"/>
+                                                    <constraint firstAttribute="width" constant="40" id="67N-xn-9dE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <state key="normal">
-                                                    <imageReference key="image" image="star" catalog="system" symbolScale="default"/>
+                                                    <imageReference key="image" image="iconLikeEmpty" symbolScale="default"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
@@ -87,12 +87,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k7-Zm-4di">
-                                                <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="48" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4k7-Zm-4di" secondAttribute="height" multiplier="1:1" id="dsE-KH-kL1"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                <state key="normal" image="u.circle" catalog="system">
+                                                <state key="normal" image="untappdHigh">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
@@ -100,12 +100,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAM-bT-RNy">
-                                                <rect key="frame" x="112" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="96" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="JAM-bT-RNy" secondAttribute="height" multiplier="1:1" id="Nto-dE-nRh"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" image="info.circle" catalog="system">
+                                                <state key="normal" image="iconInfo">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
@@ -241,7 +241,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEc-7q-cWR">
                                                             <rect key="frame" x="0.0" y="0.0" width="303" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -346,7 +346,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="a9H-fY-tsd" secondAttribute="height" multiplier="1:1" id="gp5-1V-BTX"/>
                                                         </constraints>
-                                                        <state key="normal" title="Site" image="wwwIcon">
+                                                        <state key="normal" title="Site" image="iconWWW">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -358,7 +358,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="mec-WX-WeE" secondAttribute="height" multiplier="1:1" id="UXw-8V-AFN"/>
                                                         </constraints>
-                                                        <state key="normal" image="instaIcon">
+                                                        <state key="normal" image="iconInst">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -370,7 +370,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fLG-zP-PbE" secondAttribute="height" multiplier="1:1" id="bVd-vf-csa"/>
                                                         </constraints>
-                                                        <state key="normal" title="VK" image="vkIcon">
+                                                        <state key="normal" title="VK" image="iconVK">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -382,7 +382,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="7vS-Lq-Suf" secondAttribute="height" multiplier="1:1" id="ORt-Z9-8px"/>
                                                         </constraints>
-                                                        <state key="normal" title="FB" image="fbIcon">
+                                                        <state key="normal" title="FB" image="iconFB">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -479,15 +479,15 @@
     </scenes>
     <resources>
         <image name="f.circle" catalog="system" width="32" height="32"/>
-        <image name="fbIcon" width="64" height="64"/>
-        <image name="info.circle" catalog="system" width="32" height="32"/>
-        <image name="instaIcon" width="100" height="100"/>
+        <image name="iconFB" width="96" height="96"/>
+        <image name="iconInfo" width="475" height="475"/>
+        <image name="iconInst" width="96" height="96"/>
+        <image name="iconLikeEmpty" width="476" height="476"/>
+        <image name="iconVK" width="96" height="96"/>
+        <image name="iconWWW" width="96" height="96"/>
         <image name="square.and.arrow.up" catalog="system" width="32" height="32"/>
-        <image name="star" catalog="system" width="32" height="32"/>
         <image name="t.circle" catalog="system" width="32" height="32"/>
-        <image name="u.circle" catalog="system" width="32" height="32"/>
-        <image name="vkIcon" width="96" height="96"/>
-        <image name="wwwIcon" width="96" height="96"/>
+        <image name="untappdHigh" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

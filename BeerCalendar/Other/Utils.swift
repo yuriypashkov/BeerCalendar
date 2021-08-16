@@ -51,3 +51,15 @@ extension UIColor {
     }
     
 }
+
+extension UIImageView {
+    
+    func setImageColor(color: UIColor) {
+                let templateImage = self.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+                self.image = templateImage
+                self.tintColor = color
+            }
+
+}
+
+//Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]

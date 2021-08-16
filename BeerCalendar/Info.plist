@@ -64,6 +64,17 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) необходим доступ к Фото для сохранения картинки для инстаграм</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OktaNeue-Normal.ttf</string>
+        <string>OktaNeue-SemiBold.ttf</string>
+        <string>OktaNeue-LightItalic.ttf</string>
+        <string>OktaNeue-Medium.ttf</string>
+        <string>OktaNeue-Light.ttf</string>
+        <string>OktaNeue-Bold.ttf</string>
+        <string>OktaNeue-Regular.ttf</string>
+        <string>OktaNeue-MediumItalic.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

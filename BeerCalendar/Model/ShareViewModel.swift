@@ -24,16 +24,22 @@ class ShareViewModel {
         height = frameHeight
         let buttonFrameConstant: CGFloat = 56
         shareView = UIView(frame: CGRect(x: 0, y: height, width: width, height: 100))
-        shareView.backgroundColor = .systemGreen
+        shareView.backgroundColor = .systemGray6
         shareView.roundCorners(corners: [.topLeft, .topRight], radius: 50)
+        
         let instaButton = UIButton(frame: CGRect(x: 32, y: 24, width: buttonFrameConstant, height: buttonFrameConstant))
-        instaButton.setBackgroundImage(UIImage(named: "instaIcon"), for: .normal)
+        instaButton.setBackgroundImage(UIImage(named: "iconInst"), for: .normal)
         instaButton.addTarget(self, action: #selector(shareOnInstagramButtonTap), for: .touchUpInside)
         shareView.addSubview(instaButton)
+       
         let moreButton = UIButton(frame: CGRect(x: width - 32 - buttonFrameConstant, y: 24, width: buttonFrameConstant, height: buttonFrameConstant))
-        moreButton.setBackgroundImage(UIImage(named: "iconMore"), for: .normal)
+        moreButton.setBackgroundImage(UIImage(named: "iconShare"), for: .normal)
         moreButton.addTarget(self, action: #selector(showActivityViewController), for: .touchUpInside)
         shareView.addSubview(moreButton)
+        
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideView))
+        swipeDownGesture.direction = .down
+        shareView.addGestureRecognizer(swipeDownGesture)
     }
     
     func showView() {
@@ -44,7 +50,7 @@ class ShareViewModel {
         }
     }
     
-    func hideView() {
+    @objc func hideView() {
         UIView.animate(withDuration: 0.3) {
             self.shareView.frame = CGRect(x: 0, y: self.height, width: self.width, height: 100)
         } completion: { finished in
