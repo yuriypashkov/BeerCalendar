@@ -35,6 +35,12 @@ class CalendarModel {
         }
     }
     
+    private func sortArrayByDate(array: [BeerData]) -> [BeerData] {
+        
+        
+        return [BeerData]()
+    }
+    
     func getTodayBeer() -> BeerData? {
         guard let currentDate = dateToString() else {return nil}
         for i in 0..<beers.count {

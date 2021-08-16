@@ -28,8 +28,18 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Избранное"
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Избранное"
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FavoritesTableViewHeader") as! FavoritesTableViewHeader
+        view.title.text = "Избранное"
+        return view
     }
     
     
@@ -40,6 +50,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .systemGray6
+        
+        tableView.register(FavoritesTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "FavoritesTableViewHeader")
 
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown(_:)))
         swipeDownGesture.direction = .down

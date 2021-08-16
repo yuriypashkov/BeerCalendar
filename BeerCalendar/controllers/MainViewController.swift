@@ -40,6 +40,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     var favoriteBeersModel = FavoriteBeersModel()
     var soundService = SoundService() // воспроизведение звуков
     let generator = UIImpactFeedbackGenerator(style: .heavy) // генератор вибрации
+    var currentFontColor: UIColor = .black
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -329,15 +330,29 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
         
-        // вычисляем светлость фона и в зависимости от этого цвет лейблов выставляем
+        if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
+        } else {
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmpty"), for: .normal)
+        }
+        
+        // вычисляем светлость фона и в зависимости от этого цвет лейблов и кнопок выставляем
         if let backgroundColor = beer.backgroundColor {
             beerLabelView.backgroundColor = UIColor(hex: backgroundColor)
             if let arrayOfColors = ColorService.shared.getFontColors(backgroundColor: UIColor(hex: backgroundColor)) {
+                currentFontColor = arrayOfColors[0] // фиксируем цвет для перекраски кнопок
                 beerDateDayLabel.textColor = arrayOfColors[0]
                 beerDateMonthLabel.textColor = arrayOfColors[0]
                 beerNameLabel.textColor = arrayOfColors[1]
                 beerManufacturerLabel.textColor = arrayOfColors[2]
                 beerTypeLabel.textColor = arrayOfColors[3]
+                // buttons
+                addToFavoriteButton.imageView?.setImageColor(color: currentFontColor) // другой метод, тк непонятно какая картинка на кнопке - fill или empty
+                setButtonImageColor(button: untappdButton, imageName: "iconUntappdSVG")
+                setButtonImageColor(button: infoButton, imageName: "iconInfo")
+                setButtonImageColor(button: favoritesButton, imageName: "iconFavoritesSVG")
+                setButtonImageColor(button: goToTodayButton, imageName: "iconToday")
+                setButtonImageColor(button: shareButton, imageName: "iconShareSVG")
             }
         }
         
@@ -355,12 +370,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
         
         setElementsAlpha(value: 1)
-        
-        if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
-            addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        } else {
-            addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-        }
         
         if calendarModel?.currentIndex == calendarModel?.borderIndex {
             goToTodayButton.isEnabled = false
@@ -399,14 +408,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         case 0...568:
             //print("SE 1th")
             beerInfoTopConstraint.constant = 8
-            dateStackViewTopConstraint.constant = 8
+            dateStackViewTopConstraint.constant = 16
             beerDateDayLabel.font = beerDateDayLabel.font.withSize(48) //64 and 36
             beerDateMonthLabel.font = beerDateDayLabel.font.withSize(22)
             beerInfoStackView.spacing = 4
         case 568...750:
             //print("SE 2th and Plus")
             beerInfoTopConstraint.constant = 12
-            dateStackViewTopConstraint.constant = 12
+            dateStackViewTopConstraint.constant = 20
             beerDateDayLabel.font = beerDateDayLabel.font.withSize(56)
             beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(28)
             beerInfoStackView.spacing = 6
@@ -417,12 +426,23 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     private func addToFavorites() {
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmpty"), for: .normal)
+            
+            setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeEmpty")
         } else {
             generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
+            
+            setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeFill")
         }
+    }
+    
+    private func setButtonImageColor(button: UIButton, imageName: String) {
+        let origImage = UIImage(named: imageName)
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        button.tintColor = currentFontColor
     }
     
     @IBAction func untappdButtonTap(_ sender: UIButton) {

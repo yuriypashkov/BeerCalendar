@@ -28,12 +28,12 @@ class ShareViewModel {
         shareView.roundCorners(corners: [.topLeft, .topRight], radius: 50)
         
         let instaButton = UIButton(frame: CGRect(x: 32, y: 24, width: buttonFrameConstant, height: buttonFrameConstant))
-        instaButton.setBackgroundImage(UIImage(named: "iconInst"), for: .normal)
+        instaButton.setBackgroundImage(UIImage(named: "iconInstSVG"), for: .normal)
         instaButton.addTarget(self, action: #selector(shareOnInstagramButtonTap), for: .touchUpInside)
         shareView.addSubview(instaButton)
        
         let moreButton = UIButton(frame: CGRect(x: width - 32 - buttonFrameConstant, y: 24, width: buttonFrameConstant, height: buttonFrameConstant))
-        moreButton.setBackgroundImage(UIImage(named: "iconShare"), for: .normal)
+        moreButton.setBackgroundImage(UIImage(named: "iconMoreSVG"), for: .normal)
         moreButton.addTarget(self, action: #selector(showActivityViewController), for: .touchUpInside)
         shareView.addSubview(moreButton)
         

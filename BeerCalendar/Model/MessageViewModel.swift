@@ -30,8 +30,9 @@ class MessageViewModel {
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
+        label.font = UIFont(name: "OktaNeue-Medium", size: 16)
         label.text = "Следующее пиво можно увидеть только на следующий день."
-        label.font = UIFont.systemFont(ofSize: 16)
+        //label.font = UIFont.systemFont(ofSize: 16)
         messageView.addSubview(label)
     }
     
