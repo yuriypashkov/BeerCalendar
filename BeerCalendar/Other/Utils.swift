@@ -14,11 +14,19 @@ protocol MainViewControllerDelegate {
 }
 
 extension UIView {
+    
    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+    }
+    
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
     }
 }
 
@@ -54,10 +62,23 @@ extension UIColor {
 
 extension UIImageView {
     
+    // метод для покраски векторных иконок
     func setImageColor(color: UIColor) { // переписать
             let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
             self.image = templateImage
             self.tintColor = color
+        }
+    
+    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
+            containerView.clipsToBounds = false
+            containerView.layer.shadowColor = UIColor.black.cgColor
+            containerView.layer.shadowOpacity = 1
+            containerView.layer.shadowOffset = CGSize.zero
+            containerView.layer.shadowRadius = 10
+            containerView.layer.cornerRadius = cornerRadious
+            containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
+            self.clipsToBounds = true
+            self.layer.cornerRadius = cornerRadious
         }
 
 }
@@ -72,6 +93,7 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
     
+    // тень под картинкой
     func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
 
         let shadowColor = UIColor(white: 0.0, alpha: 0.5).cgColor

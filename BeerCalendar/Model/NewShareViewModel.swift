@@ -14,6 +14,7 @@ class NewShareViewModel: UIView {
     
     var isViewShowing = false
     var currentBeer: BeerData?
+    var currentBrewery: BreweryData?
     let buttonFrameConstant: CGFloat = 32
     
     init(myFrame: CGRect) { // 96x48
@@ -70,30 +71,59 @@ class NewShareViewModel: UIView {
             activitityIndicator.startAnimating()
             viewController?.view.addSubview(activitityIndicator)
             
-            let text = "Some text"
-            let url = URL(string: urlStr)!
+            func showActivityViewController(content: [Any]) {
+                let ac = UIActivityViewController(activityItems: content, applicationActivities: nil)
+                
+                viewController?.present(ac, animated: true, completion: {
+                    activitityIndicator.stopAnimating()
+                })
+            }
+            
+            let text = "\(currentBeer.beerName ?? "beerName") - пиво дня \(currentBeer.getStrDateForSharingImage() ?? "beerDate"), согласно пивному календарю! @Beer.Calendar #BeerCalendar https://apps.apple.com/ru/app/id1581340486"
+            
+            guard let url = URL(string: urlStr) else {
+                showActivityViewController(content: [text])
+//                let items = [text]
+//                let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+//
+//                viewController?.present(ac, animated: true, completion: {
+//                    activitityIndicator.stopAnimating()
+//                })
+                return
+            }
+            
             let resource = ImageResource(downloadURL: url)
             KingfisherManager.shared.retrieveImage(with: resource) { result in
                 switch result {
                 case .success(let value):
                     let image: UIImage = value.image
                     let items: [Any] = [text,image]
-                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                    
-                    viewController?.present(ac, animated: true, completion: {
-                        activitityIndicator.stopAnimating()
-                    })
+                    showActivityViewController(content: items)
+//                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+//
+//                    viewController?.present(ac, animated: true, completion: {
+//                        activitityIndicator.stopAnimating()
+//                    })
                 case .failure(let error):
+                    showActivityViewController(content: [text])
+//                    let items = [text]
+//                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+//
+//                    viewController?.present(ac, animated: true, completion: {
+//                        activitityIndicator.stopAnimating()
+//                    })
                     print(error.localizedDescription)
                 }
             }
         }
     }
     
+    
+    
     @objc func shareOnInstagramButtonTap() {
         hideView()
         
-        PictureCreator.shared.createImageForInstagram(currentBeer: currentBeer) { image, error in
+        PictureCreator.shared.createImageForInstagram(currentBeer: currentBeer, currentBrewery: currentBrewery) { image, error in
             
             if let image = image {
                self.shareOnInstagram(image: image)

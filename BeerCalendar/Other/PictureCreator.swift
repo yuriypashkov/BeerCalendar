@@ -7,28 +7,34 @@
 
 import Foundation
 import UIKit
-//import Photos
 import Kingfisher
 
 class PictureCreator {
     
     static let shared = PictureCreator()
     
-    func createImageForInstagram(currentBeer: BeerData?, completion: @escaping (_ result: UIImage?, _ error: String?) -> Void) {
+    func createImageForInstagram(currentBeer: BeerData?, currentBrewery: BreweryData?, completion: @escaping (_ result: UIImage?, _ error: String?) -> Void) {
         let size = CGSize.init(width: 1080, height: 1920)
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        if let context = UIGraphicsGetCurrentContext() {
+        if UIGraphicsGetCurrentContext() != nil {
             
             
-            guard let beer = currentBeer, let color = beer.secondColor else {
+            guard let beer = currentBeer else {
                 UIGraphicsEndImageContext()
                 completion(nil, "Error with currentBeer")
                 return
             }
             
             // create background
-            UIColor(hex: color).setFill()
-            context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let backgroundView = UIView(frame: CGRect(origin: .zero, size: size))
+            backgroundView.backgroundColor = .systemGray5
+            ColorService.shared.setGradientBackgroundOnView(view: backgroundView, firstColor: UIColor(hex: beer.firstColor ?? "#FFFFFF"), secondColor: UIColor(hex: beer.secondColor ?? "#FFFFFF"), cornerRadius: 0)
+            
+            //UIColor(hex: color).setFill()
+            //context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let backgroundImage = backgroundView.asImage()
+            let imgRect = CGRect(origin: .zero, size: size)
+            backgroundImage.draw(in: imgRect)
             
             // create header, date
             drawNSString(text: beer.getStrDateForSharingImage(), font: UIFont(name: "OktaNeue-Bold", size: 110), fontColor: .black, heightDistance: 0)
@@ -40,10 +46,10 @@ class PictureCreator {
             drawNSString(text: beer.beerName, font: UIFont(name: "OktaNeue-Bold", size: 60), fontColor: .black, heightDistance: strSizeWidth + 220)
             
             //create brewery name
-            drawNSString(text: "Имя пивоварни", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 290)
+            drawNSString(text: "\(currentBrewery?.breweryName ?? "breweryName")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 290)
             
             //create city name
-            drawNSString(text: "Город пивоварни", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 330)
+            drawNSString(text: "\(currentBrewery?.breweryCity ?? "breweryCity")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 330)
             
             //create beer type
             let beerType = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? "") IBU"

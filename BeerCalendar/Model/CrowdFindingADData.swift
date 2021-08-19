@@ -10,4 +10,5 @@ import Foundation
 struct CrowdFindingADData: Codable {
     var isADShow: Bool?
     var imgUrl: String?
+    var goToUrl: String?
 }

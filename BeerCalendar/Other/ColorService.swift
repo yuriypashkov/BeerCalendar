@@ -43,7 +43,7 @@ class ColorService {
         let end : CGPoint = CGPoint(x: 0.5, y: 1.0)
         
         let gradient: CAGradientLayer = self.makeGradientLayer(view, startPoint: start, endPoint: end, gradientColors: [firstColor.cgColor, secondColor.cgColor])
-        gradient.opacity = 0.6
+        gradient.opacity = 0.9
         gradient.name = "backgroundColor"
         gradient.cornerRadius = cornerRadius
         

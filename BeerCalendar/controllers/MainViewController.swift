@@ -28,6 +28,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var goToTodayButton: UIButton!
+    //@IBOutlet weak var shadowView: UIView!
     
     
     
@@ -54,6 +55,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         view.addSubview(newShareViewModel)
 
         addGestures()
+        //beerLabelImage.applyshadowWithCorner(containerView: shadowView, cornerRadious: 16)
+        beerLabelImage.layer.shadowColor = UIColor.black.cgColor
+        beerLabelImage.layer.shadowRadius = 3.0
+        beerLabelImage.layer.shadowOpacity = 1.0
+        beerLabelImage.layer.shadowOffset = CGSize(width: 2, height: 2)
+        beerLabelImage.layer.masksToBounds = false
+        beerLabelImage.layer.cornerRadius = 16
         
         prepareUI()
         
@@ -375,11 +383,16 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         
         beerNameLabel.text = beer.beerName
-        beerTypeLabel.text = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? "") IBU"
+        beerTypeLabel.text = "\(beer.beerType ?? "")"
+        if let abv = beer.beerABV {
+            beerTypeLabel.text! += " · \(abv) ABV"
+        }
+        if let ibu = beer.beerIBU {
+            beerTypeLabel.text! += " · \(ibu) IBU"
+        }
         if let id = beer.breweryID, let brewery = breweriesModel?.getCurrentBrewery(id: id) {
             beerManufacturerLabel.text = "\(brewery.breweryName ?? "") · \(brewery.breweryCity ?? "")"
         }
-        //beerManufacturerLabel.text = beer.beerManufacturer
         if let dateArray = beer.getStrDate() {
             beerDateDayLabel.text = dateArray[0]
             beerDateMonthLabel.text = dateArray[1]
@@ -389,7 +402,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             beerLabelImage.kf.setImage(with: url)
         }
         
-        setElementsAlpha(value: 1)
+        setElementsAlpha(value: 0.8)
         
         if calendarModel?.currentIndex == calendarModel?.borderIndex {
             goToTodayButton.isEnabled = false
@@ -398,6 +411,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
         
         newShareViewModel.currentBeer = beer
+        if let id = beer.breweryID {
+            newShareViewModel.currentBrewery = breweriesModel?.getCurrentBrewery(id: id)
+        }
     }
     
     private func setElementsAlpha(value: CGFloat) {
@@ -406,7 +422,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         favoritesButton.alpha = value
         infoButton.alpha = value
         shareButton.alpha = value
-        beerLabelImage.alpha = value
+        //beerLabelImage.alpha = value
         beerNameLabel.alpha = value
         beerTypeLabel.alpha = value
         beerManufacturerLabel.alpha = value
