@@ -12,9 +12,10 @@ struct BreweryData: Codable {
     var id: Int?
     var breweryName: String?
     var aboutBrewery: String?
-    var siteUrl: String?
-    var vkUrl: String?
-    var instaUrl: String?
-    var fbUrl: String?
-    
+    var siteURL: String?
+    var vkURL: String?
+    var instaURL: String?
+    var fbURL: String?
+    var breweryCity: String?
+    var untappdURL: String?
 }

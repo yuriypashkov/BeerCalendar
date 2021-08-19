@@ -62,4 +62,43 @@ extension UIImageView {
 
 }
 
+extension UIImage {
+    
+    func rounded(radius: CGFloat) -> UIImage {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIBezierPath(roundedRect: rect, cornerRadius: radius).addClip()
+        draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
+
+        let shadowColor = UIColor(white: 0.0, alpha: 0.5).cgColor
+
+        let context = CGContext(data: nil,
+                                width: Int(self.size.width + blurSize),
+                                height: Int(self.size.height + blurSize),
+                                bitsPerComponent: self.cgImage!.bitsPerComponent,
+                                bytesPerRow: 0,
+                                space: CGColorSpaceCreateDeviceRGB(),
+                                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+
+        context.setShadow(offset: CGSize(width: blurSize / 4, height: -blurSize / 4),
+                          blur: blurSize,
+                          color: shadowColor)
+
+    
+        context.draw(self.cgImage!,
+                     in: CGRect(x: 0, y: blurSize, width: self.size.width, height: self.size.height),
+                     byTiling: false)
+
+        return UIImage(cgImage: context.makeImage()!)
+    }
+    
+}
+
+
 //Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]
+
+// «Токсовский Трамплин — пиво дня 5 июля 2021, согласно пивному календарю! @Beer.Calendar #BeerCalendar *ссылка на приложение*»

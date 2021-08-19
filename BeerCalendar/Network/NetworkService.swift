@@ -17,7 +17,7 @@ class NetworkService {
     
     func requestBeerData(onResult: @escaping (Result<[BeerData], Error>) -> Void) {
         
-        let url = URL(string: NetworkConfiguration.shared.apiUrl + "/beers")!
+        let url = URL(string: NetworkConfiguration.shared.apiUrl + NetworkAdresses.beer.rawValue)!
         let urlRequest = URLRequest(url: url)
         
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
@@ -45,7 +45,7 @@ class NetworkService {
     }
     
     func requestBreweryData(onResult: @escaping (Result<[BreweryData], Error>) -> Void) {
-        let url = URL(string: NetworkConfiguration.shared.apiUrl + "/breweries")!
+        let url = URL(string: NetworkConfiguration.shared.apiUrl + NetworkAdresses.brewery.rawValue)!
         let urlRequest = URLRequest(url: url)
         
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
@@ -72,7 +72,7 @@ class NetworkService {
     }
     
     func requestCrowdFindingData(onResult: @escaping (Result<CrowdFindingADData, Error>) -> Void) {
-        let url = URL(string: NetworkConfiguration.shared.apiUrl + "/crowdfinding")!
+        let url = URL(string: NetworkConfiguration.shared.apiUrl + NetworkAdresses.crowdFinding.rawValue)!
         let urlRequest = URLRequest(url: url)
         
         let dataTask = urlSession.dataTask(with: urlRequest) { data, response, error in
@@ -105,4 +105,10 @@ class NetworkService {
 enum NetworkError: Error {
     case noData
     case failedResponse
+}
+
+enum NetworkAdresses: String{
+    case beer = "/beers"
+    case brewery = "/breweries"
+    case crowdFinding = "/crowdfinding"
 }

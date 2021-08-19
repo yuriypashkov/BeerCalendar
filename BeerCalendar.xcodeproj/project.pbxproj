@@ -36,6 +36,8 @@
 		218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */; };
 		218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */; };
 		21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */; };
+		21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BA26CC270600A70099 /* NewShareViewModel.swift */; };
+		21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BC26CC58F200A70099 /* PictureCreator.swift */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -80,6 +82,8 @@
 		218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-MediumItalic.ttf"; sourceTree = "<group>"; };
 		218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-LightItalic.ttf"; sourceTree = "<group>"; };
 		21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewHeader.swift; sourceTree = "<group>"; };
+		21BA81BA26CC270600A70099 /* NewShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShareViewModel.swift; sourceTree = "<group>"; };
+		21BA81BC26CC58F200A70099 /* PictureCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCreator.swift; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				217BA5DD26AEE48A00E642F2 /* LaunchScreen.storyboard */,
 				217BA5F426B1942700E642F2 /* Utils.swift */,
 				21606D5526C1AF5500A70CEA /* ColorService.swift */,
+				21BA81BC26CC58F200A70099 /* PictureCreator.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */,
 				218149E726C5794E0095FC98 /* CrowdFindingADData.swift */,
 				218149EB26C6CC650095FC98 /* ShareViewModel.swift */,
+				21BA81BA26CC270600A70099 /* NewShareViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
 				217BA5F526B1942700E642F2 /* Utils.swift in Sources */,
 				21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */,
+				21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */,
 				21CC351A26BAD855000E0596 /* FavoriteBeerCell.swift in Sources */,
 				21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */,
 				21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */,
@@ -396,6 +403,7 @@
 				218149EC26C6CC650095FC98 /* ShareViewModel.swift in Sources */,
 				21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */,
 				21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */,
+				21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -565,6 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

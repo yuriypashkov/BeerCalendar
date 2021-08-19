@@ -26,18 +26,18 @@ class InfoViewController: UIViewController {
     }
     
     private func setUI() {
-        aboutBeerLabel.text = currentBeer?.aboutBeer
+        aboutBeerLabel.text = currentBeer?.beerDescription
         aboutBreweryLabel.text = currentBrewery?.aboutBrewery
-        if currentBrewery?.siteUrl == nil {
+        if currentBrewery?.siteURL == nil {
             siteButton.isHidden = true
         }
-        if currentBrewery?.instaUrl == nil {
+        if currentBrewery?.instaURL == nil {
             instaButton.isHidden = true
         }
-        if currentBrewery?.vkUrl == nil {
+        if currentBrewery?.vkURL == nil {
             vkButton.isHidden = true
         }
-        if currentBrewery?.fbUrl == nil {
+        if currentBrewery?.fbURL == nil {
             fbButton.isHidden = true
         }
     }
@@ -46,22 +46,22 @@ class InfoViewController: UIViewController {
         switch sender.tag {
         case 0:
             print("WWW TAP")
-            if let urlStr = currentBrewery?.siteUrl {
+            if let urlStr = currentBrewery?.siteURL {
                 openURL(urlStr: urlStr)
             }
         case 1:
             print("INSTA TAP")
-            if let urlStr = currentBrewery?.instaUrl {
+            if let urlStr = currentBrewery?.instaURL {
                 openURL(urlStr: urlStr)
             }
         case 2:
             print("VK TAP")
-            if let urlStr = currentBrewery?.vkUrl {
+            if let urlStr = currentBrewery?.vkURL {
                 openURL(urlStr: urlStr)
             }
         case 3:
             print("FB TAP")
-            if let urlStr = currentBrewery?.fbUrl {
+            if let urlStr = currentBrewery?.fbURL {
                 openURL(urlStr: urlStr)
             }
         default: ()
@@ -70,9 +70,10 @@ class InfoViewController: UIViewController {
     }
     
     private func openURL(urlStr: String) {
-        let url = URL(string: urlStr)!
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if let url = URL(string: urlStr) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
     }
     

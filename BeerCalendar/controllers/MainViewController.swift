@@ -34,7 +34,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     var calendarModel: CalendarModel?
     var breweriesModel: BreweriesModel?
     var messageViewModel: MessageViewModel!
-    var shareViewModel: ShareViewModel!
+    var newShareViewModel: NewShareViewModel!
     let activityIndicatorView = UIActivityIndicatorView()
     var currentBeerID: Int = 0
     var favoriteBeersModel = FavoriteBeersModel()
@@ -48,8 +48,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         messageViewModel = MessageViewModel(x: view.frame.size.width, y: view.frame.size.height, width: view.frame.size.width, height: 100)
         view.addSubview(messageViewModel.messageView)
         
-        shareViewModel = ShareViewModel(frameWidth: view.frame.size.width, frameHeight: view.frame.size.height)
-        view.addSubview(shareViewModel.shareView)
+        let topInset = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+        let y = shareButton.frame.origin.y + topInset
+        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 107, y: y, width: 96, height: 48))
+        view.addSubview(newShareViewModel)
 
         addGestures()
         
@@ -66,13 +68,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     @objc func swipeUp(_ recognizer: UISwipeGestureRecognizer) {
         if let nextBeer = calendarModel?.getNextBeer() {
-
             soundService.playRandomSound()
             
             switch recognizer.state {
             case .ended:
-                if shareViewModel.isViewShowing {
-                    shareViewModel.hideView()
+                if newShareViewModel.isViewShowing {
+                    newShareViewModel.hideView()
                 }
                     UIView.transition(with: beerLabelView,
                                       duration: 0.7,
@@ -104,13 +105,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     @objc func swipeDown(_ recognizer: UIGestureRecognizer) {
         if let previousBeer = calendarModel?.getPreviousBeer() {
-
             soundService.playRandomSound()
             
             switch recognizer.state {
             case .ended:
-                if shareViewModel.isViewShowing {
-                    shareViewModel.hideView()
+                if newShareViewModel.isViewShowing {
+                    newShareViewModel.hideView()
                 }
                 if messageViewModel.isMessageViewShow {
                     messageViewModel.hideMessageView()
@@ -118,7 +118,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                 UIView.transition(with: beerLabelView,
                                   duration: 0.7,
                                   options: [.transitionCurlDown],
-                                  animations: {self.setUI(beer: previousBeer)}) { finished in
+                                  animations: {
+                                    self.setUI(beer: previousBeer)
+                                  }) { finished in
                     if let calendar = self.calendarModel, calendar.showCrowdFinding() {
                         // показать рекламу
                         self.showCrowdFindingController()
@@ -329,6 +331,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
+        //beer.getStrDateForSharingImage()
         
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
@@ -337,29 +340,46 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
         
         // вычисляем светлость фона и в зависимости от этого цвет лейблов и кнопок выставляем
-        if let backgroundColor = beer.backgroundColor {
-            beerLabelView.backgroundColor = UIColor(hex: backgroundColor)
-            if let arrayOfColors = ColorService.shared.getFontColors(backgroundColor: UIColor(hex: backgroundColor)) {
-                currentFontColor = arrayOfColors[0] // фиксируем цвет для перекраски кнопок
-                beerDateDayLabel.textColor = arrayOfColors[0]
-                beerDateMonthLabel.textColor = arrayOfColors[0]
-                beerNameLabel.textColor = arrayOfColors[1]
-                beerManufacturerLabel.textColor = arrayOfColors[2]
-                beerTypeLabel.textColor = arrayOfColors[3]
-                // buttons
-                addToFavoriteButton.imageView?.setImageColor(color: currentFontColor) // другой метод, тк непонятно какая картинка на кнопке - fill или empty
-                setButtonImageColor(button: untappdButton, imageName: "iconUntappdSVG")
-                setButtonImageColor(button: infoButton, imageName: "iconInfo")
-                setButtonImageColor(button: favoritesButton, imageName: "iconFavoritesSVG")
-                setButtonImageColor(button: goToTodayButton, imageName: "iconToday")
-                setButtonImageColor(button: shareButton, imageName: "iconShareSVG")
-            }
+        if let firstColor = beer.firstColor, let secondColor = beer.secondColor {
+            //print(firstColor)
+            //print(secondColor)
+            beerLabelView.backgroundColor = UIColor.white
+            //beerLabelView.backgroundColor = UIColor(hex: backgroundColor)
+
+            ColorService.shared.setGradientBackgroundOnView(view: beerLabelView, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 0)
+            newShareViewModel.transform = CGAffineTransform.identity // костыль чтобы правильно красилась вьюха после scale
+            ColorService.shared.setGradientBackgroundOnView(view: newShareViewModel, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 16)
+            
+            beerDateDayLabel.textColor = UIColor.black
+            beerDateMonthLabel.textColor = UIColor.black
+            beerNameLabel.textColor = UIColor(hex: "#232020")
+            beerManufacturerLabel.textColor = UIColor(hex: "#3f3f3f")
+            beerTypeLabel.textColor = UIColor(hex:"#464545")
+            
+//            if let arrayOfColors = ColorService.shared.getFontColors(backgroundColor: UIColor(hex: backgroundColor)) {
+//                currentFontColor = arrayOfColors[0] // фиксируем цвет для перекраски кнопок
+//                beerDateDayLabel.textColor = arrayOfColors[0]
+//                beerDateMonthLabel.textColor = arrayOfColors[0]
+//                beerNameLabel.textColor = arrayOfColors[1]
+//                beerManufacturerLabel.textColor = arrayOfColors[2]
+//                beerTypeLabel.textColor = arrayOfColors[3]
+//                // buttons
+//                addToFavoriteButton.imageView?.setImageColor(color: currentFontColor) // другой метод, тк непонятно какая картинка на кнопке - fill или empty
+//                setButtonImageColor(button: untappdButton, imageName: "iconUntappdSVG")
+//                setButtonImageColor(button: infoButton, imageName: "iconInfo")
+//                setButtonImageColor(button: favoritesButton, imageName: "iconFavoritesSVG")
+//                setButtonImageColor(button: goToTodayButton, imageName: "iconToday")
+//                setButtonImageColor(button: shareButton, imageName: "iconShareSVG")
+//            }
         }
         
         
         beerNameLabel.text = beer.beerName
-        beerTypeLabel.text = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? 0) IBU"
-        beerManufacturerLabel.text = beer.beerManufacturer
+        beerTypeLabel.text = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? "") IBU"
+        if let id = beer.breweryID, let brewery = breweriesModel?.getCurrentBrewery(id: id) {
+            beerManufacturerLabel.text = "\(brewery.breweryName ?? "") · \(brewery.breweryCity ?? "")"
+        }
+        //beerManufacturerLabel.text = beer.beerManufacturer
         if let dateArray = beer.getStrDate() {
             beerDateDayLabel.text = dateArray[0]
             beerDateMonthLabel.text = dateArray[1]
@@ -377,7 +397,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             goToTodayButton.isEnabled = true
         }
         
-        shareViewModel.currentBeer = beer
+        newShareViewModel.currentBeer = beer
     }
     
     private func setElementsAlpha(value: CGFloat) {
@@ -428,13 +448,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeEmpty"), for: .normal)
             
-            setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeEmpty")
+            //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeEmpty")
         } else {
             generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
             
-            setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeFill")
+            //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeFill")
         }
     }
     
@@ -442,6 +462,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         let origImage = UIImage(named: imageName)
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
+        button.setImage(tintedImage, for: .highlighted)
         button.tintColor = currentFontColor
     }
     
@@ -483,10 +504,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     @IBAction func shareButtonTap(_ sender: UIButton) {
-        if shareViewModel.isViewShowing {
-            shareViewModel.hideView()
+        if newShareViewModel.isViewShowing {
+            newShareViewModel.hideView()
         } else {
-            shareViewModel.showView()
+            newShareViewModel.showView()
         }
     }
     

@@ -12,17 +12,32 @@ struct BeerData: Codable {
     var id: Int?
     var beerDate: String?
     var beerName: String?
-    var beerManufacturer: String?
+    //var beerManufacturer: String?
     var beerType: String?
     var beerABV: String?
-    var beerIBU: Int?
+    var beerIBU: String?
     var beerDescription: String?
     var beerLabelURL: String?
     var beerLabelPreviewURL: String?
-    var backgroundColor: String?
+    //var backgroundColor: String?
     var untappdURL: String?
     var breweryID: Int?
-    var aboutBeer: String?
+    var comment: String?
+    var firstColor: String?
+    var secondColor: String?
+    
+    var date: Date {
+        if let beerDate = beerDate {
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "dd.MM.yyyy"
+            if let resultDate = dateFormatterGet.date(from: beerDate) {
+                return resultDate
+            } else {
+                return Date()
+            }
+        }
+        return Date()
+    }
     
     func getStrDate() -> [String]? {
         if let beerDate = beerDate {
@@ -41,6 +56,26 @@ struct BeerData: Codable {
             let day = dateFormatterPrint.string(from: date)
             
             return [day, month.uppercased()]
+        }
+        return nil
+    }
+    
+    func getStrDateForSharingImage() -> String? {
+        if let beerDate = beerDate {
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "dd.MM.yyyy"
+            
+            guard let date = dateFormatterGet.date(from: beerDate) else {return nil}
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.locale = Locale(identifier: "ru_RU")
+            dateFormatterPrint.dateFormat = "d"
+            let day = dateFormatterPrint.string(from: date)
+            dateFormatterPrint.dateFormat = "MMMM"
+            let month = dateFormatterPrint.string(from: date)
+            dateFormatterPrint.dateFormat = "yyyy"
+            let year = dateFormatterPrint.string(from: date)
+            return "\(day) \(month.uppercased()) \(year)"
+            
         }
         return nil
     }

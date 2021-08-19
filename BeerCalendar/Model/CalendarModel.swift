@@ -19,12 +19,12 @@ class CalendarModel {
     var crowdFindingData: CrowdFindingADData?
     
     init(beerData: [BeerData]) {
-        beers = beerData
+        beers = beerData.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
         // здесь можно послать запрос на инфо
         NetworkService.shared.requestCrowdFindingData { result in
             switch result {
             case .success(let resultData):
-                if let showing = resultData.isADShow, let urlString = resultData.imgUrl {
+                if let showing = resultData.isADShow, let urlString = resultData.imgUrl, showing { // если нет картинки на сервере - здесь беда
                     self.crowdFindingData = resultData
                     self.isCrowdFindingADShow = showing
                     self.downloadImage(urlString: urlString)
@@ -43,6 +43,7 @@ class CalendarModel {
     
     func getTodayBeer() -> BeerData? {
         guard let currentDate = dateToString() else {return nil}
+        //print(currentDate)
         for i in 0..<beers.count {
             let beer = beers[i]
             if currentDate == beer.beerDate {
@@ -147,8 +148,9 @@ class CalendarModel {
         let resource = ImageResource(downloadURL: url)
         KingfisherManager.shared.retrieveImage(with: resource) { result in
             switch result {
-            case .success(let value):
-                print("Image: \(value.image), get from \(value.cacheType)")
+            case .success:
+                ()
+                //print("Image: \(value.image), get from \(value.cacheType)")
             case .failure(let error):
                 print(error.localizedDescription)
             }

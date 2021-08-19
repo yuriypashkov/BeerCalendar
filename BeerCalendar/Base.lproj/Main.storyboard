@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBt-Yt-vUM" userLabel="DateStackView">
-                                        <rect key="frame" x="243" y="499" width="116" height="100"/>
+                                        <rect key="frame" x="243" y="507" width="116" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-QD-hEw">
                                                 <rect key="frame" x="30.666666666666686" y="0.0" width="55" height="64"/>
@@ -50,13 +50,13 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0k-jh-lRC">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="375"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="W0k-jh-lRC" secondAttribute="height" multiplier="1:1" id="7ny-mw-fVy"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OWG-tf-nxg" userLabel="BeerInfo">
-                                        <rect key="frame" x="16" y="631" width="343" height="74"/>
+                                        <rect key="frame" x="16" y="639" width="343" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH">
                                                 <rect key="frame" x="213.33333333333337" y="0.0" width="129.66666666666663" height="26"/>
@@ -78,7 +78,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-3l-gIr" userLabel="AdditionalButtonsStackView">
-                                        <rect key="frame" x="16" y="475" width="136" height="40"/>
+                                        <rect key="frame" x="16" y="483" width="136" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-ah-6vr">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -125,7 +125,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-c7-EXu">
-                                        <rect key="frame" x="16" y="48" width="36" height="36"/>
+                                        <rect key="frame" x="16" y="56" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VhG-c7-EXu" secondAttribute="height" multiplier="1:1" id="DNl-FG-g13"/>
                                             <constraint firstAttribute="width" constant="36" id="aKX-Kp-gdw"/>
@@ -142,7 +142,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xa-Uf-jfi">
-                                        <rect key="frame" x="323" y="48" width="36" height="36"/>
+                                        <rect key="frame" x="323" y="56" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7xa-Uf-jfi" secondAttribute="height" multiplier="1:1" id="4xH-U8-MGE"/>
                                             <constraint firstAttribute="width" constant="36" id="mHy-of-JRc"/>
@@ -159,7 +159,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHt-Pf-fUw">
-                                        <rect key="frame" x="64" y="48" width="36" height="36"/>
+                                        <rect key="frame" x="64" y="56" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="ERF-NE-mpu"/>
                                             <constraint firstAttribute="width" secondItem="nHt-Pf-fUw" secondAttribute="height" multiplier="1:1" id="jBq-14-6mx"/>
@@ -199,7 +199,7 @@
                         <constraints>
                             <constraint firstItem="PIJ-SQ-M2M" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7wl-EZ-6XY"/>
                             <constraint firstItem="PIJ-SQ-M2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ETb-2Y-wXV"/>
-                            <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="UuF-YO-8na"/>
+                            <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="UuF-YO-8na"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PIJ-SQ-M2M" secondAttribute="trailing" id="auq-0k-3Eq"/>
                             <constraint firstAttribute="bottom" secondItem="PIJ-SQ-M2M" secondAttribute="bottom" id="mbt-PK-cUA"/>
                         </constraints>
@@ -336,7 +336,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about beer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-ON-CGw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about beer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-ON-CGw">
                                                 <rect key="frame" x="12" y="42" width="351" height="16"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Normal" family="Okta Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -348,7 +348,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about brewery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-6g-e3y">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about brewery" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-6g-e3y">
                                                 <rect key="frame" x="12" y="100" width="351" height="16"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Normal" family="Okta Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -398,7 +398,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="7vS-Lq-Suf" secondAttribute="height" multiplier="1:1" id="ORt-Z9-8px"/>
                                                         </constraints>
-                                                        <state key="normal" title="FB" image="iconFB">
+                                                        <state key="normal" title="FB" image="iconFBSVG">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -494,7 +494,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconFB" width="96" height="96"/>
+        <image name="iconFBSVG" width="474.76998901367188" height="474.58999633789062"/>
         <image name="iconFavoritesSVG" width="474.6300048828125" height="474.739990234375"/>
         <image name="iconInfo" width="475" height="475"/>
         <image name="iconInstSVG" width="474.489990234375" height="474.739990234375"/>
