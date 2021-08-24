@@ -8,17 +8,18 @@
 import UIKit
 import Kingfisher
 import DataCache
+import MarqueeLabel
 
 class MainViewController: UIViewController, MainViewControllerDelegate {
     
     // MARK: - IB Outlets
     @IBOutlet weak var beerLabelView: UIView!
-    @IBOutlet weak var beerNameLabel: UILabel!
+    @IBOutlet weak var beerNameLabel: MarqueeLabel!
     @IBOutlet weak var beerTypeLabel: UILabel!
     @IBOutlet weak var beerLabelImage: UIImageView!
     @IBOutlet weak var beerDateDayLabel: UILabel!
     @IBOutlet weak var beerDateMonthLabel: UILabel!
-    @IBOutlet weak var beerManufacturerLabel: UILabel!
+    @IBOutlet weak var beerManufacturerLabel: MarqueeLabel!
     @IBOutlet weak var beerInfoTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var beerInfoStackView: UIStackView!
@@ -44,6 +45,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     var soundService = SoundService() // воспроизведение звуков
     let generator = UIImpactFeedbackGenerator(style: .heavy) // генератор вибрации
     var currentFontColor: UIColor = .black
+    var wrongBeerImage: UIImage? = UIImage(named: "wrongBeer")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +61,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         addGestures()
         
         prepareUI()
-        
-        //loadData()
+
         loadBeersAndBrewries()
     }
     
@@ -341,41 +342,19 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         } else {
             addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
         }
-        
-        // вычисляем светлость фона и в зависимости от этого цвет лейблов и кнопок выставляем
-        if let firstColor = beer.firstColor, let secondColor = beer.secondColor {
-            //print(firstColor)
-            //print(secondColor)
-            beerLabelView.backgroundColor = UIColor.white
-            //beerLabelView.backgroundColor = UIColor(hex: backgroundColor)
 
+        if let firstColor = beer.firstColor, let secondColor = beer.secondColor {
+            beerLabelView.backgroundColor = UIColor.white
             ColorService.shared.setGradientBackgroundOnView(view: beerLabelView, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 0)
             newShareViewModel.transform = CGAffineTransform.identity // костыль чтобы правильно красилась вьюха после scale
             ColorService.shared.setGradientBackgroundOnView(view: newShareViewModel, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 16)
-            
-            beerDateDayLabel.textColor = UIColor.black
-            beerDateMonthLabel.textColor = UIColor.black
-            beerNameLabel.textColor = UIColor(hex: "#232020")
-            beerManufacturerLabel.textColor = UIColor(hex: "#3f3f3f")
-            beerTypeLabel.textColor = UIColor(hex:"#464545")
-            
-//            if let arrayOfColors = ColorService.shared.getFontColors(backgroundColor: UIColor(hex: backgroundColor)) {
-//                currentFontColor = arrayOfColors[0] // фиксируем цвет для перекраски кнопок
-//                beerDateDayLabel.textColor = arrayOfColors[0]
-//                beerDateMonthLabel.textColor = arrayOfColors[0]
-//                beerNameLabel.textColor = arrayOfColors[1]
-//                beerManufacturerLabel.textColor = arrayOfColors[2]
-//                beerTypeLabel.textColor = arrayOfColors[3]
-//                // buttons
-//                addToFavoriteButton.imageView?.setImageColor(color: currentFontColor) // другой метод, тк непонятно какая картинка на кнопке - fill или empty
-//                setButtonImageColor(button: untappdButton, imageName: "iconUntappdSVG")
-//                setButtonImageColor(button: infoButton, imageName: "iconInfo")
-//                setButtonImageColor(button: favoritesButton, imageName: "iconFavoritesSVG")
-//                setButtonImageColor(button: goToTodayButton, imageName: "iconToday")
-//                setButtonImageColor(button: shareButton, imageName: "iconShareSVG")
-//            }
         }
         
+        beerDateDayLabel.textColor = UIColor.black
+        beerDateMonthLabel.textColor = UIColor.black
+        beerNameLabel.textColor = UIColor(hex: "#232020")
+        beerManufacturerLabel.textColor = UIColor(hex: "#3f3f3f")
+        beerTypeLabel.textColor = UIColor(hex:"#464545")
         
         beerNameLabel.text = beer.beerName
         beerTypeLabel.text = "\(beer.beerType ?? "")"
@@ -394,7 +373,18 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
         if let strUrl = beer.beerLabelURL, let url = URL(string: strUrl) {
             beerLabelImage.kf.indicatorType = .activity
-            beerLabelImage.kf.setImage(with: url)
+            //beerLabelImage.kf.setImage(with: url)
+            beerLabelImage.kf.setImage(with: url, placeholder: nil, options: nil) { result in
+                switch result {
+                case .success(let image):
+                    self.beerLabelImage.contentMode = .scaleAspectFill
+                    self.beerLabelImage.image = image.image
+                case .failure:
+                    self.beerLabelImage.contentMode = .center
+                    self.beerLabelImage.image = self.wrongBeerImage
+                }
+            }
+    
         }
         
         setElementsAlpha(value: 0.8, valueForImage: 1)
@@ -428,6 +418,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     private func prepareUI() {
         setElementsAlpha(value: 0, valueForImage: 0)
+    
+        beerNameLabel.type = .leftRight
+        beerManufacturerLabel.type = .leftRight
         
         beerLabelImage.layer.shadowColor = UIColor.black.cgColor
         beerLabelImage.layer.shadowRadius = 4.0
@@ -440,6 +433,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         activityIndicatorView.style = .large
         activityIndicatorView.color = .red
         view.addSubview(activityIndicatorView)
+        
+        wrongBeerImage = wrongBeerImage?.resized(toWidth: 130)
         
         switch view.frame.size.height {
         case 0...568:

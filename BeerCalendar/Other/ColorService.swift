@@ -53,8 +53,6 @@ class ColorService {
             }
         })
         
-        //view.transform = CGAffineTransform.identity
-        
         view.layer.insertSublayer(gradient, at: 0)
     }
     

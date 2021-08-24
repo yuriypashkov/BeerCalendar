@@ -10,4 +10,5 @@ target 'BeerCalendar' do
   # Pods for BeerCalendar
 	pod 'Kingfisher'
 	pod 'DataCache'
+	pod 'MarqueeLabel'
 end

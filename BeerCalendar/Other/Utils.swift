@@ -118,6 +118,14 @@ extension UIImage {
         return UIImage(cgImage: context.makeImage()!)
     }
     
+    func resized(toWidth width: CGFloat) -> UIImage? {
+            let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+            UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+            defer { UIGraphicsEndImageContext() }
+            draw(in: CGRect(origin: .zero, size: canvasSize))
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
+    
 }
 
 //Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]
