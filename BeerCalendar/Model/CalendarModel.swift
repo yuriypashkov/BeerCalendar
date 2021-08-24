@@ -15,11 +15,11 @@ class CalendarModel {
     var currentIndex = -1
     var borderIndex = -1
     var swipesCount = 0
-    var isCrowdFindingADShow = true // поправить потом на false, по дефолту не показываем рекламный VC
+    var isCrowdFindingADShow = false // по дефолту не показываем рекламный VC
     var crowdFindingData: CrowdFindingADData?
     
     init(beerData: [BeerData]) {
-        beers = beerData.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
+        beers = beerData.sorted(by: { $0.date.compare($1.date) == .orderedAscending}) // сортируем массив пив по дате 
         // здесь можно послать запрос на инфо
         NetworkService.shared.requestCrowdFindingData { result in
             switch result {
@@ -35,11 +35,6 @@ class CalendarModel {
         }
     }
     
-    private func sortArrayByDate(array: [BeerData]) -> [BeerData] {
-        
-        
-        return [BeerData]()
-    }
     
     func getTodayBeer() -> BeerData? {
         guard let currentDate = dateToString() else {return nil}

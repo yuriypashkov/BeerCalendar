@@ -24,12 +24,12 @@ class NewShareViewModel: UIView {
         alpha = 0
         
         let instaButton = UIButton(frame: CGRect(x: 8, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
-        instaButton.setBackgroundImage(UIImage(named: "iconInstSVG"), for: .normal)
+        instaButton.setBackgroundImage(UIImage(named: "iconInstaVer2"), for: .normal)
         instaButton.addTarget(self, action: #selector(shareOnInstagramButtonTap), for: .touchUpInside)
         addSubview(instaButton)
         
         let moreButton = UIButton(frame: CGRect(x: 56, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
-        moreButton.setBackgroundImage(UIImage(named: "iconMoreSVG"), for: .normal)
+        moreButton.setBackgroundImage(UIImage(named: "iconMiscVer2"), for: .normal)
         moreButton.addTarget(self, action: #selector(showActivityViewController), for: .touchUpInside)
         addSubview(moreButton)
         
@@ -83,12 +83,6 @@ class NewShareViewModel: UIView {
             
             guard let url = URL(string: urlStr) else {
                 showActivityViewController(content: [text])
-//                let items = [text]
-//                let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//
-//                viewController?.present(ac, animated: true, completion: {
-//                    activitityIndicator.stopAnimating()
-//                })
                 return
             }
             
@@ -99,19 +93,8 @@ class NewShareViewModel: UIView {
                     let image: UIImage = value.image
                     let items: [Any] = [text,image]
                     showActivityViewController(content: items)
-//                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//
-//                    viewController?.present(ac, animated: true, completion: {
-//                        activitityIndicator.stopAnimating()
-//                    })
                 case .failure(let error):
                     showActivityViewController(content: [text])
-//                    let items = [text]
-//                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//
-//                    viewController?.present(ac, animated: true, completion: {
-//                        activitityIndicator.stopAnimating()
-//                    })
                     print(error.localizedDescription)
                 }
             }

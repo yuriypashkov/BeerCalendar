@@ -28,6 +28,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var goToTodayButton: UIButton!
+    //@IBOutlet weak var myShadowView: UIView!
+    
     //@IBOutlet weak var shadowView: UIView!
     
     
@@ -55,13 +57,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         view.addSubview(newShareViewModel)
 
         addGestures()
-        //beerLabelImage.applyshadowWithCorner(containerView: shadowView, cornerRadious: 16)
-        beerLabelImage.layer.shadowColor = UIColor.black.cgColor
-        beerLabelImage.layer.shadowRadius = 3.0
-        beerLabelImage.layer.shadowOpacity = 1.0
-        beerLabelImage.layer.shadowOffset = CGSize(width: 2, height: 2)
-        beerLabelImage.layer.masksToBounds = false
-        beerLabelImage.layer.cornerRadius = 16
         
         prepareUI()
         
@@ -213,7 +208,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             }
             else {
             //если разницы больше одного дня, то
-                setElementsAlpha(value: 0)
+                setElementsAlpha(value: 0, valueForImage: 0)
                 soundService.playShortSound()
                 UIView.transition(with: beerLabelView,
                               duration: 0.3,
@@ -342,9 +337,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         //beer.getStrDateForSharingImage()
         
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
-            addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
         } else {
-            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmpty"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
         }
         
         // вычисляем светлость фона и в зависимости от этого цвет лейблов и кнопок выставляем
@@ -402,7 +397,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             beerLabelImage.kf.setImage(with: url)
         }
         
-        setElementsAlpha(value: 0.8)
+        setElementsAlpha(value: 0.8, valueForImage: 1)
         
         if calendarModel?.currentIndex == calendarModel?.borderIndex {
             goToTodayButton.isEnabled = false
@@ -416,13 +411,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
     }
     
-    private func setElementsAlpha(value: CGFloat) {
+    private func setElementsAlpha(value: CGFloat, valueForImage: CGFloat) {
         addToFavoriteButton.alpha = value
         untappdButton.alpha = value
         favoritesButton.alpha = value
         infoButton.alpha = value
         shareButton.alpha = value
-        //beerLabelImage.alpha = value
+        beerLabelImage.alpha = valueForImage
         beerNameLabel.alpha = value
         beerTypeLabel.alpha = value
         beerManufacturerLabel.alpha = value
@@ -432,7 +427,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     private func prepareUI() {
-        setElementsAlpha(value: 0)
+        setElementsAlpha(value: 0, valueForImage: 0)
+        
+        beerLabelImage.layer.shadowColor = UIColor.black.cgColor
+        beerLabelImage.layer.shadowRadius = 4.0
+        beerLabelImage.layer.shadowOpacity = 1.0
+        beerLabelImage.layer.shadowOffset = CGSize(width: 0, height: 0)
+        beerLabelImage.layer.masksToBounds = false
         
         activityIndicatorView.center = view.center
         activityIndicatorView.hidesWhenStopped = true
@@ -462,13 +463,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     private func addToFavorites() {
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmpty"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
             
             //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeEmpty")
         } else {
             generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
-            addToFavoriteButton.setImage(UIImage(named: "iconLikeFill"), for: .normal)
+            addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
             
             //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeFill")
         }

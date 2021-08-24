@@ -69,17 +69,17 @@ extension UIImageView {
             self.tintColor = color
         }
     
-    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
-            containerView.clipsToBounds = false
-            containerView.layer.shadowColor = UIColor.black.cgColor
-            containerView.layer.shadowOpacity = 1
-            containerView.layer.shadowOffset = CGSize.zero
-            containerView.layer.shadowRadius = 10
-            containerView.layer.cornerRadius = cornerRadious
-            containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
-            self.clipsToBounds = true
-            self.layer.cornerRadius = cornerRadious
-        }
+//    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
+//            containerView.clipsToBounds = false
+//            containerView.layer.shadowColor = UIColor.black.cgColor
+//            containerView.layer.shadowOpacity = 1
+//            containerView.layer.shadowOffset = CGSize.zero
+//            containerView.layer.shadowRadius = 10
+//            containerView.layer.cornerRadius = cornerRadious
+//            containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
+//            self.clipsToBounds = true
+//            self.layer.cornerRadius = cornerRadious
+//        }
 
 }
 
@@ -93,7 +93,7 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
     
-    // тень под картинкой
+    // тень под картинкой, нужно при отрисовке картинки для инсты
     func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
 
         let shadowColor = UIColor(white: 0.0, alpha: 0.5).cgColor
@@ -119,7 +119,6 @@ extension UIImage {
     }
     
 }
-
 
 //Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]
 

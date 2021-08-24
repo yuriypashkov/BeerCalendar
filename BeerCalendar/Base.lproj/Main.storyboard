@@ -33,15 +33,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBt-Yt-vUM" userLabel="DateStackView">
-                                        <rect key="frame" x="243" y="475" width="116" height="100"/>
+                                        <rect key="frame" x="243" y="483" width="116" height="100"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-QD-hEw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-QD-hEw">
                                                 <rect key="frame" x="30.666666666666686" y="0.0" width="55" height="64"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="64"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-K8-5BC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-K8-5BC">
                                                 <rect key="frame" x="0.0" y="64" width="116" height="36"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="36"/>
                                                 <nil key="textColor"/>
@@ -50,26 +50,26 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0k-jh-lRC">
-                                        <rect key="frame" x="16" y="100" width="343" height="343"/>
+                                        <rect key="frame" x="16" y="108" width="343" height="343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="W0k-jh-lRC" secondAttribute="height" multiplier="1:1" id="7ny-mw-fVy"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OWG-tf-nxg" userLabel="BeerInfo">
-                                        <rect key="frame" x="16" y="607" width="343" height="74"/>
+                                        <rect key="frame" x="16" y="615" width="343" height="74"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH">
                                                 <rect key="frame" x="213.33333333333337" y="0.0" width="129.66666666666663" height="26"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="26"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz">
                                                 <rect key="frame" x="230" y="34" width="113" height="17"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="0tu-Sm-RgB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="0tu-Sm-RgB">
                                                 <rect key="frame" x="277.33333333333331" y="59" width="65.666666666666686" height="15"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,9 +78,9 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-3l-gIr" userLabel="AdditionalButtonsStackView">
-                                        <rect key="frame" x="16" y="451" width="136" height="40"/>
+                                        <rect key="frame" x="16" y="463" width="136" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-ah-6vr">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-ah-6vr">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9RI-ah-6vr" secondAttribute="height" multiplier="1:1" id="5vE-qg-l4W"/>
@@ -89,33 +89,33 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <color key="tintColor" systemColor="systemRedColor"/>
                                                 <state key="normal">
-                                                    <imageReference key="image" image="iconLikeEmpty" symbolScale="default"/>
+                                                    <imageReference key="image" image="iconLikeEmptyVer2" symbolScale="default"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="addToFavoriteButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7VK-fA-Qtp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k7-Zm-4di">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k7-Zm-4di">
                                                 <rect key="frame" x="48" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4k7-Zm-4di" secondAttribute="height" multiplier="1:1" id="dsE-KH-kL1"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemOrangeColor"/>
-                                                <state key="normal" image="iconUntappdSVG">
+                                                <state key="normal" image="iconUntappdVer2">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="untappdButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtR-IE-LK9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAM-bT-RNy">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAM-bT-RNy">
                                                 <rect key="frame" x="96" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="JAM-bT-RNy" secondAttribute="height" multiplier="1:1" id="Nto-dE-nRh"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="labelColor"/>
-                                                <state key="normal" image="iconInfo">
+                                                <state key="normal" image="iconInfoVer2">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
                                                 </state>
                                                 <connections>
@@ -125,13 +125,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-c7-EXu">
-                                        <rect key="frame" x="16" y="56" width="36" height="36"/>
+                                        <rect key="frame" x="16" y="60" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VhG-c7-EXu" secondAttribute="height" multiplier="1:1" id="DNl-FG-g13"/>
                                             <constraint firstAttribute="width" constant="36" id="aKX-Kp-gdw"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" image="iconFavoritesSVG">
+                                        <state key="normal" image="iconFavoritesVer2">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
@@ -142,13 +142,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xa-Uf-jfi">
-                                        <rect key="frame" x="323" y="56" width="36" height="36"/>
+                                        <rect key="frame" x="323" y="60" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7xa-Uf-jfi" secondAttribute="height" multiplier="1:1" id="4xH-U8-MGE"/>
                                             <constraint firstAttribute="width" constant="36" id="mHy-of-JRc"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" image="iconShareSVG">
+                                        <state key="normal" image="iconShareVer2">
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
@@ -159,13 +159,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHt-Pf-fUw">
-                                        <rect key="frame" x="64" y="56" width="36" height="36"/>
+                                        <rect key="frame" x="64" y="60" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="ERF-NE-mpu"/>
                                             <constraint firstAttribute="width" secondItem="nHt-Pf-fUw" secondAttribute="height" multiplier="1:1" id="jBq-14-6mx"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" image="iconToday">
+                                        <state key="normal" image="iconTodayVer2">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                             </preferredSymbolConfiguration>
@@ -178,19 +178,19 @@
                                 <constraints>
                                     <constraint firstItem="OWG-tf-nxg" firstAttribute="top" secondItem="TBt-Yt-vUM" secondAttribute="bottom" constant="32" id="6jg-ff-w6V"/>
                                     <constraint firstAttribute="trailing" secondItem="7xa-Uf-jfi" secondAttribute="trailing" constant="16" id="9Np-bO-DPn"/>
-                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="VhG-c7-EXu" secondAttribute="bottom" constant="8" id="DpM-CZ-A77"/>
+                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="VhG-c7-EXu" secondAttribute="bottom" constant="12" id="DpM-CZ-A77"/>
                                     <constraint firstItem="TBt-Yt-vUM" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="32" id="NBg-6d-jCL"/>
                                     <constraint firstItem="LyK-3l-gIr" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="Sy4-5F-6tq"/>
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="TKR-aR-UAd"/>
-                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="7xa-Uf-jfi" secondAttribute="bottom" constant="8" id="Vzl-hq-EN1"/>
+                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="7xa-Uf-jfi" secondAttribute="bottom" constant="12" id="Vzl-hq-EN1"/>
                                     <constraint firstAttribute="trailing" secondItem="OWG-tf-nxg" secondAttribute="trailing" constant="16" id="Wc5-NH-Xes"/>
                                     <constraint firstAttribute="trailing" secondItem="TBt-Yt-vUM" secondAttribute="trailing" constant="16" id="cce-aD-uq8"/>
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="centerX" secondItem="PIJ-SQ-M2M" secondAttribute="centerX" id="eYA-QW-zxD"/>
                                     <constraint firstItem="OWG-tf-nxg" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="f5H-QR-7Re"/>
-                                    <constraint firstItem="LyK-3l-gIr" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="8" id="fKl-x0-Et4"/>
+                                    <constraint firstItem="LyK-3l-gIr" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="12" id="fKl-x0-Et4"/>
                                     <constraint firstItem="nHt-Pf-fUw" firstAttribute="leading" secondItem="VhG-c7-EXu" secondAttribute="trailing" constant="12" id="i9d-9W-QAC"/>
                                     <constraint firstItem="VhG-c7-EXu" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="oz4-oh-gUq"/>
-                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="nHt-Pf-fUw" secondAttribute="bottom" constant="8" id="yZQ-u7-T1X"/>
+                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="nHt-Pf-fUw" secondAttribute="bottom" constant="12" id="yZQ-u7-T1X"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -199,7 +199,7 @@
                         <constraints>
                             <constraint firstItem="PIJ-SQ-M2M" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7wl-EZ-6XY"/>
                             <constraint firstItem="PIJ-SQ-M2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ETb-2Y-wXV"/>
-                            <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="UuF-YO-8na"/>
+                            <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="UuF-YO-8na"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PIJ-SQ-M2M" secondAttribute="trailing" id="auq-0k-3Eq"/>
                             <constraint firstAttribute="bottom" secondItem="PIJ-SQ-M2M" secondAttribute="bottom" id="mbt-PK-cUA"/>
                         </constraints>
@@ -355,14 +355,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Cfn-nq-07S" userLabel="SocialButtonsStackView">
-                                                <rect key="frame" x="12" y="128" width="204" height="48"/>
+                                                <rect key="frame" x="12" y="128" width="196" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-fY-tsd">
                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="a9H-fY-tsd" secondAttribute="height" multiplier="1:1" id="gp5-1V-BTX"/>
                                                         </constraints>
-                                                        <state key="normal" title="Site" image="iconWWWSVG">
+                                                        <state key="normal" title="Site" image="iconSiteVer2">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -370,11 +370,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mec-WX-WeE">
-                                                        <rect key="frame" x="52" y="0.0" width="48" height="48"/>
+                                                        <rect key="frame" x="52" y="4" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="mec-WX-WeE" secondAttribute="height" multiplier="1:1" id="UXw-8V-AFN"/>
                                                         </constraints>
-                                                        <state key="normal" image="iconInstSVG">
+                                                        <state key="normal" image="iconInstaVer2">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -382,11 +382,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLG-zP-PbE">
-                                                        <rect key="frame" x="104" y="0.0" width="48" height="48"/>
+                                                        <rect key="frame" x="96" y="0.0" width="48" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fLG-zP-PbE" secondAttribute="height" multiplier="1:1" id="bVd-vf-csa"/>
                                                         </constraints>
-                                                        <state key="normal" title="VK" image="iconVKSVG">
+                                                        <state key="normal" title="VK" image="iconVkVer2">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -394,11 +394,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vS-Lq-Suf">
-                                                        <rect key="frame" x="156" y="0.0" width="48" height="48"/>
+                                                        <rect key="frame" x="148" y="0.0" width="48" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="7vS-Lq-Suf" secondAttribute="height" multiplier="1:1" id="ORt-Z9-8px"/>
                                                         </constraints>
-                                                        <state key="normal" title="FB" image="iconFBSVG">
+                                                        <state key="normal" title="FB" image="iconFbVer2">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -494,16 +494,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconFBSVG" width="474.76998901367188" height="474.58999633789062"/>
-        <image name="iconFavoritesSVG" width="474.6300048828125" height="474.739990234375"/>
-        <image name="iconInfo" width="475" height="475"/>
-        <image name="iconInstSVG" width="474.489990234375" height="474.739990234375"/>
-        <image name="iconLikeEmpty" width="476" height="476"/>
-        <image name="iconShareSVG" width="474.47000122070312" height="474.75"/>
-        <image name="iconToday" width="477.44000244140625" height="476.70001220703125"/>
-        <image name="iconUntappdSVG" width="474.66000366210938" height="474.64999389648438"/>
-        <image name="iconVKSVG" width="474.69000244140625" height="474.6400146484375"/>
-        <image name="iconWWWSVG" width="474.42999267578125" height="474.54000854492188"/>
+        <image name="iconFavoritesVer2" width="40" height="40"/>
+        <image name="iconFbVer2" width="40" height="40"/>
+        <image name="iconInfoVer2" width="40" height="40"/>
+        <image name="iconInstaVer2" width="40" height="40"/>
+        <image name="iconLikeEmptyVer2" width="40" height="40"/>
+        <image name="iconShareVer2" width="40" height="40"/>
+        <image name="iconSiteVer2" width="40" height="40"/>
+        <image name="iconTodayVer2" width="40" height="40"/>
+        <image name="iconUntappdVer2" width="40" height="40"/>
+        <image name="iconVkVer2" width="40" height="40"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
