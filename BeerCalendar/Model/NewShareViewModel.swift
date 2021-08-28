@@ -16,22 +16,32 @@ class NewShareViewModel: UIView {
     var currentBeer: BeerData?
     var currentBrewery: BreweryData?
     let buttonFrameConstant: CGFloat = 32
+    var shareButton: UIButton?
+    var instaButton = UIButton()
+    var moreButton = UIButton()
+    var instaActivityIndicator = UIActivityIndicatorView()
+    var moreActivityIndicator = UIActivityIndicatorView()
     
-    init(myFrame: CGRect) { // 96x48
+    init(myFrame: CGRect, shareButton: UIButton) { // 96x48
         super.init(frame: myFrame)
+        self.shareButton = shareButton
         backgroundColor = .systemGray5
         layer.cornerRadius = 16
         alpha = 0
         
-        let instaButton = UIButton(frame: CGRect(x: 8, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
+        setIndicators(indicators: instaActivityIndicator, moreActivityIndicator)
+        
+        instaButton = UIButton(frame: CGRect(x: 8, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
         instaButton.setBackgroundImage(UIImage(named: "iconInstaVer2"), for: .normal)
         instaButton.addTarget(self, action: #selector(shareOnInstagramButtonTap), for: .touchUpInside)
         addSubview(instaButton)
+        instaButton.addSubview(instaActivityIndicator)
         
-        let moreButton = UIButton(frame: CGRect(x: 56, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
+        moreButton = UIButton(frame: CGRect(x: 56, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
         moreButton.setBackgroundImage(UIImage(named: "iconMiscVer2"), for: .normal)
         moreButton.addTarget(self, action: #selector(showActivityViewController), for: .touchUpInside)
         addSubview(moreButton)
+        moreButton.addSubview(moreActivityIndicator)
         
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideView))
         swipeDownGesture.direction = .right
@@ -39,7 +49,22 @@ class NewShareViewModel: UIView {
         
     }
     
+    private func setIndicators(indicators: UIActivityIndicatorView...) {
+        for indicator in indicators {
+            indicator.color = .white
+            indicator.hidesWhenStopped = true
+            indicator.center = CGPoint(x: 16, y: 16)
+        }
+    }
+    
     func showView() {
+        
+        if let shareButton = shareButton {
+            UIView.animate(withDuration: 0.1) {
+                shareButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            }
+        }
+        
         UIView.animate(withDuration: 0.3) {
             self.transform = CGAffineTransform.identity
             self.alpha = 1
@@ -49,6 +74,15 @@ class NewShareViewModel: UIView {
     }
     
     @objc func hideView() {
+        // стопим индикаторы при скрытии шейр-вьюшки
+        instaActivityIndicator.stopAnimating()
+        moreActivityIndicator.stopAnimating()
+        
+        if let shareButton = shareButton {
+            UIView.animate(withDuration: 0.1) {
+                shareButton.transform = CGAffineTransform.identity
+            }
+        }
         
         UIView.animate(withDuration: 0.3) {
             self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -59,23 +93,22 @@ class NewShareViewModel: UIView {
     }
     
     @objc func showActivityViewController() {
+        moreActivityIndicator.startAnimating()
+        
+        moreButton.pressedEffect { [weak self] in
+            self?.methodForShowAVC()
+        }
+    }
+    
+    private func methodForShowAVC() {
         if let currentBeer = currentBeer, let urlStr = currentBeer.beerLabelURL {
             
-            hideView()
-            
             let viewController = UIApplication.shared.windows.first?.rootViewController
-            let activitityIndicator = UIActivityIndicatorView()
-            activitityIndicator.center = viewController?.view.center ?? CGPoint(x: 30, y: 30)
-            activitityIndicator.hidesWhenStopped = true
-            activitityIndicator.backgroundColor = .red
-            activitityIndicator.startAnimating()
-            viewController?.view.addSubview(activitityIndicator)
-            
+
             func showActivityViewController(content: [Any]) {
                 let ac = UIActivityViewController(activityItems: content, applicationActivities: nil)
-                
                 viewController?.present(ac, animated: true, completion: {
-                    activitityIndicator.stopAnimating()
+                    self.hideView()
                 })
             }
             
@@ -92,6 +125,7 @@ class NewShareViewModel: UIView {
                 case .success(let value):
                     let image: UIImage = value.image
                     let items: [Any] = [text,image]
+                    
                     showActivityViewController(content: items)
                 case .failure(let error):
                     showActivityViewController(content: [text])
@@ -104,17 +138,24 @@ class NewShareViewModel: UIView {
     
     
     @objc func shareOnInstagramButtonTap() {
-        hideView()
-        
-        PictureCreator.shared.createImageForInstagram(currentBeer: currentBeer, currentBrewery: currentBrewery) { image, error in
-            
-            if let image = image {
-               self.shareOnInstagram(image: image)
+        instaActivityIndicator.startAnimating()
+
+            instaButton.pressedEffect { [weak self] in
+                
+                guard let self = self else {return}
+                
+                PictureCreator.shared.createImageForInstagram(currentBeer: self.currentBeer, currentBrewery: self.currentBrewery) { image, error in
+                    
+                    if let image = image {
+                        self.hideView()
+                        self.shareOnInstagram(image: image)
+                    }
+                    if let error = error {
+                        print(error)
+                    }
+                }
             }
-            if let error = error {
-                print(error)
-            }
-        }
+  
     }
 
     private func shareOnInstagram(image: UIImage) {

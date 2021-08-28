@@ -37,23 +37,23 @@ class PictureCreator {
             backgroundImage.draw(in: imgRect)
             
             // create header, date
-            drawNSString(text: beer.getStrDateForSharingImage(), font: UIFont(name: "OktaNeue-Bold", size: 110), fontColor: .black, heightDistance: 0)
+            drawLabel(text: beer.getStrDateForSharingImage(), font: UIFont(name: "OktaNeue-Bold", size: 106), fontColor: .black, heightDistance: 0)
             
             // create header, title
-            drawNSString(text: "по Пивному Календарю:", font: UIFont(name: "OktaNeue-Bold", size: 72), fontColor: .black, heightDistance: 100)
+            drawLabel(text: "по Пивному Календарю:", font: UIFont(name: "OktaNeue-Bold", size: 72), fontColor: .black, heightDistance: 100)
             
             // create beer name
-            drawNSString(text: beer.beerName, font: UIFont(name: "OktaNeue-Bold", size: 60), fontColor: .black, heightDistance: strSizeWidth + 220)
+            drawLabel(text: beer.beerName, font: UIFont(name: "OktaNeue-Bold", size: 60), fontColor: .black, heightDistance: strSizeWidth + 220)
             
             //create brewery name
-            drawNSString(text: "\(currentBrewery?.breweryName ?? "breweryName")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 290)
+            drawLabel(text: "\(currentBrewery?.breweryName ?? "breweryName")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 290)
             
             //create city name
-            drawNSString(text: "\(currentBrewery?.breweryCity ?? "breweryCity")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 330)
+            drawLabel(text: "\(currentBrewery?.breweryCity ?? "breweryCity")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 330)
             
             //create beer type
             let beerType = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? "") IBU"
-            drawNSString(text: beerType, font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 370)
+            drawLabel(text: beerType, font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 370)
             
             //create logo
             let logoRect = CGRect(x: 160, y: firstHeight + strSizeWidth + 450, width: 170, height: 170)
@@ -66,7 +66,7 @@ class PictureCreator {
             appStoreImage.draw(in: appstoreRect)
             
             
-            // create imagelabel, last shit
+            // create image, last shit
             if let currentBeer = currentBeer, let urlStr = currentBeer.beerLabelURL {
                 let url = URL(string: urlStr)!
                 let resource = ImageResource(downloadURL: url)
@@ -99,23 +99,40 @@ class PictureCreator {
     }
     
     let firstHeight: CGFloat = 230
-    let strSizeWidth: CGFloat = 895
+    let strSizeWidth: CGFloat = 896
     
-    private func drawNSString(text: String?, font: UIFont?, fontColor: UIColor, heightDistance: CGFloat) {
+    private func drawLabel(text: String?, font: UIFont?, fontColor: UIColor, heightDistance: CGFloat) {
         let size = CGSize.init(width: 1080, height: 1920)
-        
         let str = "\(text ?? "none")" as NSString
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.center
-        
         let strAttributes = [
             NSAttributedString.Key.font : font,
-            NSAttributedString.Key.foregroundColor : fontColor,
-            NSAttributedString.Key.paragraphStyle : paragraphStyle
         ]
         let strSize = str.size(withAttributes: strAttributes as [NSAttributedString.Key : Any])
-        str.draw(in: CGRect(x: size.width / 2 - strSizeWidth / 2, y: firstHeight + heightDistance, width: strSizeWidth, height: strSize.height), withAttributes: strAttributes as [NSAttributedString.Key : Any])
+        
+        let label = UILabel()
+        label.text = text
+        label.font = font
+        label.textColor = fontColor
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.drawText(in: CGRect(x: size.width / 2 - strSizeWidth / 2, y: firstHeight + heightDistance, width: strSizeWidth, height: strSize.height))
     }
+    
+//    private func drawNSString(text: String?, font: UIFont?, fontColor: UIColor, heightDistance: CGFloat) {
+//        let size = CGSize.init(width: 1080, height: 1920)
+//
+//        let str = "\(text ?? "none")" as NSString
+//
+//        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.alignment = NSTextAlignment.center
+//
+//        let strAttributes = [
+//            NSAttributedString.Key.font : font,
+//            NSAttributedString.Key.foregroundColor : fontColor,
+//            NSAttributedString.Key.paragraphStyle : paragraphStyle
+//        ]
+//        let strSize = str.size(withAttributes: strAttributes as [NSAttributedString.Key : Any])
+//        str.draw(in: CGRect(x: size.width / 2 - strSizeWidth / 2, y: firstHeight + heightDistance, width: strSizeWidth, height: strSize.height), withAttributes: strAttributes as [NSAttributedString.Key : Any])
+//    }
     
 }

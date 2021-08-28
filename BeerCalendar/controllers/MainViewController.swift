@@ -29,9 +29,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var goToTodayButton: UIButton!
-    //@IBOutlet weak var myShadowView: UIView!
     
-    //@IBOutlet weak var shadowView: UIView!
     
     
     
@@ -55,7 +53,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         let topInset = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
         let y = shareButton.frame.origin.y + topInset
-        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 107, y: y, width: 96, height: 48))
+        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 107, y: y, width: 96, height: 48), shareButton: shareButton)
         view.addSubview(newShareViewModel)
 
         addGestures()
@@ -63,8 +61,23 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         prepareUI()
 
         loadBeersAndBrewries()
+        
+        //let date = Date()
+        //print(date)
+//        let timeCalendar = Calendar.current
+//        
+//        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
+//            let date = Date()
+//            let dateComponents = timeCalendar.dateComponents([.hour, .minute, .second], from: date)
+//            print("Hours: \(dateComponents.hour ?? 0), minutes: \(dateComponents.minute ?? 0), seconds: \(dateComponents.second ?? 0)")
+//            if dateComponents.hour == 16, dateComponents.minute == 42 {
+//                let beer = self.calendarModel?.getTodayBeer()
+//                if let beer = beer {self.setUI(beer: beer)}
+//                timer.invalidate()
+//            }
+//        }
+ 
     }
-    
 
     @objc func swipeMessageViewDown() {
         messageViewModel.hideMessageView()
@@ -316,6 +329,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         dispatchGroup.notify(queue: .main) {
             print("All requests completed")
+            print("Data loaded from \(NetworkConfiguration.shared.apiUrl)")
             // рисуем UI
 
             let item = self.calendarModel?.getTodayBeer()
@@ -356,6 +370,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         beerManufacturerLabel.textColor = UIColor(hex: "#3f3f3f")
         beerTypeLabel.textColor = UIColor(hex:"#464545")
         
+        //specialInfoLabel.text = beer.beerSpecialInfoTitle
         beerNameLabel.text = beer.beerName
         beerTypeLabel.text = "\(beer.beerType ?? "")"
         if let abv = beer.beerABV {
@@ -371,6 +386,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             beerDateDayLabel.text = dateArray[0]
             beerDateMonthLabel.text = dateArray[1]
         }
+        
         if let strUrl = beer.beerLabelURL, let url = URL(string: strUrl) {
             beerLabelImage.kf.indicatorType = .activity
             //beerLabelImage.kf.setImage(with: url)
@@ -384,7 +400,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                     self.beerLabelImage.image = self.wrongBeerImage
                 }
             }
-    
+
         }
         
         setElementsAlpha(value: 0.8, valueForImage: 1)
@@ -421,6 +437,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
         beerNameLabel.type = .leftRight
         beerManufacturerLabel.type = .leftRight
+        //specialInfoLabel.type = .leftRight
         
         beerLabelImage.layer.shadowColor = UIColor.black.cgColor
         beerLabelImage.layer.shadowRadius = 4.0
@@ -439,16 +456,16 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         switch view.frame.size.height {
         case 0...568:
             //print("SE 1th")
-            beerInfoTopConstraint.constant = 8
+            beerInfoTopConstraint.constant = 16
             dateStackViewTopConstraint.constant = 16
-            beerDateDayLabel.font = beerDateDayLabel.font.withSize(48) //64 and 36
+            beerDateDayLabel.font = beerDateDayLabel.font.withSize(56) //64 and 36
             beerDateMonthLabel.font = beerDateDayLabel.font.withSize(22)
             beerInfoStackView.spacing = 4
         case 568...750:
             //print("SE 2th and Plus")
-            beerInfoTopConstraint.constant = 12
-            dateStackViewTopConstraint.constant = 20
-            beerDateDayLabel.font = beerDateDayLabel.font.withSize(56)
+            beerInfoTopConstraint.constant = 16
+            dateStackViewTopConstraint.constant = 16
+            beerDateDayLabel.font = beerDateDayLabel.font.withSize(64)
             beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(28)
             beerInfoStackView.spacing = 6
         default: break
@@ -459,59 +476,68 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
-            
-            //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeEmpty")
         } else {
             generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
-            
-            //setButtonImageColor(button: addToFavoriteButton, imageName: "iconLikeFill")
         }
     }
     
-    private func setButtonImageColor(button: UIButton, imageName: String) {
-        let origImage = UIImage(named: imageName)
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        button.setImage(tintedImage, for: .normal)
-        button.setImage(tintedImage, for: .highlighted)
-        button.tintColor = currentFontColor
-    }
+//    private func setButtonImageColor(button: UIButton, imageName: String) {
+//        let origImage = UIImage(named: imageName)
+//        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+//        button.setImage(tintedImage, for: .normal)
+//        button.setImage(tintedImage, for: .highlighted)
+//        button.tintColor = currentFontColor
+//    }
     
     @IBAction func untappdButtonTap(_ sender: UIButton) {
-        if let calendar = calendarModel {
-            let currentBeer = calendar.beers[calendar.currentIndex]
-            if let untappdUrl = currentBeer.untappdURL {
-                let components = untappdUrl.components(separatedBy: "/")
-                
-                let urlForUntappd = URL(string: "untappd://beer/\(components.last ?? "0")")! //url format for untappd, scheme "untappd" in info.plist
-                if UIApplication.shared.canOpenURL(urlForUntappd) {
+        sender.pressedEffect { [weak self] in
+            
+            guard let self = self else {return}
+            
+            if let calendar = self.calendarModel {
+                let currentBeer = calendar.beers[calendar.currentIndex]
+                if let untappdUrl = currentBeer.untappdURL {
+                    let components = untappdUrl.components(separatedBy: "/")
                     
-                    UIApplication.shared.open(urlForUntappd, options: [:])
-                } else {
-                    let basicUrl = URL(string: untappdUrl)!
-                    if UIApplication.shared.canOpenURL(basicUrl) {
-                        UIApplication.shared.open(basicUrl, options: [:])
+                    let urlForUntappd = URL(string: "untappd://beer/\(components.last ?? "0")")! //url format for untappd, scheme "untappd" in info.plist
+                    if UIApplication.shared.canOpenURL(urlForUntappd) {
+                        
+                        UIApplication.shared.open(urlForUntappd, options: [:])
+                    } else {
+                        let basicUrl = URL(string: untappdUrl)!
+                        if UIApplication.shared.canOpenURL(basicUrl) {
+                            UIApplication.shared.open(basicUrl, options: [:])
+                        }
                     }
+                    
                 }
-                
             }
         }
+
     }
     
     @IBAction func addToFavoriteButtonTap(_ sender: UIButton) {
+        sender.pressedEffectForFavorite()
         addToFavorites()
     }
     
     
     @IBAction func favoritesButtonTap(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let favoritesViewController = storyboard.instantiateViewController(identifier: "FavoritesViewController") as? FavoritesViewController else {return}
-        favoritesViewController.favoritesBeer = calendarModel?.getListOfFavoritesBeers(listOfBeersID: favoriteBeersModel.listOfFavoriteBeers) ?? [BeerData]()
-        favoritesViewController.delegate = self
-        favoritesViewController.transitioningDelegate = self
-        favoritesViewController.modalPresentationStyle = .custom
-        present(favoritesViewController, animated: true, completion: nil)
+        sender.pressedEffect { [weak self] in
+            
+            guard let self = self else {return}
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let favoritesViewController = storyboard.instantiateViewController(identifier: "FavoritesViewController") as? FavoritesViewController else {return}
+            favoritesViewController.favoritesBeer = self.calendarModel?.getListOfFavoritesBeers(listOfBeersID: self.favoriteBeersModel.listOfFavoriteBeers) ?? [BeerData]()
+            favoritesViewController.delegate = self
+            //favoritesViewController.transitioningDelegate = self
+            //favoritesViewController.modalPresentationStyle = .custom
+            self.present(favoritesViewController, animated: true, completion: nil)
+        }
+
     }
     
     
@@ -525,28 +551,32 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     @IBAction func goToTodayButtonTap(_ sender: UIButton) {
-        goToTodayBeer()
+        sender.pressedEffect { [weak self] in
+            guard let self = self else {return}
+            self.goToTodayBeer()
+        }
     }
     
     @IBAction func infoButtonTap(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let infoViewController = storyboard.instantiateViewController(identifier: "InfoViewController") as? InfoViewController else {return}
-        if let currentBeer = calendarModel?.getBeerForID(id: currentBeerID) {
-            infoViewController.currentBeer = currentBeer
-            infoViewController.currentBrewery = breweriesModel?.getCurrentBrewery(id: currentBeer.breweryID ?? 0)
-            present(infoViewController, animated: true, completion: nil)
+        sender.pressedEffect { [weak self] in
+            
+            guard let self = self else {return}
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let infoViewController = storyboard.instantiateViewController(identifier: "InfoViewController") as? InfoViewController else {return}
+            if let currentBeer = self.calendarModel?.getBeerForID(id: self.currentBeerID) {
+                infoViewController.currentBeer = currentBeer
+                infoViewController.currentBrewery = self.breweriesModel?.getCurrentBrewery(id: currentBeer.breweryID ?? 0)
+                self.present(infoViewController, animated: true, completion: nil)
+            }
         }
-        
-        
-    }
-    
 
+    }
 }
 
 extension MainViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return PartialSizePresentViewController(presentedViewController: presented, presenting: presenting, withRatio: 0.8)
     }
-    
 }
 

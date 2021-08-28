@@ -18,4 +18,5 @@ struct BreweryData: Codable {
     var fbURL: String?
     var breweryCity: String?
     var untappdURL: String?
+    var logoURL: String?
 }

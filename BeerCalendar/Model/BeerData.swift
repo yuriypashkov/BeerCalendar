@@ -12,19 +12,19 @@ struct BeerData: Codable {
     var id: Int?
     var beerDate: String?
     var beerName: String?
-    //var beerManufacturer: String?
     var beerType: String?
     var beerABV: String?
     var beerIBU: String?
     var beerDescription: String?
     var beerLabelURL: String?
     var beerLabelPreviewURL: String?
-    //var backgroundColor: String?
     var untappdURL: String?
     var breweryID: Int?
     var comment: String?
     var firstColor: String?
     var secondColor: String?
+    var beerSpecialInfoTitle: String?
+    var beerSpecialInfo: String?
     
     var date: Date {
         if let beerDate = beerDate {

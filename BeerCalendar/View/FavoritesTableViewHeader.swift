@@ -22,6 +22,7 @@ class FavoritesTableViewHeader: UITableViewHeaderFooterView {
     }
     
     func configureContents() {
+        //contentView.backgroundColor = .systemGray6
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "OktaNeue-Medium", size: 18)
         title.textColor = .darkGray

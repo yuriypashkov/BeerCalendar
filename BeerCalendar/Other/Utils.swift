@@ -68,18 +68,6 @@ extension UIImageView {
             self.image = templateImage
             self.tintColor = color
         }
-    
-//    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
-//            containerView.clipsToBounds = false
-//            containerView.layer.shadowColor = UIColor.black.cgColor
-//            containerView.layer.shadowOpacity = 1
-//            containerView.layer.shadowOffset = CGSize.zero
-//            containerView.layer.shadowRadius = 10
-//            containerView.layer.cornerRadius = cornerRadious
-//            containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
-//            self.clipsToBounds = true
-//            self.layer.cornerRadius = cornerRadious
-//        }
 
 }
 
@@ -125,6 +113,32 @@ extension UIImage {
             draw(in: CGRect(origin: .zero, size: canvasSize))
             return UIGraphicsGetImageFromCurrentImageContext()
         }
+    
+}
+
+extension UIButton {
+    
+    func pressedEffectForFavorite() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { finished in
+            UIView.animate(withDuration: 0.2) {
+                self.transform = CGAffineTransform.identity
+            }
+        }
+    }
+    
+    func pressedEffect(_ myCompletion: @escaping  () -> Void) {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { finished in
+            UIView.animate(withDuration: 0.1) {
+                self.transform = CGAffineTransform.identity
+            } completion: { finished in
+                myCompletion()
+            }
+        }
+    }
     
 }
 
