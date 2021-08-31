@@ -369,14 +369,6 @@
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
-                                                        <real key="value" value="35"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about beer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-ON-CGw">
                                                 <rect key="frame" x="12" y="104" width="351" height="16"/>
@@ -389,14 +381,6 @@
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
-                                                        <real key="value" value="35"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content about brewery" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-6g-e3y">
                                                 <rect key="frame" x="12" y="170" width="351" height="16"/>
@@ -472,14 +456,6 @@
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
-                                                        <real key="value" value="35"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dln-9b-9gZ">
                                                 <rect key="frame" x="12" y="38" width="351" height="16"/>
@@ -545,9 +521,9 @@
                     <connections>
                         <outlet property="aboutBeerLabel" destination="9Kg-ON-CGw" id="UWc-cD-VT4"/>
                         <outlet property="aboutBreweryLabel" destination="FEk-6g-e3y" id="hU5-sn-EHj"/>
-                        <outlet property="beerNameLabel" destination="OHX-vV-RvR" id="Br0-WY-Rjh"/>
+                        <outlet property="beerNameLabel" destination="OHX-vV-RvR" id="ZY8-yC-jmn"/>
                         <outlet property="breweryLogoImageView" destination="idK-PW-LXd" id="hU8-QG-umV"/>
-                        <outlet property="breweryNameLabel" destination="qo3-an-vqd" id="Acd-pX-qSh"/>
+                        <outlet property="breweryNameLabel" destination="qo3-an-vqd" id="lvd-8l-C1C"/>
                         <outlet property="constraintBeerNameBtwSpecialLabel" destination="3ba-Gv-Y7y" id="pDB-J9-SnU"/>
                         <outlet property="constraintSpecialInfoBtwTitle" destination="wL2-cm-JsV" id="uc2-qv-Et7"/>
                         <outlet property="constraintSpecialTitleTop" destination="MJ0-FR-UuN" id="BYq-tR-Kwo"/>
@@ -556,7 +532,7 @@
                         <outlet property="mainSubview" destination="fnF-ui-GP3" id="99m-Eu-CJr"/>
                         <outlet property="siteButton" destination="a9H-fY-tsd" id="ogS-8L-hqK"/>
                         <outlet property="specialInfoLabel" destination="dln-9b-9gZ" id="Hrq-dw-wSQ"/>
-                        <outlet property="specialInfoTitleLabel" destination="jWt-E5-EUY" id="Kjn-sa-Lds"/>
+                        <outlet property="specialInfoTitleLabel" destination="jWt-E5-EUY" id="ccT-2O-1qR"/>
                         <outlet property="untappdButton" destination="bTK-sh-Xge" id="bht-Ev-f8S"/>
                         <outlet property="vkButton" destination="fLG-zP-PbE" id="joQ-7w-OuK"/>
                     </connections>
