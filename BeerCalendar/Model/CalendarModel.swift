@@ -13,7 +13,7 @@ class CalendarModel {
     var beers: [BeerData] = [BeerData]()
     
     var currentIndex = -1
-    var borderIndex = -1
+    static var borderIndex = -1
     var swipesCount = 0
     var isCrowdFindingADShow = false // по дефолту не показываем рекламный VC
     var crowdFindingData: CrowdFindingADData?
@@ -38,12 +38,11 @@ class CalendarModel {
     
     func getTodayBeer() -> BeerData? {
         guard let currentDate = dateToString() else {return nil}
-        //print(currentDate)
         for i in 0..<beers.count {
             let beer = beers[i]
             if currentDate == beer.beerDate {
                 currentIndex = i
-                borderIndex = i
+                CalendarModel.borderIndex = i
                 return beer
             }
         }
@@ -60,7 +59,7 @@ class CalendarModel {
     }
     
     func getNextBeer() -> BeerData? {
-        if currentIndex < beers.count - 1, currentIndex < borderIndex {
+        if currentIndex < beers.count - 1, currentIndex < CalendarModel.borderIndex {
             swipesCount += 1
             currentIndex += 1
             return beers[currentIndex]
@@ -77,12 +76,23 @@ class CalendarModel {
         return nil
     }
     
-    func updateBorderIndex() {
-        //borderIndex += 1
-        // метод который должен увеличить borderIndex с наступлением новых суток для того, чтобы можно было перелистнуть календарь вперед
-        // или настроить таймер в майнВиСи который каждые 10 секунд будет проверять наступление новой даты и при наступлении увеличивать бордерИндекс или же вообще возвращать актуальное для новой даты пиво
+    func getBeerForDate(date: String) -> BeerData? {
+        for i in 0..<beers.count {
+            if beers[i].beerDate == date {
+                return beers[i]
+            }
+        }
+        return nil
     }
-
+    
+    func isBeerForDateExist(date: String) -> Bool {
+        for beer in beers {
+            if beer.beerDate == date {
+                return true
+            }
+        }
+        return false
+    }
     
     func setCurrentIndexForChoosenFavoriteBeer(beerID: Int) -> Bool {
         for i in 0..<beers.count {
@@ -92,6 +102,15 @@ class CalendarModel {
             }
         }
         return false
+    }
+    
+    func compareTwoBeersDate(beerOne: BeerData?, beerTwo: BeerData?) -> Bool { //если дата первого пива больше - вернёт true
+        guard let beerOne = beerOne, let beerTwo = beerTwo  else { return false }
+        if beerOne.date.compare(beerTwo.date) == .orderedDescending {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getListOfFavoritesBeers(listOfBeersID: [Int]) -> [BeerData] {
@@ -131,7 +150,7 @@ class CalendarModel {
     
     func showCrowdFinding() -> Bool {
         guard isCrowdFindingADShow else {return false}
-        if swipesCount > 5 {
+        if swipesCount > 12 {
             swipesCount = 0
             return true
         }

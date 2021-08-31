@@ -118,21 +118,4 @@ class PictureCreator {
         label.drawText(in: CGRect(x: size.width / 2 - strSizeWidth / 2, y: firstHeight + heightDistance, width: strSizeWidth, height: strSize.height))
     }
     
-//    private func drawNSString(text: String?, font: UIFont?, fontColor: UIColor, heightDistance: CGFloat) {
-//        let size = CGSize.init(width: 1080, height: 1920)
-//
-//        let str = "\(text ?? "none")" as NSString
-//
-//        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.alignment = NSTextAlignment.center
-//
-//        let strAttributes = [
-//            NSAttributedString.Key.font : font,
-//            NSAttributedString.Key.foregroundColor : fontColor,
-//            NSAttributedString.Key.paragraphStyle : paragraphStyle
-//        ]
-//        let strSize = str.size(withAttributes: strAttributes as [NSAttributedString.Key : Any])
-//        str.draw(in: CGRect(x: size.width / 2 - strSizeWidth / 2, y: firstHeight + heightDistance, width: strSizeWidth, height: strSize.height), withAttributes: strAttributes as [NSAttributedString.Key : Any])
-//    }
-    
 }

@@ -18,15 +18,18 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var vkButton: UIButton!
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var untappdButton: UIButton!
-    @IBOutlet weak var breweryNameLabel: MarqueeLabel!
-    @IBOutlet weak var beerNameLabel: MarqueeLabel!
-    @IBOutlet weak var specialInfoTitleLabel: MarqueeLabel!
+    @IBOutlet weak var breweryNameLabel: UILabel!
+    @IBOutlet weak var beerNameLabel: UILabel!
+    @IBOutlet weak var specialInfoTitleLabel: UILabel!
     @IBOutlet weak var specialInfoLabel: UILabel!
     @IBOutlet weak var constraintBeerNameBtwSpecialLabel: NSLayoutConstraint!
     @IBOutlet weak var constraintSpecialInfoBtwTitle: NSLayoutConstraint!
     @IBOutlet weak var constraintSpecialTitleTop: NSLayoutConstraint!
     @IBOutlet weak var mainSubview: UIView!
     @IBOutlet weak var breweryLogoImageView: UIImageView!
+    //@IBOutlet weak var bottomView: UIView!
+    //@IBOutlet weak var topView: UIView!
+    //@IBOutlet weak var scrollView: UIScrollView!
     
     
     var currentBeer: BeerData?
@@ -34,8 +37,11 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //scrollView.delegate = self
         setUI()
     }
+    
+
     
     private func setUI() {
         mainSubview.alpha = 0
@@ -56,8 +62,12 @@ class InfoViewController: UIViewController {
         }
         //set mainbackground
         view.backgroundColor = .systemGray5
-        if let firstColorStr = currentBeer?.firstColor {
-            ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: firstColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
+        if let firstColorStr = currentBeer?.firstColor, let secondColorStr = currentBeer?.secondColor {
+            ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
+            //topView.backgroundColor = UIColor(hex: secondColor)
+            //bottomView.backgroundColor = UIColor(hex: firstColorStr)
+            //ColorService.shared.setGradientBackgroundOnView(view: topView, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
+            //ColorService.shared.setGradientBackgroundOnView(view: bottomView, firstColor: UIColor(hex: firstColorStr), secondColor: UIColor(hex: secondColorStr), cornerRadius: 0)
         }
         // выставляем значения текстов
         aboutBeerLabel.text = currentBeer?.beerDescription
@@ -65,11 +75,6 @@ class InfoViewController: UIViewController {
         breweryNameLabel.text = currentBrewery?.breweryName
         let beerTitle = "\(currentBeer?.beerName ?? "beerName") · \(currentBeer?.beerType ?? "beerType"), \(currentBeer?.beerABV ?? "")"
         beerNameLabel.text = beerTitle
-        
-        // настраиваем бегающие лейблы
-        beerNameLabel.type = .leftRight
-        breweryNameLabel.type = .leftRight
-        specialInfoTitleLabel.type = .leftRight
         
         // показываем/не показываем особую инфу
         if currentBeer?.beerSpecialInfoTitle == nil {
@@ -105,6 +110,8 @@ class InfoViewController: UIViewController {
         }
 
         view.roundCorners(corners: [.topLeft, .topRight], radius: 12)
+        //mainSubview.backgroundColor = .clear
+        
         // slide down VC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             UIView.animate(withDuration: 0.6) {
@@ -119,39 +126,43 @@ class InfoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // set gradient background in scrollview
-        if let firstColorStr = currentBeer?.firstColor, let secondColorStr = currentBeer?.secondColor {
+//        if let firstColorStr = currentBeer?.firstColor, let secondColorStr = currentBeer?.secondColor {
             UIView.animate(withDuration: 0.4) {
-                ColorService.shared.setGradientBackgroundOnView(view: self.mainSubview, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
+                
+                //ColorService.shared.setGradientBackgroundOnView(view: self.mainSubview, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
                 self.mainSubview.alpha = 1
             }
-
-        }
+       // }
     }
 
     @IBAction func socialButtonTap(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            if let urlStr = currentBrewery?.siteURL {
-                openURL(urlStr: urlStr)
+        sender.pressedEffect(scale: 0.9) { [weak self] in
+            guard let self = self else {return}
+            switch sender.tag {
+            case 0:
+                if let urlStr = self.currentBrewery?.siteURL {
+                    self.openURL(urlStr: urlStr)
+                }
+            case 1:
+                if let urlStr = self.currentBrewery?.instaURL {
+                    self.openURL(urlStr: urlStr)
+                }
+            case 2:
+                if let urlStr = self.currentBrewery?.vkURL {
+                    self.openURL(urlStr: urlStr)
+                }
+            case 3:
+                if let urlStr = self.currentBrewery?.fbURL {
+                    self.openURL(urlStr: urlStr)
+                }
+            case 4:
+                if let urlStr = self.currentBrewery?.untappdURL {
+                    self.openURL(urlStr: urlStr)
+                }
+            default: ()
             }
-        case 1:
-            if let urlStr = currentBrewery?.instaURL {
-                openURL(urlStr: urlStr)
-            }
-        case 2:
-            if let urlStr = currentBrewery?.vkURL {
-                openURL(urlStr: urlStr)
-            }
-        case 3:
-            if let urlStr = currentBrewery?.fbURL {
-                openURL(urlStr: urlStr)
-            }
-        case 4:
-            if let urlStr = currentBrewery?.untappdURL {
-                openURL(urlStr: urlStr)
-            }
-        default: ()
         }
+
         
     }
     

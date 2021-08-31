@@ -10,7 +10,9 @@ import UIKit
 import AudioToolbox
 
 protocol MainViewControllerDelegate {
-    func goToChoosenFavoriteBeer(beer: BeerData)
+    func goToChooseneBeer(choosenBeer: BeerData)
+    func goToBeerFromDatePicker(date: String)
+    func isBeerExist(date: String) -> Bool
 }
 
 extension UIView {
@@ -128,9 +130,9 @@ extension UIButton {
         }
     }
     
-    func pressedEffect(_ myCompletion: @escaping  () -> Void) {
+    func pressedEffect(scale: CGFloat, _ myCompletion: @escaping  () -> Void) {
         UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.transform = CGAffineTransform(scaleX: scale, y: scale)
         } completion: { finished in
             UIView.animate(withDuration: 0.1) {
                 self.transform = CGAffineTransform.identity

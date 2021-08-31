@@ -95,7 +95,7 @@ class NewShareViewModel: UIView {
     @objc func showActivityViewController() {
         moreActivityIndicator.startAnimating()
         
-        moreButton.pressedEffect { [weak self] in
+        moreButton.pressedEffect(scale: 0.9) { [weak self] in
             self?.methodForShowAVC()
         }
     }
@@ -140,7 +140,7 @@ class NewShareViewModel: UIView {
     @objc func shareOnInstagramButtonTap() {
         instaActivityIndicator.startAnimating()
 
-            instaButton.pressedEffect { [weak self] in
+            instaButton.pressedEffect(scale: 0.9) { [weak self] in
                 
                 guard let self = self else {return}
                 

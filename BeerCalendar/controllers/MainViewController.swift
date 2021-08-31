@@ -29,6 +29,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var goToTodayButton: UIButton!
+    @IBOutlet weak var calendarButton: UIButton!
     
     
     
@@ -61,22 +62,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         prepareUI()
 
         loadBeersAndBrewries()
-        
-        //let date = Date()
-        //print(date)
-//        let timeCalendar = Calendar.current
-//        
-//        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { timer in
-//            let date = Date()
-//            let dateComponents = timeCalendar.dateComponents([.hour, .minute, .second], from: date)
-//            print("Hours: \(dateComponents.hour ?? 0), minutes: \(dateComponents.minute ?? 0), seconds: \(dateComponents.second ?? 0)")
-//            if dateComponents.hour == 16, dateComponents.minute == 42 {
-//                let beer = self.calendarModel?.getTodayBeer()
-//                if let beer = beer {self.setUI(beer: beer)}
-//                timer.invalidate()
-//            }
-//        }
- 
     }
 
     @objc func swipeMessageViewDown() {
@@ -161,20 +146,35 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
     }
     
-    func goToChoosenFavoriteBeer(beer: BeerData) {
+    // два метода для выбора пива после выбора даты, чтобы лишний раз не прятать PickerVIew
+    func isBeerExist(date: String) -> Bool {
+        if let calendar = calendarModel {
+            return calendar.isBeerForDateExist(date: date) ? true : false
+        }
+        return false
+    }
+    
+    func goToBeerFromDatePicker(date: String) {
+        if let beer = calendarModel?.getBeerForDate(date: date) {
+            goToChooseneBeer(choosenBeer: beer)
+        }
+    }
+    
+    func goToChooseneBeer(choosenBeer: BeerData) {
         // если находимся на нём же, то переворачивать страничку не надо
-        guard let id = beer.id, let calendar = calendarModel, id != currentBeerID else { return }
-        
+        guard let id = choosenBeer.id, let calendar = calendarModel, id != currentBeerID else { return }
         //перелистываем страничку
         //обновляем UI
         //устанавливаем currentIndex в модели
+        let currentBeer = calendar.getBeerForID(id: currentBeerID)
         if calendar.setCurrentIndexForChoosenFavoriteBeer(beerID: id) {
             soundService.playRandomSound()
             UIView.transition(with: beerLabelView,
                               duration: 0.7,
-                              options: [.transitionCurlUp],
+                              //options: [.transitionCurlUp],
+                              options: calendar.compareTwoBeersDate(beerOne: choosenBeer, beerTwo: currentBeer) ? [.transitionCurlUp] : [.transitionCurlDown],
                               animations: {
-                                self.setUI(beer: beer)
+                                self.setUI(beer: choosenBeer)
                               })
         }
         
@@ -330,9 +330,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         dispatchGroup.notify(queue: .main) {
             print("All requests completed")
             print("Data loaded from \(NetworkConfiguration.shared.apiUrl)")
-            // рисуем UI
+            // рисуем UI и запускаем таймер на отслеживание смены даты
 
             let item = self.calendarModel?.getTodayBeer()
+            
+            TimerManager.shared.startTimer()
+            
             if let item = item {
                 self.setUI(beer: item)
             } else {
@@ -349,7 +352,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
-        //beer.getStrDateForSharingImage()
         
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
@@ -370,7 +372,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         beerManufacturerLabel.textColor = UIColor(hex: "#3f3f3f")
         beerTypeLabel.textColor = UIColor(hex:"#464545")
         
-        //specialInfoLabel.text = beer.beerSpecialInfoTitle
         beerNameLabel.text = beer.beerName
         beerTypeLabel.text = "\(beer.beerType ?? "")"
         if let abv = beer.beerABV {
@@ -405,7 +406,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         setElementsAlpha(value: 0.8, valueForImage: 1)
         
-        if calendarModel?.currentIndex == calendarModel?.borderIndex {
+        if calendarModel?.currentIndex == CalendarModel.borderIndex {
             goToTodayButton.isEnabled = false
         } else {
             goToTodayButton.isEnabled = true
@@ -430,6 +431,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         beerDateDayLabel.alpha = value
         beerDateMonthLabel.alpha = value
         goToTodayButton.alpha = value
+        calendarButton.alpha = value
     }
     
     private func prepareUI() {
@@ -492,7 +494,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
 //    }
     
     @IBAction func untappdButtonTap(_ sender: UIButton) {
-        sender.pressedEffect { [weak self] in
+        sender.pressedEffect(scale: 0.9) { [weak self] in
             
             guard let self = self else {return}
             
@@ -525,7 +527,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     @IBAction func favoritesButtonTap(_ sender: UIButton) {
-        sender.pressedEffect { [weak self] in
+        sender.pressedEffect(scale: 0.9) { [weak self] in
             
             guard let self = self else {return}
             
@@ -549,16 +551,29 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
     }
     
+    let datePicker = UIDatePicker()
     
     @IBAction func goToTodayButtonTap(_ sender: UIButton) {
-        sender.pressedEffect { [weak self] in
+        sender.pressedEffect(scale: 0.9) { [weak self] in
+            self?.goToTodayBeer()
+        }
+    }
+    
+    
+    @IBAction func calendarButtonTap(_ sender: UIButton) {
+        sender.pressedEffect(scale: 0.9) { [weak self] in
             guard let self = self else {return}
-            self.goToTodayBeer()
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let datePickerViewController = storyboard.instantiateViewController(identifier: "DatePickerViewController") as? DatePickerViewController else {return}
+            datePickerViewController.delegate = self
+            datePickerViewController.modalPresentationStyle = .overCurrentContext
+            self.present(datePickerViewController, animated: true, completion: nil)
         }
     }
     
     @IBAction func infoButtonTap(_ sender: UIButton) {
-        sender.pressedEffect { [weak self] in
+        sender.pressedEffect(scale: 0.9) { [weak self] in
             
             guard let self = self else {return}
             
@@ -574,9 +589,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
 }
 
-extension MainViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PartialSizePresentViewController(presentedViewController: presented, presenting: presenting, withRatio: 0.8)
-    }
-}
+//extension MainViewController: UIViewControllerTransitioningDelegate {
+//    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+//        return PartialSizePresentViewController(presentedViewController: presented, presenting: presenting, withRatio: 0.35)
+//    }
+//}
+
+
 

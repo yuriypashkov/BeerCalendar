@@ -24,7 +24,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismiss(animated: true) {
-            self.delegate?.goToChoosenFavoriteBeer(beer: self.favoritesBeer[indexPath.row])
+            self.delegate?.goToChooseneBeer(choosenBeer: self.favoritesBeer[indexPath.row])
         }
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C04651605BDCC17DC33F898 /* Pods_BeerCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */; };
+		212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FA26DCFC6100BD5550 /* DateValidator.swift */; };
+		212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FC26DD263E00BD5550 /* AlertManager.swift */; };
 		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
 		21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5526C1AF5500A70CEA /* ColorService.swift */; };
 		21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5726C2C78000A70CEA /* InfoViewController.swift */; };
@@ -34,6 +36,8 @@
 		218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */; };
 		218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */; };
 		218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */; };
+		21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7F69126DBCAF700B5910E /* TimerManager.swift */; };
+		21B7F69426DCC03F00B5910E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */; };
 		21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */; };
 		21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BA26CC270600A70099 /* NewShareViewModel.swift */; };
 		21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BC26CC58F200A70099 /* PictureCreator.swift */; };
@@ -51,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212940FA26DCFC6100BD5550 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
+		212940FC26DD263E00BD5550 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
 		21606D5526C1AF5500A70CEA /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
 		21606D5726C2C78000A70CEA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 		218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Bold.ttf"; sourceTree = "<group>"; };
 		218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-MediumItalic.ttf"; sourceTree = "<group>"; };
 		218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-LightItalic.ttf"; sourceTree = "<group>"; };
+		21B7F69126DBCAF700B5910E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewHeader.swift; sourceTree = "<group>"; };
 		21BA81BA26CC270600A70099 /* NewShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShareViewModel.swift; sourceTree = "<group>"; };
 		21BA81BC26CC58F200A70099 /* PictureCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCreator.swift; sourceTree = "<group>"; };
@@ -154,6 +162,9 @@
 				217BA5F426B1942700E642F2 /* Utils.swift */,
 				21606D5526C1AF5500A70CEA /* ColorService.swift */,
 				21BA81BC26CC58F200A70099 /* PictureCreator.swift */,
+				21B7F69126DBCAF700B5910E /* TimerManager.swift */,
+				212940FA26DCFC6100BD5550 /* DateValidator.swift */,
+				212940FC26DD263E00BD5550 /* AlertManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 				21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */,
 				21606D5726C2C78000A70CEA /* InfoViewController.swift */,
 				218149E526C556270095FC98 /* CrowdFindingViewController.swift */,
+				21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -378,14 +390,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC352726BD4FBB000E0596 /* SoundService.swift in Sources */,
+				21B7F69426DCC03F00B5910E /* DatePickerViewController.swift in Sources */,
 				217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */,
 				21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */,
 				217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */,
 				218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */,
+				212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */,
 				217BA5EC26AEE53A00E642F2 /* NetworkConfiguration.swift in Sources */,
+				212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */,
 				21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
 				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
+				21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */,
 				217BA5F526B1942700E642F2 /* Utils.swift in Sources */,
 				21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */,
 				21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */,

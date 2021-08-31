@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OktaNeue-Bold.ttf">
+            <string>OktaNeue-Bold</string>
+        </array>
         <array key="OktaNeue-Normal.ttf">
             <string>OktaNeue-Normal</string>
         </array>
@@ -71,7 +74,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="230" y="34" width="113" height="17"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,23 +143,55 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-c7-EXu">
-                                        <rect key="frame" x="16" y="60" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="VhG-c7-EXu" secondAttribute="height" multiplier="1:1" id="DNl-FG-g13"/>
-                                            <constraint firstAttribute="width" constant="36" id="aKX-Kp-gdw"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" image="iconFavoritesVer2">
-                                            <color key="titleColor" systemColor="labelColor"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                            </preferredSymbolConfiguration>
-                                        </state>
-                                        <connections>
-                                            <action selector="favoritesButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RwO-7y-2xK"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uhf-U1-0pJ" userLabel="TopButtonsStackView">
+                                        <rect key="frame" x="16" y="60" width="124" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-c7-EXu">
+                                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="VhG-c7-EXu" secondAttribute="height" multiplier="1:1" id="DNl-FG-g13"/>
+                                                    <constraint firstAttribute="width" constant="36" id="aKX-Kp-gdw"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" image="iconFavoritesVer2">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    </preferredSymbolConfiguration>
+                                                </state>
+                                                <connections>
+                                                    <action selector="favoritesButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RwO-7y-2xK"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHt-Pf-fUw">
+                                                <rect key="frame" x="44" y="0.0" width="36" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="36" id="ERF-NE-mpu"/>
+                                                    <constraint firstAttribute="width" secondItem="nHt-Pf-fUw" secondAttribute="height" multiplier="1:1" id="jBq-14-6mx"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" image="t.circle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    </preferredSymbolConfiguration>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToTodayButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tQ4-2f-qQc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpp-MN-PaK">
+                                                <rect key="frame" x="88" y="0.0" width="36" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="mpp-MN-PaK" secondAttribute="height" multiplier="1:1" id="km8-q9-c8Q"/>
+                                                    <constraint firstAttribute="width" constant="36" id="pcu-EA-ewd"/>
+                                                </constraints>
+                                                <state key="normal" image="iconCalendarVer2"/>
+                                                <connections>
+                                                    <action selector="calendarButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J1O-Y5-oGc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xa-Uf-jfi">
                                         <rect key="frame" x="323" y="60" width="36" height="36"/>
                                         <constraints>
@@ -174,39 +209,21 @@
                                             <action selector="shareButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qfl-78-568"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHt-Pf-fUw">
-                                        <rect key="frame" x="64" y="60" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="ERF-NE-mpu"/>
-                                            <constraint firstAttribute="width" secondItem="nHt-Pf-fUw" secondAttribute="height" multiplier="1:1" id="jBq-14-6mx"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" image="iconTodayVer2">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                            </preferredSymbolConfiguration>
-                                        </state>
-                                        <connections>
-                                            <action selector="goToTodayButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tQ4-2f-qQc"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="uhf-U1-0pJ" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="12r-zV-o0Z"/>
                                     <constraint firstItem="OWG-tf-nxg" firstAttribute="top" secondItem="TBt-Yt-vUM" secondAttribute="bottom" constant="32" id="6jg-ff-w6V"/>
                                     <constraint firstAttribute="trailing" secondItem="7xa-Uf-jfi" secondAttribute="trailing" constant="16" id="9Np-bO-DPn"/>
-                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="VhG-c7-EXu" secondAttribute="bottom" constant="12" id="DpM-CZ-A77"/>
                                     <constraint firstItem="TBt-Yt-vUM" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="40" id="NBg-6d-jCL"/>
                                     <constraint firstItem="LyK-3l-gIr" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="Sy4-5F-6tq"/>
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="TKR-aR-UAd"/>
+                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="uhf-U1-0pJ" secondAttribute="bottom" constant="12" id="Va2-A4-w6M"/>
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="7xa-Uf-jfi" secondAttribute="bottom" constant="12" id="Vzl-hq-EN1"/>
                                     <constraint firstAttribute="trailing" secondItem="OWG-tf-nxg" secondAttribute="trailing" constant="16" id="Wc5-NH-Xes"/>
                                     <constraint firstAttribute="trailing" secondItem="TBt-Yt-vUM" secondAttribute="trailing" constant="16" id="cce-aD-uq8"/>
                                     <constraint firstItem="W0k-jh-lRC" firstAttribute="centerX" secondItem="PIJ-SQ-M2M" secondAttribute="centerX" id="eYA-QW-zxD"/>
                                     <constraint firstItem="OWG-tf-nxg" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="f5H-QR-7Re"/>
                                     <constraint firstItem="LyK-3l-gIr" firstAttribute="top" secondItem="W0k-jh-lRC" secondAttribute="bottom" constant="12" id="fKl-x0-Et4"/>
-                                    <constraint firstItem="nHt-Pf-fUw" firstAttribute="leading" secondItem="VhG-c7-EXu" secondAttribute="trailing" constant="12" id="i9d-9W-QAC"/>
-                                    <constraint firstItem="VhG-c7-EXu" firstAttribute="leading" secondItem="PIJ-SQ-M2M" secondAttribute="leading" constant="16" id="oz4-oh-gUq"/>
-                                    <constraint firstItem="W0k-jh-lRC" firstAttribute="top" secondItem="nHt-Pf-fUw" secondAttribute="bottom" constant="12" id="yZQ-u7-T1X"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -231,6 +248,7 @@
                         <outlet property="beerManufacturerLabel" destination="VIi-wD-JGz" id="0WU-0L-sLR"/>
                         <outlet property="beerNameLabel" destination="ilw-wL-fvH" id="SGo-29-3Fc"/>
                         <outlet property="beerTypeLabel" destination="0tu-Sm-RgB" id="M0S-xJ-G3g"/>
+                        <outlet property="calendarButton" destination="mpp-MN-PaK" id="rhg-Xb-gfO"/>
                         <outlet property="dateStackViewTopConstraint" destination="NBg-6d-jCL" id="LnA-Me-LpZ"/>
                         <outlet property="favoritesButton" destination="VhG-c7-EXu" id="8hB-rt-kdO"/>
                         <outlet property="goToTodayButton" destination="nHt-Pf-fUw" id="Tas-qT-n0I"/>
@@ -346,7 +364,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnF-ui-GP3" userLabel="MainSubview">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пиве" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHX-vV-RvR" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пиве" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHX-vV-RvR">
                                                 <rect key="frame" x="12" y="78" width="351" height="18"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -366,7 +384,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пивоварне" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-an-vqd" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пивоварне" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-an-vqd">
                                                 <rect key="frame" x="12" y="144" width="351" height="18"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -449,7 +467,7 @@
                                                     <constraint firstAttribute="height" constant="48" id="Psv-gH-5Gh"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Особый день" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-E5-EUY" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Особый день" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-E5-EUY">
                                                 <rect key="frame" x="12" y="12" width="351" height="18"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -476,7 +494,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="idK-PW-LXd" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="3H5-tH-UZm"/>
                                             <constraint firstItem="OHX-vV-RvR" firstAttribute="top" secondItem="dln-9b-9gZ" secondAttribute="bottom" constant="24" id="3ba-Gv-Y7y"/>
@@ -576,6 +594,77 @@
             </objects>
             <point key="canvasLocation" x="2601" y="89"/>
         </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="ALU-6y-sPa">
+            <objects>
+                <viewController storyboardIdentifier="DatePickerViewController" id="VZn-GC-z2l" customClass="DatePickerViewController" customModule="BeerCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d8w-33-WhT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyg-EY-fuC" userLabel="MainSubview">
+                                <rect key="frame" x="0.0" y="412" width="375" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a46-Bg-7RR">
+                                        <rect key="frame" x="32" y="32" width="311" height="36"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Выберите дату, на которую вы хотите увидеть пиво">
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="18" name="OktaNeue-SemiBold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-hY-oKO">
+                                        <rect key="frame" x="32" y="84" width="311" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecP-wp-Nmc">
+                                        <rect key="frame" x="32" y="316" width="311" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <fontDescription key="fontDescription" name="OktaNeue-Bold" family="Okta Neue" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="12" maxX="0.0" maxY="12"/>
+                                        <state key="normal" title="Готово"/>
+                                        <connections>
+                                            <action selector="doneButtonTap:" destination="VZn-GC-z2l" eventType="touchUpInside" id="J75-7e-w7s"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="a46-Bg-7RR" firstAttribute="leading" secondItem="WJx-hY-oKO" secondAttribute="leading" id="1DA-zC-n7k"/>
+                                    <constraint firstItem="WJx-hY-oKO" firstAttribute="top" secondItem="a46-Bg-7RR" secondAttribute="bottom" constant="16" id="2pG-nU-8k6"/>
+                                    <constraint firstItem="ecP-wp-Nmc" firstAttribute="leading" secondItem="WJx-hY-oKO" secondAttribute="leading" id="Hvx-YO-SDG"/>
+                                    <constraint firstItem="ecP-wp-Nmc" firstAttribute="trailing" secondItem="WJx-hY-oKO" secondAttribute="trailing" id="N3O-IK-Xrh"/>
+                                    <constraint firstItem="WJx-hY-oKO" firstAttribute="leading" secondItem="jyg-EY-fuC" secondAttribute="leading" constant="32" id="RUr-Zc-jh2"/>
+                                    <constraint firstAttribute="trailing" secondItem="WJx-hY-oKO" secondAttribute="trailing" constant="32" id="SAr-0m-PIi"/>
+                                    <constraint firstItem="a46-Bg-7RR" firstAttribute="trailing" secondItem="WJx-hY-oKO" secondAttribute="trailing" id="XMc-Kh-Ti2"/>
+                                    <constraint firstItem="a46-Bg-7RR" firstAttribute="top" secondItem="jyg-EY-fuC" secondAttribute="top" constant="32" id="kff-hk-ff0"/>
+                                    <constraint firstItem="ecP-wp-Nmc" firstAttribute="top" secondItem="WJx-hY-oKO" secondAttribute="bottom" constant="16" id="thm-cS-sfa"/>
+                                    <constraint firstAttribute="height" constant="400" id="xF3-Kq-4H6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hAD-vQ-nR9"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jyg-EY-fuC" firstAttribute="leading" secondItem="hAD-vQ-nR9" secondAttribute="leading" id="3be-yM-TKF"/>
+                            <constraint firstItem="jyg-EY-fuC" firstAttribute="trailing" secondItem="hAD-vQ-nR9" secondAttribute="trailing" id="DgP-c9-ZkS"/>
+                            <constraint firstAttribute="bottom" secondItem="jyg-EY-fuC" secondAttribute="bottom" id="mVv-qo-XjM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="ecP-wp-Nmc" id="LfN-fA-Mhv"/>
+                        <outlet property="mainSubview" destination="jyg-EY-fuC" id="Me3-Ze-is1"/>
+                        <outlet property="pickerView" destination="WJx-hY-oKO" id="RjZ-c9-i2g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u68-gJ-UZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3469.5999999999999" y="88.669950738916256"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="VIi-wD-JGz">
@@ -586,6 +675,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="iconCalendarVer2" width="40" height="40"/>
         <image name="iconFavoritesVer2" width="40" height="40"/>
         <image name="iconFbVer2" width="40" height="40"/>
         <image name="iconInfoVer2" width="40" height="40"/>
@@ -593,14 +683,20 @@
         <image name="iconLikeEmptyVer2" width="40" height="40"/>
         <image name="iconShareVer2" width="40" height="40"/>
         <image name="iconSiteVer2" width="40" height="40"/>
-        <image name="iconTodayVer2" width="40" height="40"/>
         <image name="iconUntappdVer2" width="40" height="40"/>
         <image name="iconVkVer2" width="40" height="40"/>
+        <image name="t.circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
