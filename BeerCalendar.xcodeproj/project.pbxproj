@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1C04651605BDCC17DC33F898 /* Pods_BeerCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */; };
+		212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FA26DCFC6100BD5550 /* DateValidator.swift */; };
+		212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FC26DD263E00BD5550 /* AlertManager.swift */; };
 		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
+		21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5526C1AF5500A70CEA /* ColorService.swift */; };
+		21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5726C2C78000A70CEA /* InfoViewController.swift */; };
+		21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5926C2CBF700A70CEA /* BreweryData.swift */; };
+		21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */; };
 		217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D226AEE48600E642F2 /* AppDelegate.swift */; };
 		217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D426AEE48600E642F2 /* SceneDelegate.swift */; };
 		217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D626AEE48600E642F2 /* MainViewController.swift */; };
@@ -20,6 +26,21 @@
 		217BA5EE26AEE65A00E642F2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5ED26AEE65A00E642F2 /* NetworkService.swift */; };
 		217BA5F526B1942700E642F2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F426B1942700E642F2 /* Utils.swift */; };
 		217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F626B2E39E00E642F2 /* CalendarModel.swift */; };
+		218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E526C556270095FC98 /* CrowdFindingViewController.swift */; };
+		218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E726C5794E0095FC98 /* CrowdFindingADData.swift */; };
+		218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */; };
+		218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */; };
+		218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */; };
+		218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */; };
+		218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F626CA88720095FC98 /* OktaNeue-Light.ttf */; };
+		218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */; };
+		218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */; };
+		218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */; };
+		21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7F69126DBCAF700B5910E /* TimerManager.swift */; };
+		21B7F69426DCC03F00B5910E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */; };
+		21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */; };
+		21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BA26CC270600A70099 /* NewShareViewModel.swift */; };
+		21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BC26CC58F200A70099 /* PictureCreator.swift */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -34,7 +55,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212940FA26DCFC6100BD5550 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
+		212940FC26DD263E00BD5550 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
+		21606D5526C1AF5500A70CEA /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
+		21606D5726C2C78000A70CEA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		21606D5926C2CBF700A70CEA /* BreweryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryData.swift; sourceTree = "<group>"; };
+		21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesModel.swift; sourceTree = "<group>"; };
 		217BA5CF26AEE48600E642F2 /* BeerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BA5D226AEE48600E642F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217BA5D426AEE48600E642F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +75,21 @@
 		217BA5ED26AEE65A00E642F2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		217BA5F426B1942700E642F2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		217BA5F626B2E39E00E642F2 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		218149E526C556270095FC98 /* CrowdFindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingViewController.swift; sourceTree = "<group>"; };
+		218149E726C5794E0095FC98 /* CrowdFindingADData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingADData.swift; sourceTree = "<group>"; };
+		218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-SemiBold.ttf"; sourceTree = "<group>"; };
+		218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Regular.ttf"; sourceTree = "<group>"; };
+		218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Normal.ttf"; sourceTree = "<group>"; };
+		218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Medium.ttf"; sourceTree = "<group>"; };
+		218149F626CA88720095FC98 /* OktaNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Light.ttf"; sourceTree = "<group>"; };
+		218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Bold.ttf"; sourceTree = "<group>"; };
+		218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-MediumItalic.ttf"; sourceTree = "<group>"; };
+		218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-LightItalic.ttf"; sourceTree = "<group>"; };
+		21B7F69126DBCAF700B5910E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewHeader.swift; sourceTree = "<group>"; };
+		21BA81BA26CC270600A70099 /* NewShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShareViewModel.swift; sourceTree = "<group>"; };
+		21BA81BC26CC58F200A70099 /* PictureCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCreator.swift; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +139,7 @@
 		217BA5D126AEE48600E642F2 /* BeerCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				218149ED26CA88230095FC98 /* fonts */,
 				21CC351B26BD4E5B000E0596 /* Sounds */,
 				21CC351826BAD838000E0596 /* View */,
 				21CC351526BAD5A5000E0596 /* controllers */,
@@ -117,6 +160,11 @@
 				217BA5D426AEE48600E642F2 /* SceneDelegate.swift */,
 				217BA5DD26AEE48A00E642F2 /* LaunchScreen.storyboard */,
 				217BA5F426B1942700E642F2 /* Utils.swift */,
+				21606D5526C1AF5500A70CEA /* ColorService.swift */,
+				21BA81BC26CC58F200A70099 /* PictureCreator.swift */,
+				21B7F69126DBCAF700B5910E /* TimerManager.swift */,
+				212940FA26DCFC6100BD5550 /* DateValidator.swift */,
+				212940FC26DD263E00BD5550 /* AlertManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -128,6 +176,10 @@
 				217BA5F626B2E39E00E642F2 /* CalendarModel.swift */,
 				21CC351126B9CADF000E0596 /* MessageViewModel.swift */,
 				21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */,
+				21606D5926C2CBF700A70CEA /* BreweryData.swift */,
+				21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */,
+				218149E726C5794E0095FC98 /* CrowdFindingADData.swift */,
+				21BA81BA26CC270600A70099 /* NewShareViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,12 +193,30 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		218149ED26CA88230095FC98 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */,
+				218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */,
+				218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */,
+				218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */,
+				218149F626CA88720095FC98 /* OktaNeue-Light.ttf */,
+				218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */,
+				218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */,
+				218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		21CC351526BAD5A5000E0596 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
 				217BA5D626AEE48600E642F2 /* MainViewController.swift */,
 				21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */,
 				21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */,
+				21606D5726C2C78000A70CEA /* InfoViewController.swift */,
+				218149E526C556270095FC98 /* CrowdFindingViewController.swift */,
+				21B7F69326DCC03E00B5910E /* DatePickerViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -155,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				21CC351926BAD855000E0596 /* FavoriteBeerCell.swift */,
+				21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,15 +320,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */,
 				21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */,
+				218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */,
 				217BA5DF26AEE48A00E642F2 /* LaunchScreen.storyboard in Resources */,
+				218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */,
+				218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */,
+				218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */,
 				217BA5DC26AEE48A00E642F2 /* Assets.xcassets in Resources */,
 				21CC352126BD4F85000E0596 /* pageSound4.mp3 in Resources */,
 				21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */,
 				21CC352226BD4F85000E0596 /* pageSound5.mp3 in Resources */,
 				21CC352326BD4F85000E0596 /* pageSound2.mp3 in Resources */,
 				21CC352426BD4F85000E0596 /* pageSound3.mp3 in Resources */,
+				218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */,
 				217BA5DA26AEE48600E642F2 /* Main.storyboard in Resources */,
+				218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */,
+				218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,19 +390,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC352726BD4FBB000E0596 /* SoundService.swift in Sources */,
+				21B7F69426DCC03F00B5910E /* DatePickerViewController.swift in Sources */,
 				217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */,
 				21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */,
 				217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */,
+				218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */,
+				212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */,
 				217BA5EC26AEE53A00E642F2 /* NetworkConfiguration.swift in Sources */,
+				212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */,
+				21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
+				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
+				21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */,
 				217BA5F526B1942700E642F2 /* Utils.swift in Sources */,
 				21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */,
+				21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */,
 				21CC351A26BAD855000E0596 /* FavoriteBeerCell.swift in Sources */,
+				21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */,
+				21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */,
 				217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */,
 				21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */,
 				217BA5EE26AEE65A00E642F2 /* NetworkService.swift in Sources */,
 				217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */,
+				21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */,
+				21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */,
 				21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */,
+				21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -493,6 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

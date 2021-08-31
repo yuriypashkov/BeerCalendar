@@ -8,8 +8,7 @@
 import Foundation
 
 class FavoriteBeersModel {
-    
-    //static let shared = FavoriteBeersModel()
+
     var listOfFavoriteBeers: [Int] = []
     
     init() {

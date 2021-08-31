@@ -24,12 +24,18 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismiss(animated: true) {
-            self.delegate?.goToChoosenFavoriteBeer(beer: self.favoritesBeer[indexPath.row])
+            self.delegate?.goToChooseneBeer(choosenBeer: self.favoritesBeer[indexPath.row])
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Избранное"
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FavoritesTableViewHeader") as! FavoritesTableViewHeader
+        view.title.text = "Избранное"
+        return view
     }
     
     
@@ -39,11 +45,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = .systemGray5
+        
+        tableView.register(FavoritesTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "FavoritesTableViewHeader")
 
-        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown(_:)))
-        swipeDownGesture.direction = .down
-        view.addGestureRecognizer(swipeDownGesture)
+//        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown(_:)))
+//        swipeDownGesture.direction = .down
+//        view.addGestureRecognizer(swipeDownGesture)
     }
     
 
@@ -54,22 +62,23 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        view.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+        //view.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        //print("Tableview Height: \(tableView.contentSize.height)")
-        var newFrameHeight: CGFloat = 0
-        if tableView.contentSize.height > view.frame.size.height / 2 {
-            newFrameHeight = view.frame.size.height - tableView.contentSize.height
-        } else {
-            newFrameHeight = view.frame.size.height / 2
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.view.frame = CGRect(x: 0, y: newFrameHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        //print("Tableview Height: \(tableView.contentSize.height)")
+//        var newFrameHeight: CGFloat = 0
+//        //newFrameHeight = view.frame.size.height / 3
+//        if tableView.contentSize.height > view.frame.size.height / 2 {
+//            newFrameHeight = view.frame.size.height - tableView.contentSize.height
+//        } else {
+//            newFrameHeight = view.frame.size.height / 2
+//        }
+//        UIView.animate(withDuration: 0.5) {
+//            self.view.frame = CGRect(x: 0, y: newFrameHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
+//        }
+//    }
     
     
 

@@ -10,15 +10,25 @@ import UIKit
 import AudioToolbox
 
 protocol MainViewControllerDelegate {
-    func goToChoosenFavoriteBeer(beer: BeerData)
+    func goToChooseneBeer(choosenBeer: BeerData)
+    func goToBeerFromDatePicker(date: String)
+    func isBeerExist(date: String) -> Bool
 }
 
 extension UIView {
+    
    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+    }
+    
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
     }
 }
 
@@ -47,7 +57,93 @@ extension UIColor {
                 default:
                     (a, r, g, b) = (255, 0, 0, 0)
                 }
-                self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255) 
     }
     
 }
+
+extension UIImageView {
+    
+    // метод для покраски векторных иконок
+    func setImageColor(color: UIColor) { // переписать
+            let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+            self.image = templateImage
+            self.tintColor = color
+        }
+
+}
+
+extension UIImage {
+    
+    func rounded(radius: CGFloat) -> UIImage {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIBezierPath(roundedRect: rect, cornerRadius: radius).addClip()
+        draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    // тень под картинкой, нужно при отрисовке картинки для инсты
+    func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
+
+        let shadowColor = UIColor(white: 0.0, alpha: 0.5).cgColor
+
+        let context = CGContext(data: nil,
+                                width: Int(self.size.width + blurSize),
+                                height: Int(self.size.height + blurSize),
+                                bitsPerComponent: self.cgImage!.bitsPerComponent,
+                                bytesPerRow: 0,
+                                space: CGColorSpaceCreateDeviceRGB(),
+                                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+
+        context.setShadow(offset: CGSize(width: blurSize / 4, height: -blurSize / 4),
+                          blur: blurSize,
+                          color: shadowColor)
+
+    
+        context.draw(self.cgImage!,
+                     in: CGRect(x: 0, y: blurSize, width: self.size.width, height: self.size.height),
+                     byTiling: false)
+
+        return UIImage(cgImage: context.makeImage()!)
+    }
+    
+    func resized(toWidth width: CGFloat) -> UIImage? {
+            let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+            UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+            defer { UIGraphicsEndImageContext() }
+            draw(in: CGRect(origin: .zero, size: canvasSize))
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
+    
+}
+
+extension UIButton {
+    
+    func pressedEffectForFavorite() {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { finished in
+            UIView.animate(withDuration: 0.2) {
+                self.transform = CGAffineTransform.identity
+            }
+        }
+    }
+    
+    func pressedEffect(scale: CGFloat, _ myCompletion: @escaping  () -> Void) {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform(scaleX: scale, y: scale)
+        } completion: { finished in
+            UIView.animate(withDuration: 0.1) {
+                self.transform = CGAffineTransform.identity
+            } completion: { finished in
+                myCompletion()
+            }
+        }
+    }
+    
+}
+
+//Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]
+
+// «Токсовский Трамплин — пиво дня 5 июля 2021, согласно пивному календарю! @Beer.Calendar #BeerCalendar *ссылка на приложение*»

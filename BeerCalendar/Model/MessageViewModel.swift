@@ -26,13 +26,12 @@ class MessageViewModel {
         messageView.backgroundColor = .systemGreen
         messageView.layer.cornerRadius = 30
         let label = UILabel(frame: CGRect(x: 0, y: 8, width: messageView.frame.size.width - 32, height: height))
-        //label.isUserInteractionEnabled = true
         label.center = CGPoint(x: messageView.frame.size.width / 2 + 0.05 * x, y: 50)
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
+        label.font = UIFont(name: "OktaNeue-Medium", size: 16)
         label.text = "Следующее пиво можно увидеть только на следующий день."
-        label.font = UIFont.systemFont(ofSize: 16)
         messageView.addSubview(label)
     }
     
@@ -42,7 +41,7 @@ class MessageViewModel {
                        usingSpringWithDamping: 0.1,
                        initialSpringVelocity: 1,
                        options: .curveEaseInOut, animations: {
-                        self.messageView.frame = CGRect(x: 0.1 * self.x, y: self.y - 90, width: 0.8 * self.width, height: self.height + 20)
+                        self.messageView.frame = CGRect(x: 0.1 * self.x, y: self.y - 90, width: 0.8 * self.width, height: self.height + 20) // 0.1 0.8
                        }, completion: { finished in
                         self.isMessageViewShow.toggle()
                        })
@@ -50,7 +49,7 @@ class MessageViewModel {
     
     func hideMessageView() {
         UIView.animate(withDuration: 0.3) {
-            self.messageView.frame = CGRect(x: 0.15 * self.x, y: self.y, width: 0.7 * self.width, height: self.height)
+            self.messageView.frame = CGRect(x: 0.15 * self.x, y: self.y, width: 0.7 * self.width, height: self.height) // 0.15 0.7
         } completion: { finished in
             self.isMessageViewShow.toggle()
         }
