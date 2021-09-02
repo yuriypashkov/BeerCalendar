@@ -27,9 +27,6 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var constraintSpecialTitleTop: NSLayoutConstraint!
     @IBOutlet weak var mainSubview: UIView!
     @IBOutlet weak var breweryLogoImageView: UIImageView!
-    //@IBOutlet weak var bottomView: UIView!
-    //@IBOutlet weak var topView: UIView!
-    //@IBOutlet weak var scrollView: UIScrollView!
     
     
     var currentBeer: BeerData?
@@ -48,7 +45,6 @@ class InfoViewController: UIViewController {
         //set brewerylogo
         if let strUrl = currentBrewery?.logoURL, let url = URL(string: strUrl) {
             breweryLogoImageView.kf.indicatorType = .activity
-            //breweryLogoImageView.kf.setImage(with: url)
             breweryLogoImageView.kf.setImage(with: url, placeholder: nil, options: nil) { result in
                 switch result {
                 case .success(let image):
@@ -64,10 +60,6 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .systemGray5
         if let firstColorStr = currentBeer?.firstColor, let secondColorStr = currentBeer?.secondColor {
             ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
-            //topView.backgroundColor = UIColor(hex: secondColor)
-            //bottomView.backgroundColor = UIColor(hex: firstColorStr)
-            //ColorService.shared.setGradientBackgroundOnView(view: topView, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
-            //ColorService.shared.setGradientBackgroundOnView(view: bottomView, firstColor: UIColor(hex: firstColorStr), secondColor: UIColor(hex: secondColorStr), cornerRadius: 0)
         }
         // выставляем значения текстов
         aboutBeerLabel.text = currentBeer?.beerDescription
@@ -109,10 +101,7 @@ class InfoViewController: UIViewController {
             untappdButton.isHidden = true
         }
 
-        view.roundCorners(corners: [.topLeft, .topRight], radius: 12)
-        //mainSubview.backgroundColor = .clear
-        
-        // slide down VC
+        // опускаем контроллер вниз, если много свободного пространства внизу
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             UIView.animate(withDuration: 0.6) {
                 if self.mainSubview.frame.size.height < self.view.frame.size.height {
@@ -120,22 +109,22 @@ class InfoViewController: UIViewController {
                 }
             }
         }
+        
+        // закругляем углы сверху, тк они становятся квадратными после спуска контроллера вниз
+        view.roundCorners(corners: [.topLeft, .topRight], radius: 12)
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // set gradient background in scrollview
-//        if let firstColorStr = currentBeer?.firstColor, let secondColorStr = currentBeer?.secondColor {
-            UIView.animate(withDuration: 0.4) {
-                
-                //ColorService.shared.setGradientBackgroundOnView(view: self.mainSubview, firstColor: UIColor(hex: secondColorStr), secondColor: UIColor(hex: firstColorStr), cornerRadius: 0)
-                self.mainSubview.alpha = 1
-            }
-       // }
+        // для анимации появления текста
+        UIView.animate(withDuration: 0.4) {
+            self.mainSubview.alpha = 1
+        }
     }
 
     @IBAction func socialButtonTap(_ sender: UIButton) {
+        
         sender.pressedEffect(scale: 0.9) { [weak self] in
             guard let self = self else {return}
             switch sender.tag {
@@ -156,13 +145,18 @@ class InfoViewController: UIViewController {
                     self.openURL(urlStr: urlStr)
                 }
             case 4:
-                if let urlStr = self.currentBrewery?.untappdURL {
-                    self.openURL(urlStr: urlStr)
+                if let id = self.currentBrewery?.untappdID {
+                    guard let urlForUntappd = URL(string: "untappd://brewery/\(id)") else {return}
+                    if UIApplication.shared.canOpenURL(urlForUntappd) {
+                        UIApplication.shared.open(urlForUntappd, options: [:], completionHandler: nil)
+                    } else {
+                        guard let urlStr = self.currentBrewery?.untappdURL else {return}
+                        self.openURL(urlStr: urlStr)
+                    }
                 }
             default: ()
             }
         }
-
         
     }
     
@@ -173,7 +167,5 @@ class InfoViewController: UIViewController {
             }
         }
     }
-    
-    
     
 }

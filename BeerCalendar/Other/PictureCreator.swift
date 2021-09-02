@@ -52,7 +52,12 @@ class PictureCreator {
             drawLabel(text: "\(currentBrewery?.breweryCity ?? "breweryCity")", font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 330)
             
             //create beer type
-            let beerType = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beer.beerIBU ?? "") IBU"
+            var beerType = ""
+            if let beerIBU = beer.beerIBU {
+                beerType = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV · \(beerIBU) IBU"
+            } else {
+                beerType = "\(beer.beerType ?? "") · \(beer.beerABV ?? "") ABV"
+            }
             drawLabel(text: beerType, font: UIFont(name: "OktaNeue-Light", size: 32), fontColor: .black, heightDistance: strSizeWidth + 370)
             
             //create logo

@@ -35,8 +35,8 @@ class NetworkService {
                 let beerInfoResponse = try JSONDecoder().decode([BeerData].self, from: data)
                 onResult(.success(beerInfoResponse))
             }
-            catch (let error) {
-                onResult(.failure(error))
+            catch {
+                onResult(.failure(NetworkError.decodingError))
             }
         }
         
@@ -63,8 +63,8 @@ class NetworkService {
                 let beerInfoResponse = try JSONDecoder().decode([BreweryData].self, from: data)
                 onResult(.success(beerInfoResponse))
             }
-            catch (let error) {
-                onResult(.failure(error))
+            catch {
+                onResult(.failure(NetworkError.decodingError))
             }
         }
         
@@ -105,6 +105,7 @@ class NetworkService {
 enum NetworkError: Error {
     case noData
     case failedResponse
+    case decodingError
 }
 
 enum NetworkAdresses: String{

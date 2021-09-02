@@ -71,6 +71,21 @@ extension UIImageView {
             self.tintColor = color
         }
 
+    // высплывающий арт при дабл-тапе по картинке
+    func showDoubleTapArt(imageForShowing: UIImage) {
+        let imageView = UIImageView(frame: CGRect(x: 3 * self.frame.size.width / 8, y: 3 * self.frame.size.height / 8, width: self.frame.size.width / 4, height: self.frame.size.height / 4))
+        imageView.image = imageForShowing
+        imageView.setImageColor(color: .systemRed)
+        imageView.contentMode = .scaleAspectFit
+        self.addSubview(imageView)
+        UIView.animate(withDuration: 0.5) {
+            imageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            imageView.alpha = 0
+        } completion: { finished in
+            imageView.removeFromSuperview()
+        }
+
+    }
 }
 
 extension UIImage {

@@ -30,12 +30,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
             return 130
         }
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let view = UIView()
-//        view.backgroundColor = .systemGreen
-//        return view
-//    }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerDaysYear[component].count
@@ -63,9 +57,11 @@ class DatePickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var mainSubview: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
+    
     
     var delegate: MainViewControllerDelegate?
     
@@ -116,6 +112,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     private func setUI() {
+        errorLabel.alpha = 0
         mainSubview.layer.cornerRadius = 16
         mainSubview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         doneButton.layer.cornerRadius = 8
@@ -139,6 +136,13 @@ class DatePickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
         mainSubview.addGestureRecognizer(swipeGesture)
     }
     
+    private func showErrorLabel(text: String) {
+        self.errorLabel.alpha = 1
+        self.errorLabel.text = text
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.errorLabel.alpha = 0
+        }
+    }
     
     @IBAction func doneButtonTap(_ sender: UIButton) {
         sender.pressedEffect(scale: 0.96) { [weak self] in
@@ -154,11 +158,9 @@ class DatePickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
             switch self.isPickerViewValueValid(strDay: strDay, strMonth: strMonth) {
             case .afterTodayDate:
-                let alert = AlertManager.shared.createAlert(title: "Ошибка в дате", text: "Выбранная дата пока что недоступна")
-                self.present(alert, animated: true, completion: nil)
+                self.showErrorLabel(text: "Выбранная дата пока что недоступна")
             case .wrongDate:
-                let alert = AlertManager.shared.createAlert(title: "Ошибка в дате", text: "Выбранной даты не существует")
-                self.present(alert, animated: true, completion: nil)
+                self.showErrorLabel(text: "Выбранной даты не существует")
             case .normalDate:
                 let resultDate = "\(dayIndex + 1).\(monthIndex + 1).\(dateComponents.year ?? 0)"
                 

@@ -14,7 +14,7 @@ struct BeerData: Codable {
     var beerName: String?
     var beerType: String?
     var beerABV: String?
-    var beerIBU: String?
+    var beerIBU: Int?
     var beerDescription: String?
     var beerLabelURL: String?
     var beerLabelPreviewURL: String?
