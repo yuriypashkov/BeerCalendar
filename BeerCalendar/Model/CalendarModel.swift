@@ -20,7 +20,7 @@ class CalendarModel {
     
     init(beerData: [BeerData]) {
         beers = beerData.sorted(by: { $0.date.compare($1.date) == .orderedAscending}) // сортируем массив пив по дате 
-        // здесь можно послать запрос на инфо
+        // здесь можно послать запрос на инфо по краудфандингу
         NetworkService.shared.requestCrowdFindingData { result in
             switch result {
             case .success(let resultData):
@@ -150,7 +150,7 @@ class CalendarModel {
     
     func showCrowdFinding() -> Bool {
         guard isCrowdFindingADShow else {return false}
-        if swipesCount > 12 {
+        if swipesCount > 5 {
             swipesCount = 0
             return true
         }
@@ -164,7 +164,6 @@ class CalendarModel {
             switch result {
             case .success:
                 ()
-                //print("Image: \(value.image), get from \(value.cacheType)")
             case .failure(let error):
                 print(error.localizedDescription)
             }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C04651605BDCC17DC33F898 /* Pods_BeerCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */; };
+		210E0C3826E038260045C3C2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E0C3726E038260045C3C2 /* AboutViewController.swift */; };
 		212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FA26DCFC6100BD5550 /* DateValidator.swift */; };
 		212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FC26DD263E00BD5550 /* AlertManager.swift */; };
 		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210E0C3726E038260045C3C2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		212940FA26DCFC6100BD5550 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
 		212940FC26DD263E00BD5550 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				217BA5D626AEE48600E642F2 /* MainViewController.swift */,
+				210E0C3726E038260045C3C2 /* AboutViewController.swift */,
 				21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */,
 				21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */,
 				21606D5726C2C78000A70CEA /* InfoViewController.swift */,
@@ -399,6 +402,7 @@
 				217BA5EC26AEE53A00E642F2 /* NetworkConfiguration.swift in Sources */,
 				212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */,
 				21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */,
+				210E0C3826E038260045C3C2 /* AboutViewController.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
 				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
 				21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */,
@@ -564,7 +568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -586,7 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

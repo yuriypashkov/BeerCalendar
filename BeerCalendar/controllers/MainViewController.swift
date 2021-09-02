@@ -30,6 +30,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var goToTodayButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var errorButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var errorImageView: UIImageView!
     
     
     
@@ -54,7 +57,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         let topInset = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
         let y = shareButton.frame.origin.y + topInset
-        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 107, y: y, width: 96, height: 48), shareButton: shareButton)
+        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 155, y: y, width: 144, height: 48), shareButton: shareButton)
         view.addSubview(newShareViewModel)
 
         addGestures()
@@ -135,6 +138,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     @objc func doubleTapOnImage() {
+
         addToFavorites()
     }
     
@@ -142,6 +146,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let crowdFindingController = storyboard.instantiateViewController(identifier: "CrowdFindingViewController") as? CrowdFindingViewController, let calendar = calendarModel {
             crowdFindingController.imageURL = calendar.crowdFindingData?.imgUrl
+            crowdFindingController.jumpURL = calendar.crowdFindingData?.jumpUrl
             present(crowdFindingController, animated: true, completion: nil)
         }
     }
@@ -171,7 +176,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             soundService.playRandomSound()
             UIView.transition(with: beerLabelView,
                               duration: 0.7,
-                              //options: [.transitionCurlUp],
                               options: calendar.compareTwoBeersDate(beerOne: choosenBeer, beerTwo: currentBeer) ? [.transitionCurlUp] : [.transitionCurlDown],
                               animations: {
                                 self.setUI(beer: choosenBeer)
@@ -245,12 +249,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
     }
     
-    private func sayAboutInternetError() {
+    private func sayAboutError(text: String) {
         activityIndicatorView.stopAnimating()
-        beerLabelView.backgroundColor = .systemGray
-        beerNameLabel.text = "Проблема с подключением"
-        beerNameLabel.textAlignment = .center
-        beerNameLabel.alpha = 1
+        errorButton.layer.cornerRadius = 8
+        errorButton.alpha = 1
+        errorLabel.alpha = 1
+        errorImageView.alpha = 1
+        errorLabel.text = "\(text) Попробуйте повторить запрос."
         messageViewModel.isMessageViewShow = true
     }
     
@@ -273,13 +278,16 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                         print(error)
                     }
                 case .failure(let requestError): // если ошибка запроса - читаем данные из кэша и инициализируем модель. Если в кэше ничего нет - выводим ошибку о проблеме с подключением
-                    print("Beers error: \(requestError)")
+                    print("Problem with loading beers")
                     do {
                         let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
                         guard let beerData = beerDataFromCache else {
-                            // здесь обработка ситуации: нет инета и нет ничего в кэше по пивам, в .notify не улетаем
-                            self.sayAboutInternetError()
-                            print("Beers don't cached")
+                            // здесь обработка ситуации: нет инета или ошибка декодинга, и нет ничего в кэше по пивам, в .notify не улетаем
+                            if requestError as? NetworkError == NetworkError.decodingError {
+                                self.sayAboutError(text: "Ошибка декодирования данных по пивам.")
+                            } else {
+                                self.sayAboutError(text: "Ошибка подключения или проблема с интернетом.")
+                            }
                             return
                         }
                         self.calendarModel = CalendarModel(beerData: beerData)
@@ -306,14 +314,16 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                         print(error)
                     }
                 case .failure(let requestError):
-                    print("Breweries error: \(requestError)")
+                    print("Problem with loading breweries")
                     do {
                         let breweryDataFromCache: [BreweryData]? = try DataCache.instance.readCodable(forKey: "breweryDataArray")
                         guard let breweries = breweryDataFromCache else {
-                            // здесь обработка ситуации: нет инета и нет ничего в кэше по пивоварням, в .notify не улетаем
-                            self.sayAboutInternetError()
-                            // если модель пив инициализирована - то надо рисовать UI, а на пивоварни просто в инфо не отображать
-                            print("Brewery don't cached")
+                            // здесь обработка ситуации: нет инета или ошибка декодинга, и нет ничего в кэше по пивоварням, в .notify не улетаем
+                            if requestError as? NetworkError == NetworkError.decodingError {
+                                self.sayAboutError(text: "Ошибка декодирования данных по пивоварням.")
+                            } else {
+                                self.sayAboutError(text: "Ошибка подключения или проблема с интернетом.")
+                            }
                             return
                         }
                         self.breweriesModel = BreweriesModel(breweryData: breweries)
@@ -327,7 +337,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             }
         }
         
-        dispatchGroup.notify(queue: .main) {
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else {return}
             print("All requests completed")
             print("Data loaded from \(NetworkConfiguration.shared.apiUrl)")
             // рисуем UI и запускаем таймер на отслеживание смены даты
@@ -339,19 +350,22 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             if let item = item {
                 self.setUI(beer: item)
             } else {
-                self.beerLabelView.backgroundColor = .systemGray
-                self.beerNameLabel.text = "Не найдено пиво на текущую дату"
-                self.beerNameLabel.alpha = 1
+                self.errorLabel.alpha = 1
+                self.errorImageView.alpha = 1
+                self.errorLabel.text = "Не найдено пиво на текущую дату. Попробуйте зайти в приложение позже."
             }
             
             self.activityIndicatorView.stopAnimating()
         }
         
-        
     }
     
     func setUI(beer: BeerData) {
         currentBeerID = beer.id ?? 0
+        
+        errorImageView.alpha = 0
+        errorLabel.alpha = 0
+        errorButton.alpha = 0
         
         if favoriteBeersModel.isCurrentBeerFavorite(id: currentBeerID) {
             addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
@@ -390,7 +404,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         if let strUrl = beer.beerLabelURL, let url = URL(string: strUrl) {
             beerLabelImage.kf.indicatorType = .activity
-            //beerLabelImage.kf.setImage(with: url)
             beerLabelImage.kf.setImage(with: url, placeholder: nil, options: nil) { result in
                 switch result {
                 case .success(let image):
@@ -439,7 +452,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
         beerNameLabel.type = .leftRight
         beerManufacturerLabel.type = .leftRight
-        //specialInfoLabel.type = .leftRight
         
         beerLabelImage.layer.shadowColor = UIColor.black.cgColor
         beerLabelImage.layer.shadowRadius = 4.0
@@ -462,14 +474,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             dateStackViewTopConstraint.constant = 16
             beerDateDayLabel.font = beerDateDayLabel.font.withSize(56) //64 and 36
             beerDateMonthLabel.font = beerDateDayLabel.font.withSize(22)
-            beerInfoStackView.spacing = 4
+            beerInfoStackView.spacing = 6
         case 568...750:
             //print("SE 2th and Plus")
-            beerInfoTopConstraint.constant = 16
+            beerInfoTopConstraint.constant = 24
             dateStackViewTopConstraint.constant = 16
-            beerDateDayLabel.font = beerDateDayLabel.font.withSize(64)
-            beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(28)
-            beerInfoStackView.spacing = 6
+            beerDateDayLabel.font = beerDateDayLabel.font.withSize(68)
+            beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(32)
+            beerInfoStackView.spacing = 8
         default: break
         }
     }
@@ -479,6 +491,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
         } else {
+            if let image = UIImage(named: "iconLikeVer2") {
+                beerLabelImage.showDoubleTapArt(imageForShowing: image)
+            }
             generator.impactOccurred()
             favoriteBeersModel.saveBeerToFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeVer2"), for: .normal)
@@ -503,12 +518,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                 if let untappdUrl = currentBeer.untappdURL {
                     let components = untappdUrl.components(separatedBy: "/")
                     
-                    let urlForUntappd = URL(string: "untappd://beer/\(components.last ?? "0")")! //url format for untappd, scheme "untappd" in info.plist
+                    guard let urlForUntappd = URL(string: "untappd://beer/\(components.last ?? "0")") else {return} //url format for untappd, scheme "untappd" in info.plist
                     if UIApplication.shared.canOpenURL(urlForUntappd) {
                         
                         UIApplication.shared.open(urlForUntappd, options: [:])
                     } else {
-                        let basicUrl = URL(string: untappdUrl)!
+                        guard let basicUrl = URL(string: untappdUrl) else {return}
                         if UIApplication.shared.canOpenURL(basicUrl) {
                             UIApplication.shared.open(basicUrl, options: [:])
                         }
@@ -587,6 +602,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         }
 
     }
+    
+    @IBAction func errorButtonTap(_ sender: UIButton) {
+        errorButton.alpha = 0
+        errorLabel.alpha = 0
+        errorImageView.alpha = 0
+        loadBeersAndBrewries()
+    }
+    
 }
 
 //extension MainViewController: UIViewControllerTransitioningDelegate {

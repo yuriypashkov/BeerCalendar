@@ -19,10 +19,12 @@ class NewShareViewModel: UIView {
     var shareButton: UIButton?
     var instaButton = UIButton()
     var moreButton = UIButton()
+    var aboutButton = UIButton()
     var instaActivityIndicator = UIActivityIndicatorView()
     var moreActivityIndicator = UIActivityIndicatorView()
+    let viewController = UIApplication.shared.windows.first?.rootViewController
     
-    init(myFrame: CGRect, shareButton: UIButton) { // 96x48
+    init(myFrame: CGRect, shareButton: UIButton) { // 144x48
         super.init(frame: myFrame)
         self.shareButton = shareButton
         backgroundColor = .systemGray5
@@ -38,13 +40,18 @@ class NewShareViewModel: UIView {
         instaButton.addSubview(instaActivityIndicator)
         
         moreButton = UIButton(frame: CGRect(x: 56, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
-        moreButton.setBackgroundImage(UIImage(named: "iconMiscVer2"), for: .normal)
+        moreButton.setBackgroundImage(UIImage(named: "iconShareVer2"), for: .normal)
         moreButton.addTarget(self, action: #selector(showActivityViewController), for: .touchUpInside)
         addSubview(moreButton)
         moreButton.addSubview(moreActivityIndicator)
         
+        aboutButton = UIButton(frame: CGRect(x: 104, y: 8, width: buttonFrameConstant, height: buttonFrameConstant))
+        aboutButton.setBackgroundImage(UIImage(named: "iconDolina"), for: .normal)
+        aboutButton.addTarget(self, action: #selector(showAboutViewController), for: .touchUpInside)
+        addSubview(aboutButton)
+        
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideView))
-        swipeDownGesture.direction = .right
+        swipeDownGesture.direction = [.right, .left]
         addGestureRecognizer(swipeDownGesture)
         
     }
@@ -92,6 +99,21 @@ class NewShareViewModel: UIView {
         }
     }
     
+    @objc func showAboutViewController() {
+        //let viewController = UIApplication.shared.windows.first?.rootViewController
+        
+        aboutButton.pressedEffect(scale: 0.9) { [weak self] in
+            guard let self = self else {return}
+            //self.aboutActivityIndicator.stopAnimating()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let aboutViewController = storyboard.instantiateViewController(identifier: "AboutViewController") as! AboutViewController
+            aboutViewController.currentBeer = self.currentBeer
+            self.viewController?.present(aboutViewController, animated: true, completion: {
+                self.hideView()
+            })
+        }
+    }
+    
     @objc func showActivityViewController() {
         moreActivityIndicator.startAnimating()
         
@@ -103,7 +125,7 @@ class NewShareViewModel: UIView {
     private func methodForShowAVC() {
         if let currentBeer = currentBeer, let urlStr = currentBeer.beerLabelURL {
             
-            let viewController = UIApplication.shared.windows.first?.rootViewController
+            //let viewController = UIApplication.shared.windows.first?.rootViewController
 
             func showActivityViewController(content: [Any]) {
                 let ac = UIActivityViewController(activityItems: content, applicationActivities: nil)
@@ -113,7 +135,7 @@ class NewShareViewModel: UIView {
             }
             
             let text = "\(currentBeer.beerName ?? "beerName") - пиво дня \(currentBeer.getStrDateForSharingImage() ?? "beerDate"), согласно пивному календарю! @Beer.Calendar #BeerCalendar https://apps.apple.com/ru/app/id1581340486"
-            
+
             guard let url = URL(string: urlStr) else {
                 showActivityViewController(content: [text])
                 return
@@ -171,7 +193,13 @@ class NewShareViewModel: UIView {
                       let localIdentifier = lastAsset.localIdentifier
                       let u = "instagram://library?LocalIdentifier=" + localIdentifier
                       DispatchQueue.main.async {
-                          UIApplication.shared.open(URL(string: u)!, options: [:], completionHandler: nil)
+                        if let url = URL(string: u), UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        } else {
+                            let alert = AlertManager.shared.createAlert(title: "Ошибочка вышла", text: "У вас не установлено приложение Instagram")
+                            //let viewController = UIApplication.shared.windows.first?.rootViewController
+                            self.viewController?.present(alert, animated: true, completion: nil)
+                        }
                       }
                   }
               })
