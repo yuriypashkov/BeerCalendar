@@ -52,12 +52,14 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // view для оповещения пива про следующий день
         messageViewModel = MessageViewModel(x: view.frame.size.width, y: view.frame.size.height, width: view.frame.size.width, height: 100)
         view.addSubview(messageViewModel.messageView)
         
+        // view для расшаривания
         let topInset = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
         let y = shareButton.frame.origin.y + topInset
-        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 155, y: y, width: 144, height: 48), shareButton: shareButton)
+        newShareViewModel = NewShareViewModel(myFrame: CGRect(x: view.frame.size.width - 155, y: y, width: 144, height: 48), shareButton: shareButton, delegate: self)
         view.addSubview(newShareViewModel)
 
         addGestures()
@@ -65,7 +67,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         prepareUI()
 
         loadBeersAndBrewries()
+        
+        
     }
+    
 
     @objc func swipeMessageViewDown() {
         messageViewModel.hideMessageView()
@@ -79,6 +84,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             case .ended:
                 if newShareViewModel.isViewShowing {
                     newShareViewModel.hideView()
+                }
+                if messageViewModel.isMessageViewShow {
+                    messageViewModel.hideMessageView()
                 }
                     UIView.transition(with: beerLabelView,
                                       duration: 0.7,
@@ -96,7 +104,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         } else {
             // показываем сообщение что следующее пиво можно увидеть только на следующий день
             if !messageViewModel.isMessageViewShow {
-                messageViewModel.showMessageView()
+                messageViewModel.showMessageView(withText: "Следующее пиво можно увидеть только на следующий день.")
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     if self.messageViewModel.isMessageViewShow {
@@ -133,6 +141,18 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                 }
 
             default: break
+            }
+        } else {
+            // показываем сообщения, что пиво в этом году закончилось
+            if !messageViewModel.isMessageViewShow {
+                messageViewModel.showMessageView(withText: "Увы, на предыдущие даты пиво не завезли.")
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    if self.messageViewModel.isMessageViewShow {
+                        self.messageViewModel.hideMessageView()
+                    }
+                }
+                
             }
         }
     }
@@ -250,6 +270,12 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     private func sayAboutError(text: String) {
+        //view.backgroundColor = .systemGray5
+        view.layer.sublayers?.forEach({ layer in
+            if layer.name == "backgroundColor" {
+                layer.removeFromSuperlayer()
+            }
+        })
         activityIndicatorView.stopAnimating()
         errorButton.layer.cornerRadius = 8
         errorButton.alpha = 1
@@ -261,6 +287,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     
     
     private func loadBeersAndBrewries() {
+        prepareBackgroundWhileLoadingData()
+        
         activityIndicatorView.startAnimating()
         
         let dispatchGroup = DispatchGroup()
@@ -348,8 +376,15 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             TimerManager.shared.startTimer()
             
             if let item = item {
+                //create today beer
                 self.setUI(beer: item)
+                //create manual if first launch
+                if LaunchChecker.shared.isShowManual() {
+                    self.showManual()
+                }
+
             } else {
+                self.view.backgroundColor = .systemGray5
                 self.errorLabel.alpha = 1
                 self.errorImageView.alpha = 1
                 self.errorLabel.text = "Не найдено пиво на текущую дату. Попробуйте зайти в приложение позже."
@@ -358,6 +393,19 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             self.activityIndicatorView.stopAnimating()
         }
         
+    }
+    
+    func showManual() {
+        let manual = ShowManual(myFrame: self.view.frame, coordinates: self.beerLabelView.createArrayOfCoordinates(views: [
+            self.favoritesButton,
+            self.goToTodayButton,
+            self.calendarButton,
+            self.shareButton,
+            self.addToFavoriteButton,
+            self.untappdButton,
+            self.infoButton
+        ]))
+        self.view.addSubview(manual)
     }
     
     func setUI(beer: BeerData) {
@@ -375,6 +423,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
 
         if let firstColor = beer.firstColor, let secondColor = beer.secondColor {
             beerLabelView.backgroundColor = UIColor.white
+            
             ColorService.shared.setGradientBackgroundOnView(view: beerLabelView, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 0)
             newShareViewModel.transform = CGAffineTransform.identity // костыль чтобы правильно красилась вьюха после scale
             ColorService.shared.setGradientBackgroundOnView(view: newShareViewModel, firstColor: UIColor(hex: firstColor), secondColor: UIColor(hex: secondColor), cornerRadius: 16)
@@ -402,6 +451,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             beerDateMonthLabel.text = dateArray[1]
         }
         
+        // подгрузим обложку пива
         if let strUrl = beer.beerLabelURL, let url = URL(string: strUrl) {
             beerLabelImage.kf.indicatorType = .activity
             beerLabelImage.kf.setImage(with: url, placeholder: nil, options: nil) { result in
@@ -414,17 +464,18 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                     self.beerLabelImage.image = self.wrongBeerImage
                 }
             }
-
         }
         
         setElementsAlpha(value: 0.8, valueForImage: 1)
         
+        // кнопка перехода на сегодняшнюю дату активна/неактивна
         if calendarModel?.currentIndex == CalendarModel.borderIndex {
             goToTodayButton.isEnabled = false
         } else {
             goToTodayButton.isEnabled = true
         }
         
+        // выставим в модели вью для расшаривания текущее пиво и пивоварню
         newShareViewModel.currentBeer = beer
         if let id = beer.breweryID {
             newShareViewModel.currentBrewery = breweriesModel?.getCurrentBrewery(id: id)
@@ -447,6 +498,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         calendarButton.alpha = value
     }
     
+    private func prepareBackgroundWhileLoadingData() {
+        ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: "#ffcf0d"), secondColor: UIColor(hex: "#e28123"), cornerRadius: 0)
+    }
+    
     private func prepareUI() {
         setElementsAlpha(value: 0, valueForImage: 0)
     
@@ -461,8 +516,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         
         activityIndicatorView.center = view.center
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.style = .large
-        activityIndicatorView.color = .red
+        activityIndicatorView.style = .medium
+        activityIndicatorView.color = .white
         view.addSubview(activityIndicatorView)
         
         wrongBeerImage = wrongBeerImage?.resized(toWidth: 130)
@@ -491,7 +546,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
             favoriteBeersModel.removeBeerFromFavorites(id: currentBeerID)
             addToFavoriteButton.setImage(UIImage(named: "iconLikeEmptyVer2"), for: .normal)
         } else {
-            if let image = UIImage(named: "iconLikeVer2") {
+            if let image = UIImage(named: "whiteStar") {
                 beerLabelImage.showDoubleTapArt(imageForShowing: image)
             }
             generator.impactOccurred()

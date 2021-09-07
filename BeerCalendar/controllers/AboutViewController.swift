@@ -12,8 +12,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 
     var currentBeer: BeerData?
     @IBOutlet weak var mainSubview: UIView!
-    @IBOutlet weak var feedBackButton: UIButton!
-    @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet weak var stepanLabel: UILabel!
+    @IBOutlet weak var yuriyLabel: UILabel!
+    @IBOutlet weak var warnLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    var delegate: MainViewControllerDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +36,22 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         mainSubview.alpha = 0
         guard let currentBeer = currentBeer, let firstColorStr = currentBeer.firstColor, let secondColorStr = currentBeer.secondColor else {return}
         ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: firstColorStr), secondColor: UIColor(hex: secondColorStr), cornerRadius: 0)
-        feedBackButton.layer.cornerRadius = 12
-        feedBackButton.layer.borderWidth = 3
-        feedBackButton.layer.borderColor = UIColor.black.cgColor
-        rateButton.layer.cornerRadius = 12
-        rateButton.layer.borderWidth = 3
-        rateButton.layer.borderColor = UIColor.black.cgColor
+
+        aboutLabel.textAlignment = .justified
+        let text = "Приложение <span class='bld'>Пивной Календарь</span> разработано коллаборацией <span class='bld'>Чугуниевая Долина</span>, дабы каждый имел возможность узнавать о новых сортах пенного напитка каждый день. Бумажную версию календаря можно заказать на <span class='bld'>Boomstarter</span>.<br><br>Все этикетки используются с разрешения и одобрения пивоварен. Отдельное спасибо <span class='bld'>Groteskly Yours Studio</span> за использованный в приложении шрифт Okta Neue.<br><br>По вопросам сотрудничества:"
+
+        aboutLabel.attributedText = NSAttributedString(html: text, fontName: "OktaNeue-Regular", fontSize: 16)
         
+        
+        let stepanText = "<span class = 'half'><span class='bld'>Степан Шмытинский</span><br>Идеи, продюссер</span>"
+        let yuriyText = "<span class = 'half'><span class='bld'>Юрий Пашков</span><br>Идеи, программист</span>"
+        stepanLabel.attributedText = NSAttributedString(html: stepanText, fontName: "OktaNeue-Regular", fontSize: 15)
+        yuriyLabel.attributedText = NSAttributedString(html: yuriyText, fontName: "OktaNeue-Regular", fontSize: 15)
+        let warnText = "<center>Всё это бесконечно весело,<br>но помните:<br><span class = 'bld'>Чрезмерное употребление алкоголя может навредить вашему здоровью!</span></center>"
+        warnLabel.attributedText = NSAttributedString(html: warnText, fontName: "OktaNeue-Regular", fontSize: 16)
+        
+        let emailLabelText = "<span class = 'half'><span class='bld'>Электропочта</span><br>По любым вопросам</span>"
+        emailLabel.attributedText = NSAttributedString(html: emailLabelText, fontName: "OktaNeue-Regular", fontSize: 15)
     }
     
     private func sendEmail() {
@@ -50,7 +64,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         present(mail, animated: true, completion: nil)
     }
     
-    @IBAction func feedBackButtonTap(_ sender: UIButton) {
+    
+    @IBAction func emailButtonTap(_ sender: UIButton) {
         sender.pressedEffect(scale: 0.96) { [weak self] in
             if MFMailComposeViewController.canSendMail() {
                 self?.sendEmail()
@@ -58,13 +73,33 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
-    @IBAction func rateButtonTap(_ sender: UIButton) {
-        sender.pressedEffect(scale: 0.96) {
-            if let url = URL(string: "https://apps.apple.com/ru/app/id1581340486"), UIApplication.shared.canOpenURL(url) {
+    @IBAction func helpButtonTap(_ sender: UIButton) {
+        sender.pressedEffect(scale: 0.96) { [weak self] in
+            self?.dismiss(animated: true) {
+                // show manual
+                self?.delegate?.showManual()
+            }
+        }
+    }
+    
+    
+    @IBAction func stepanButtonTap(_ sender: UIButton) {
+        sender.pressedEffect(scale: 0.9) {
+            if let url = URL(string: "https://www.instagram.com/misserchmitt/"), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }
+    
+    
+    @IBAction func yuriyButtonTap(_ sender: UIButton) {
+        sender.pressedEffect(scale: 0.9) {
+            if let url = URL(string: "https://www.github.com/yuriypashkov/"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)

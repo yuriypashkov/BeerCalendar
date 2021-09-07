@@ -11,6 +11,7 @@
 		210E0C3826E038260045C3C2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E0C3726E038260045C3C2 /* AboutViewController.swift */; };
 		212940FB26DCFC6100BD5550 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FA26DCFC6100BD5550 /* DateValidator.swift */; };
 		212940FD26DD263E00BD5550 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212940FC26DD263E00BD5550 /* AlertManager.swift */; };
+		2150007926E6CC3C00359EA9 /* ShowManual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150007826E6CC3C00359EA9 /* ShowManual.swift */; };
 		21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */; };
 		21606D5626C1AF5500A70CEA /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5526C1AF5500A70CEA /* ColorService.swift */; };
 		21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5726C2C78000A70CEA /* InfoViewController.swift */; };
@@ -59,6 +60,7 @@
 		210E0C3726E038260045C3C2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		212940FA26DCFC6100BD5550 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
 		212940FC26DD263E00BD5550 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		2150007826E6CC3C00359EA9 /* ShowManual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManual.swift; sourceTree = "<group>"; };
 		21606D5126C17B5D00A70CEA /* PartialSizePresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSizePresentViewController.swift; sourceTree = "<group>"; };
 		21606D5526C1AF5500A70CEA /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
 		21606D5726C2C78000A70CEA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */,
 				218149E726C5794E0095FC98 /* CrowdFindingADData.swift */,
 				21BA81BA26CC270600A70099 /* NewShareViewModel.swift */,
+				2150007826E6CC3C00359EA9 /* ShowManual.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */,
 				21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */,
 				21606D5226C17B5D00A70CEA /* PartialSizePresentViewController.swift in Sources */,
+				2150007926E6CC3C00359EA9 /* ShowManual.swift in Sources */,
 				21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -590,7 +594,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -122,6 +122,8 @@ class InfoViewController: UIViewController {
             self.mainSubview.alpha = 1
         }
     }
+    
+    
 
     @IBAction func socialButtonTap(_ sender: UIButton) {
         

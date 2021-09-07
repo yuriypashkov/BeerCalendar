@@ -10,7 +10,7 @@ import Kingfisher
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     private func setupKingfisherSettings() {
         ImageCache.default.memoryStorage.config.totalCostLimit = 1024*1024*20 // ограничиваем KF Ram Cache до 20 mb, иначе он кеширует картинки в RAM и выжирает память при прокрутке страниц
     }
@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupKingfisherSettings()
+        
         return true
     }
 

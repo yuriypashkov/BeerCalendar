@@ -13,6 +13,7 @@ protocol MainViewControllerDelegate {
     func goToChooseneBeer(choosenBeer: BeerData)
     func goToBeerFromDatePicker(date: String)
     func isBeerExist(date: String) -> Bool
+    func showManual()
 }
 
 extension UIView {
@@ -30,6 +31,42 @@ extension UIView {
             layer.render(in: rendererContext.cgContext)
         }
     }
+    
+    // method from StackOverflow for calculate buttons frame.origin
+    func getConvertedFrame(fromSubview subview: UIView) -> CGRect? {
+        guard subview.isDescendant(of: self) else {
+            return nil
+        }
+        
+        var frame = subview.frame
+        if subview.superview == nil {
+            return frame
+        }
+        
+        var superview = subview.superview
+        while superview != self {
+            frame = superview!.convert(frame, to: superview!.superview)
+            if superview!.superview == nil {
+                break
+            } else {
+                superview = superview!.superview
+            }
+        }
+        
+        return superview!.convert(frame, to: self)
+    }
+    
+    // create array of coordinates
+    func createArrayOfCoordinates(views: [UIView]) -> [CGRect] {
+        var result: [CGRect] = []
+        for view in views {
+            let frame = self.getConvertedFrame(fromSubview: view)
+            if let frame = frame {
+                result.append(frame)
+            }
+        }
+        return result
+    }
 }
 
 extension UIDevice {
@@ -40,6 +77,14 @@ extension UIDevice {
 }
 
 extension UIColor {
+    
+//    var hexString: String? {
+//        guard let components = self.cgColor.components else { return nil}
+//        let r = components[0]
+//        let g = components[1]
+//        let b = components[2]
+//        return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+//    }
     
     convenience init(hex: String) {
         
@@ -75,7 +120,8 @@ extension UIImageView {
     func showDoubleTapArt(imageForShowing: UIImage) {
         let imageView = UIImageView(frame: CGRect(x: 3 * self.frame.size.width / 8, y: 3 * self.frame.size.height / 8, width: self.frame.size.width / 4, height: self.frame.size.height / 4))
         imageView.image = imageForShowing
-        imageView.setImageColor(color: .systemRed)
+        //imageView.alpha = 0.8
+        //imageView.setImageColor(color: .systemRed)
         imageView.contentMode = .scaleAspectFit
         self.addSubview(imageView)
         UIView.animate(withDuration: 0.5) {
@@ -159,6 +205,44 @@ extension UIButton {
     
 }
 
+extension String {
+    
+    func htmlAttributedText(font: UIFont) -> NSAttributedString? {
+        do {
+            let htmlCSSString = "<style>" +
+                "html *" +
+                "{" +
+                "font-size: \(font.pointSize)pt !important;" +
+                "color: #232020 !important;" + // mb use UIColor.hexString
+                "font-family: \(font.familyName), Helvetica !important;" +
+                "}</style> \(self)"
+            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
+                return nil
+            }
+            return try NSAttributedString(data: data, options: [
+                .documentType: NSAttributedString.DocumentType.html,
+                .characterEncoding: String.Encoding.utf8.rawValue
+            ], documentAttributes: nil)
+        } catch  {
+            print(error)
+            return nil
+        }
+    }
+    
+}
+
+extension NSAttributedString {
+    
+    convenience init?(html: String, fontName: String, fontSize: Int) {
+        let str = "<style>body {font-family: '\(fontName)'; font-size: \(fontSize)px; color: #232020; } .bld { font-family: 'OktaNeue-SemiBold'} .half {line-height: 1.2em}</style>\(html)"
+            guard let data = str.data(using: .unicode) else {
+                return nil
+        }
+            try? self.init(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        }
+    
+
+}
+//text-align: justify;
 //Family: Okta Neue Font names: ["OktaNeue-Normal", "OktaNeue-Bold", "OktaNeue-MediumItalic", "OktaNeue-SemiBold", "OktaNeue-LightItalic", "OktaNeue-Light", "OktaNeue-Regular", "OktaNeue-Medium"]
 
-// «Токсовский Трамплин — пиво дня 5 июля 2021, согласно пивному календарю! @Beer.Calendar #BeerCalendar *ссылка на приложение*»

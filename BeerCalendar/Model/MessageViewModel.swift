@@ -16,6 +16,7 @@ class MessageViewModel {
     private var y: CGFloat
     private var width: CGFloat
     private var height: CGFloat
+    private var label: UILabel = UILabel()
     
     init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) { // инициализируем класс с view.frame.size
         self.x = x
@@ -25,17 +26,17 @@ class MessageViewModel {
         messageView = UIView(frame: CGRect(x: 0.15 * x, y: y, width: 0.7 * width, height: height))
         messageView.backgroundColor = .systemGreen
         messageView.layer.cornerRadius = 30
-        let label = UILabel(frame: CGRect(x: 0, y: 8, width: messageView.frame.size.width - 32, height: height))
+        label = UILabel(frame: CGRect(x: 0, y: 8, width: messageView.frame.size.width - 32, height: height))
         label.center = CGPoint(x: messageView.frame.size.width / 2 + 0.05 * x, y: 50)
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
         label.font = UIFont(name: "OktaNeue-Medium", size: 16)
-        label.text = "Следующее пиво можно увидеть только на следующий день."
         messageView.addSubview(label)
     }
     
-    func showMessageView() {
+    func showMessageView(withText: String) {
+        label.text = withText
         UIView.animate(withDuration: 0.8,
                        delay: 0,
                        usingSpringWithDamping: 0.1,

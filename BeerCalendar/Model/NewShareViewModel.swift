@@ -23,10 +23,12 @@ class NewShareViewModel: UIView {
     var instaActivityIndicator = UIActivityIndicatorView()
     var moreActivityIndicator = UIActivityIndicatorView()
     let viewController = UIApplication.shared.windows.first?.rootViewController
+    var delegate: MainViewControllerDelegate? // очень странный костыль с делегатом, дабы в дальнейшем была возможность вызвать showManual()
     
-    init(myFrame: CGRect, shareButton: UIButton) { // 144x48
+    init(myFrame: CGRect, shareButton: UIButton, delegate: MainViewControllerDelegate?) { // 144x48
         super.init(frame: myFrame)
         self.shareButton = shareButton
+        self.delegate = delegate
         backgroundColor = .systemGray5
         layer.cornerRadius = 16
         alpha = 0
@@ -108,6 +110,7 @@ class NewShareViewModel: UIView {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let aboutViewController = storyboard.instantiateViewController(identifier: "AboutViewController") as! AboutViewController
             aboutViewController.currentBeer = self.currentBeer
+            aboutViewController.delegate = self.delegate
             self.viewController?.present(aboutViewController, animated: true, completion: {
                 self.hideView()
             })
@@ -171,8 +174,10 @@ class NewShareViewModel: UIView {
                     if let image = image {
                         self.hideView()
                         self.shareOnInstagram(image: image)
+                        //return
                     }
                     if let error = error {
+                        self.hideView()
                         print(error)
                     }
                 }
@@ -197,7 +202,6 @@ class NewShareViewModel: UIView {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         } else {
                             let alert = AlertManager.shared.createAlert(title: "Ошибочка вышла", text: "У вас не установлено приложение Instagram")
-                            //let viewController = UIApplication.shared.windows.first?.rootViewController
                             self.viewController?.present(alert, animated: true, completion: nil)
                         }
                       }

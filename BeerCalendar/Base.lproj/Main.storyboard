@@ -33,13 +33,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="someError" translatesAutoresizingMaskIntoConstraints="NO" id="g2w-xP-RdJ">
-                                <rect key="frame" x="86" y="251.33333333333337" width="203" height="203"/>
+                                <rect key="frame" x="86" y="249.66666666666663" width="203" height="203"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g2w-xP-RdJ" secondAttribute="height" multiplier="1:1" id="VcA-g7-U4K"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRP-3b-j8y" userLabel="Error Label">
-                                <rect key="frame" x="47" y="478.33333333333331" width="281" height="18"/>
+                                <rect key="frame" x="47" y="476.66666666666669" width="281" height="21"/>
                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,17 +48,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBt-Yt-vUM" userLabel="DateStackView">
-                                        <rect key="frame" x="243" y="491" width="116" height="108"/>
+                                        <rect key="frame" x="246.66666666666666" y="491" width="112.33333333333334" height="126"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-QD-hEw">
-                                                <rect key="frame" x="27" y="0.0" width="62" height="72"/>
-                                                <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="72"/>
+                                                <rect key="frame" x="16.000000000000028" y="0.0" width="80.333333333333329" height="84"/>
+                                                <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="72"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-K8-5BC">
-                                                <rect key="frame" x="0.0" y="72" width="116" height="36"/>
-                                                <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="36"/>
+                                                <rect key="frame" x="0.0" y="84" width="112.33333333333333" height="42"/>
+                                                <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -71,10 +71,10 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OWG-tf-nxg" userLabel="BeerInfo">
-                                        <rect key="frame" x="16" y="631" width="343" height="78"/>
+                                        <rect key="frame" x="16" y="649" width="343" height="88"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="213.33333333333337" y="0.0" width="129.66666666666663" height="26"/>
+                                                <rect key="frame" x="219.66666666666666" y="0.0" width="123.33333333333334" height="30.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="26"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -87,7 +87,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="230" y="36" width="113" height="17"/>
+                                                <rect key="frame" x="235.33333333333334" y="40.333333333333371" width="107.66666666666666" height="20"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="0tu-Sm-RgB">
-                                                <rect key="frame" x="277.33333333333331" y="63" width="65.666666666666686" height="15"/>
+                                                <rect key="frame" x="280" y="70.333333333333371" width="63" height="17.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2v-3O-vjQ" userLabel="Error Button">
-                                <rect key="frame" x="104.66666666666669" y="512.33333333333337" width="166" height="40"/>
+                                <rect key="frame" x="106" y="513.66666666666663" width="163" height="43"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="36" minY="12" maxX="36" maxY="10"/>
@@ -657,7 +657,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7G-G7-NSC">
-                                        <rect key="frame" x="32" y="4" width="311" height="16"/>
+                                        <rect key="frame" x="32" y="8" width="311" height="16"/>
                                         <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="16"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -676,7 +676,7 @@
                                     <constraint firstItem="K7G-G7-NSC" firstAttribute="width" secondItem="a46-Bg-7RR" secondAttribute="width" id="kW9-de-F9J"/>
                                     <constraint firstItem="a46-Bg-7RR" firstAttribute="top" secondItem="jyg-EY-fuC" secondAttribute="top" constant="36" id="kff-hk-ff0"/>
                                     <constraint firstItem="ecP-wp-Nmc" firstAttribute="top" secondItem="WJx-hY-oKO" secondAttribute="bottom" constant="16" id="thm-cS-sfa"/>
-                                    <constraint firstItem="K7G-G7-NSC" firstAttribute="top" secondItem="jyg-EY-fuC" secondAttribute="top" constant="4" id="vL2-4R-3nR"/>
+                                    <constraint firstItem="K7G-G7-NSC" firstAttribute="top" secondItem="jyg-EY-fuC" secondAttribute="top" constant="8" id="vL2-4R-3nR"/>
                                     <constraint firstAttribute="height" constant="408" id="xF3-Kq-4H6"/>
                                 </constraints>
                             </view>
@@ -712,65 +712,155 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fal-e5-MtV" userLabel="MainSubview">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="741.66666666666663"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="О приложении" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6a-dT-tLb">
-                                                <rect key="frame" x="16" y="16" width="343" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пиво каждый день и круглый год!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="d6a-dT-tLb">
+                                                <rect key="frame" x="16" y="72" width="343" height="18"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь нужен текст о приложении, Степан, напиши его пожалуйста." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-FN-GVL">
-                                                <rect key="frame" x="16" y="50" width="343" height="32"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь нужен текст о приложении, Степан, напиши его пожалуйста." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-FN-GVL">
+                                                <rect key="frame" x="16" y="122" width="343" height="32"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="V3i-BK-bLC" userLabel="ButtonsStackView">
-                                                <rect key="frame" x="80" y="114" width="215" height="88"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пивной Календарь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="aVh-wX-RNn">
+                                                <rect key="frame" x="16" y="32" width="343" height="32"/>
+                                                <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="271-EA-ayl" userLabel="StepanStackView">
+                                                <rect key="frame" x="16" y="170" width="343" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50D-eZ-VDM">
-                                                        <rect key="frame" x="26" y="0.0" width="163" height="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Степан Шмытинский" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM9-FM-FRU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="t0A-UL-Adh"/>
+                                                            <constraint firstAttribute="height" constant="50" id="ldA-6b-jgQ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
-                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
-                                                        <state key="normal" title="Обратная связь">
-                                                            <color key="titleColor" systemColor="labelColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="feedBackButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="5Fj-fz-D07"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhi-VU-tia">
-                                                        <rect key="frame" x="0.0" y="52" width="215" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2Z-Wy-ByA">
+                                                        <rect key="frame" x="293" y="0.0" width="50" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="mTW-0F-mbF"/>
+                                                            <constraint firstAttribute="width" secondItem="v2Z-Wy-ByA" secondAttribute="height" multiplier="1:1" id="WmA-eO-Mna"/>
+                                                            <constraint firstAttribute="width" constant="50" id="de2-tx-oHe"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
-                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
-                                                        <state key="normal" title="Оценить приложение">
-                                                            <color key="titleColor" systemColor="labelColor"/>
-                                                        </state>
+                                                        <state key="normal" image="iconInstaVer2"/>
                                                         <connections>
-                                                            <action selector="rateButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="BNm-It-A6o"/>
+                                                            <action selector="stepanButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="2RD-8n-xed"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="I1q-zC-grK" userLabel="YuriyStackView">
+                                                <rect key="frame" x="16" y="236" width="343" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Юрий Пашков" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9II-qp-Fu7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DX0-PE-PTh">
+                                                        <rect key="frame" x="293" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="DX0-PE-PTh" secondAttribute="height" multiplier="1:1" id="qv0-qm-M8o"/>
+                                                            <constraint firstAttribute="width" constant="50" id="ynw-Wz-dgn"/>
+                                                        </constraints>
+                                                        <state key="normal" image="iconGithub"/>
+                                                        <connections>
+                                                            <action selector="yuriyButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="703-lu-zLx"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-nk-u5L">
+                                                <rect key="frame" x="16" y="384" width="343" height="16"/>
+                                                <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoDolina" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-3U-h17">
+                                                <rect key="frame" x="16" y="432.00000000000006" width="343" height="205.66666666666669"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7I5-3U-h17" secondAttribute="height" multiplier="15:9" id="3fU-bf-cof"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hvw-Nh-naU">
+                                                <rect key="frame" x="16" y="302" width="343" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZU-ra-17Z">
+                                                        <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Электропочта">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="16" name="OktaNeue-Regular"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imt-ev-K95">
+                                                        <rect key="frame" x="293" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="BVs-hl-KR1"/>
+                                                            <constraint firstAttribute="width" secondItem="imt-ev-K95" secondAttribute="height" multiplier="1:1" id="Ujc-Vf-Vcn"/>
+                                                        </constraints>
+                                                        <state key="normal" image="iconMail"/>
+                                                        <connections>
+                                                            <action selector="emailButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="3KN-0j-gVC"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nY-q8-SN5">
+                                                <rect key="frame" x="55.666666666666657" y="669.66666666666663" width="264" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="iGU-LZ-mbE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="16"/>
+                                                <state key="normal" title="Помощь в работе с приложением">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="helpButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="Xvt-eA-GLP"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="I1q-zC-grK" firstAttribute="top" secondItem="271-EA-ayl" secondAttribute="bottom" constant="16" id="0TB-yj-8nd"/>
+                                            <constraint firstItem="hvw-Nh-naU" firstAttribute="top" secondItem="I1q-zC-grK" secondAttribute="bottom" constant="16" id="38j-qg-isQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="7nY-q8-SN5" secondAttribute="bottom" constant="32" id="4Xu-0X-OoF"/>
+                                            <constraint firstAttribute="trailing" secondItem="oiB-nk-u5L" secondAttribute="trailing" constant="16" id="7Nq-ke-6fI"/>
+                                            <constraint firstItem="7I5-3U-h17" firstAttribute="top" secondItem="oiB-nk-u5L" secondAttribute="bottom" constant="32" id="8oh-q0-tli"/>
                                             <constraint firstAttribute="trailing" secondItem="Yge-FN-GVL" secondAttribute="trailing" constant="16" id="9yM-QE-VSg"/>
-                                            <constraint firstItem="d6a-dT-tLb" firstAttribute="top" secondItem="Fal-e5-MtV" secondAttribute="top" constant="16" id="SV1-lj-waq"/>
+                                            <constraint firstAttribute="trailing" secondItem="7I5-3U-h17" secondAttribute="trailing" constant="16" id="AJ2-d1-kHU"/>
+                                            <constraint firstItem="aVh-wX-RNn" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="Cv4-bB-eJg"/>
+                                            <constraint firstAttribute="trailing" secondItem="hvw-Nh-naU" secondAttribute="trailing" constant="16" id="Fhc-UB-Axe"/>
+                                            <constraint firstItem="7nY-q8-SN5" firstAttribute="centerX" secondItem="Fal-e5-MtV" secondAttribute="centerX" id="IN4-0S-0hK"/>
+                                            <constraint firstItem="7I5-3U-h17" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="LEZ-cl-1pe"/>
+                                            <constraint firstItem="I1q-zC-grK" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="QIn-Mu-bbE"/>
                                             <constraint firstAttribute="trailing" secondItem="d6a-dT-tLb" secondAttribute="trailing" constant="16" id="UHt-IA-4F3"/>
+                                            <constraint firstItem="aVh-wX-RNn" firstAttribute="top" secondItem="Fal-e5-MtV" secondAttribute="top" constant="32" id="XC9-si-XaT"/>
+                                            <constraint firstItem="d6a-dT-tLb" firstAttribute="top" secondItem="aVh-wX-RNn" secondAttribute="bottom" constant="8" id="YNC-1C-GfA"/>
+                                            <constraint firstItem="271-EA-ayl" firstAttribute="top" secondItem="Yge-FN-GVL" secondAttribute="bottom" constant="16" id="YVA-a3-Ce5"/>
                                             <constraint firstItem="d6a-dT-tLb" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="Yq0-vq-W2O"/>
-                                            <constraint firstItem="V3i-BK-bLC" firstAttribute="centerX" secondItem="Fal-e5-MtV" secondAttribute="centerX" id="bXh-nA-zAj"/>
+                                            <constraint firstAttribute="trailing" secondItem="I1q-zC-grK" secondAttribute="trailing" constant="16" id="d25-5E-A2j"/>
+                                            <constraint firstItem="271-EA-ayl" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="d7x-h3-zAH"/>
                                             <constraint firstItem="Yge-FN-GVL" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="fPg-f3-KRR"/>
-                                            <constraint firstItem="Yge-FN-GVL" firstAttribute="top" secondItem="d6a-dT-tLb" secondAttribute="bottom" constant="16" id="jdV-wQ-jm8"/>
-                                            <constraint firstAttribute="bottom" secondItem="V3i-BK-bLC" secondAttribute="bottom" constant="32" id="t66-jA-f0Z"/>
-                                            <constraint firstItem="V3i-BK-bLC" firstAttribute="top" secondItem="Yge-FN-GVL" secondAttribute="bottom" constant="32" id="uOp-Qk-weU"/>
+                                            <constraint firstItem="oiB-nk-u5L" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="hsJ-gb-yI2"/>
+                                            <constraint firstItem="Yge-FN-GVL" firstAttribute="top" secondItem="d6a-dT-tLb" secondAttribute="bottom" constant="32" id="jdV-wQ-jm8"/>
+                                            <constraint firstItem="hvw-Nh-naU" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="lbo-ig-Jkt"/>
+                                            <constraint firstAttribute="trailing" secondItem="271-EA-ayl" secondAttribute="trailing" constant="16" id="n6u-rZ-jFr"/>
+                                            <constraint firstAttribute="trailing" secondItem="aVh-wX-RNn" secondAttribute="trailing" constant="16" id="r5S-cf-Bkj"/>
+                                            <constraint firstItem="oiB-nk-u5L" firstAttribute="top" secondItem="hvw-Nh-naU" secondAttribute="bottom" constant="32" id="rGR-9w-eQn"/>
+                                            <constraint firstItem="7nY-q8-SN5" firstAttribute="top" secondItem="7I5-3U-h17" secondAttribute="bottom" constant="32" id="ywl-bk-PXl"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -794,36 +884,42 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="feedBackButton" destination="50D-eZ-VDM" id="Nmw-Eo-NUN"/>
+                        <outlet property="aboutLabel" destination="Yge-FN-GVL" id="y2y-hU-FU0"/>
+                        <outlet property="emailLabel" destination="wZU-ra-17Z" id="zEe-sW-mxv"/>
                         <outlet property="mainSubview" destination="Fal-e5-MtV" id="5aM-lI-68Z"/>
-                        <outlet property="rateButton" destination="jhi-VU-tia" id="xbZ-3S-mDR"/>
+                        <outlet property="stepanLabel" destination="sM9-FM-FRU" id="yJf-UI-8Yd"/>
+                        <outlet property="warnLabel" destination="oiB-nk-u5L" id="YZg-ig-1fX"/>
+                        <outlet property="yuriyLabel" destination="9II-qp-Fu7" id="ZdH-Ak-wAM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nu8-xF-LXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4429" y="105"/>
+            <point key="canvasLocation" x="4428" y="104.92610837438424"/>
         </scene>
     </scenes>
     <designables>
         <designable name="VIi-wD-JGz">
-            <size key="intrinsicContentSize" width="113" height="17"/>
+            <size key="intrinsicContentSize" width="107.66666666666667" height="20"/>
         </designable>
         <designable name="ilw-wL-fvH">
-            <size key="intrinsicContentSize" width="129.66666666666666" height="26"/>
+            <size key="intrinsicContentSize" width="123.33333333333333" height="30.333333333333332"/>
         </designable>
     </designables>
     <resources>
         <image name="iconCalendarVer2" width="40" height="40"/>
         <image name="iconFavoritesVer2" width="40" height="40"/>
         <image name="iconFbVer2" width="40" height="40"/>
+        <image name="iconGithub" width="40" height="40"/>
         <image name="iconInfoVer2" width="40" height="40"/>
         <image name="iconInstaVer2" width="40" height="40"/>
         <image name="iconLikeEmptyVer2" width="40" height="40"/>
+        <image name="iconMail" width="40" height="40"/>
         <image name="iconMiscVer2" width="40" height="40"/>
         <image name="iconSiteVer2" width="40" height="40"/>
         <image name="iconToday" width="40" height="40"/>
         <image name="iconUntappdVer2" width="40" height="40"/>
         <image name="iconVkVer2" width="40" height="40"/>
+        <image name="logoDolina" width="613" height="760"/>
         <image name="someError" width="280" height="418"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
