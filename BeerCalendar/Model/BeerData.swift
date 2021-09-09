@@ -9,12 +9,12 @@ import Foundation
 
 struct BeerData: Codable {
     
-    var id: Int?
+    var id: String?
     var beerDate: String?
     var beerName: String?
     var beerType: String?
     var beerABV: String?
-    var beerIBU: Int?
+    var beerIBU: String?
     var beerDescription: String?
     var beerLabelURL: String?
     var beerLabelPreviewURL: String?

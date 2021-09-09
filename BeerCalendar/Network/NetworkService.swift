@@ -65,6 +65,7 @@ class NetworkService {
             }
             catch {
                 onResult(.failure(NetworkError.decodingError))
+                //onResult(.failure(error))
             }
         }
         

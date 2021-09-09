@@ -13,6 +13,6 @@ class NetworkConfiguration {
     
     var token = ""
     //var apiUrl = "http://localhost:3000"
-    //var apiUrl = "https://adb3-78-107-92-206.ngrok.io"
-    var apiUrl = "http://188.119.67.67:3000"
+    var apiUrl = "https://adb3-78-107-92-206.ngrok.io"
+    //var apiUrl = "http://188.119.67.67:3000"
 }
