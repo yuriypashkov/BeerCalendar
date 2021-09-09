@@ -33,13 +33,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="someError" translatesAutoresizingMaskIntoConstraints="NO" id="g2w-xP-RdJ">
-                                <rect key="frame" x="86" y="249.66666666666663" width="203" height="203"/>
+                                <rect key="frame" x="86" y="251.33333333333337" width="203" height="203"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g2w-xP-RdJ" secondAttribute="height" multiplier="1:1" id="VcA-g7-U4K"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRP-3b-j8y" userLabel="Error Label">
-                                <rect key="frame" x="47" y="476.66666666666669" width="281" height="21"/>
+                                <rect key="frame" x="47" y="478.33333333333331" width="281" height="18"/>
                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,16 +48,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBt-Yt-vUM" userLabel="DateStackView">
-                                        <rect key="frame" x="246.66666666666666" y="491" width="112.33333333333334" height="126"/>
+                                        <rect key="frame" x="240" y="491" width="119" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-QD-hEw">
-                                                <rect key="frame" x="16.000000000000028" y="0.0" width="80.333333333333329" height="84"/>
+                                                <rect key="frame" x="27" y="0.0" width="65.333333333333329" height="72"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="72"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Август" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-K8-5BC">
-                                                <rect key="frame" x="0.0" y="84" width="112.33333333333333" height="42"/>
+                                                <rect key="frame" x="0.0" y="72" width="119" height="36"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="36"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -71,10 +71,10 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OWG-tf-nxg" userLabel="BeerInfo">
-                                        <rect key="frame" x="16" y="649" width="343" height="88"/>
+                                        <rect key="frame" x="16" y="631" width="343" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-wL-fvH" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="219.66666666666666" y="0.0" width="123.33333333333334" height="30.333333333333332"/>
+                                                <rect key="frame" x="213.33333333333337" y="0.0" width="129.66666666666663" height="26"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="26"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -87,7 +87,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BreweryName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-wD-JGz" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="235.33333333333334" y="40.333333333333371" width="107.66666666666666" height="20"/>
+                                                <rect key="frame" x="230" y="36" width="113" height="17"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeerType" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="0tu-Sm-RgB">
-                                                <rect key="frame" x="280" y="70.333333333333371" width="63" height="17.666666666666671"/>
+                                                <rect key="frame" x="277.33333333333331" y="63" width="65.666666666666686" height="15"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2v-3O-vjQ" userLabel="Error Button">
-                                <rect key="frame" x="106" y="513.66666666666663" width="163" height="43"/>
+                                <rect key="frame" x="104.66666666666669" y="512.33333333333337" width="166" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <fontDescription key="fontDescription" name="OktaNeue-SemiBold" family="Okta Neue" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="36" minY="12" maxX="36" maxY="10"/>
@@ -395,7 +395,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnF-ui-GP3" userLabel="MainSubview">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="449.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного о пиве" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHX-vV-RvR">
                                                 <rect key="frame" x="12" y="78" width="351" height="18"/>
@@ -422,7 +422,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cfn-nq-07S" userLabel="SocialButtonsStackView">
-                                                <rect key="frame" x="71.666666666666686" y="351" width="232" height="48"/>
+                                                <rect key="frame" x="71.666666666666686" y="365.66666666666669" width="232" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-fY-tsd">
                                                         <rect key="frame" x="0.0" y="4" width="40" height="40"/>
@@ -497,15 +497,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="idK-PW-LXd">
-                                                <rect key="frame" x="12" y="210" width="351" height="117"/>
+                                                <rect key="frame" x="56" y="210" width="263" height="131.66666666666663"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="idK-PW-LXd" secondAttribute="height" multiplier="3:1" id="bYC-Iv-3UW"/>
+                                                    <constraint firstAttribute="width" secondItem="idK-PW-LXd" secondAttribute="height" multiplier="2:1" id="bYC-Iv-3UW"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="idK-PW-LXd" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="3H5-tH-UZm"/>
+                                            <constraint firstItem="idK-PW-LXd" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="56" id="3H5-tH-UZm"/>
                                             <constraint firstItem="OHX-vV-RvR" firstAttribute="top" secondItem="dln-9b-9gZ" secondAttribute="bottom" constant="24" id="3ba-Gv-Y7y"/>
                                             <constraint firstItem="qo3-an-vqd" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="9Mu-be-1iO"/>
                                             <constraint firstItem="OHX-vV-RvR" firstAttribute="leading" secondItem="fnF-ui-GP3" secondAttribute="leading" constant="12" id="9Yg-xE-Uk6"/>
@@ -517,7 +517,7 @@
                                             <constraint firstAttribute="trailing" secondItem="FEk-6g-e3y" secondAttribute="trailing" constant="12" id="Jk8-c2-boh"/>
                                             <constraint firstAttribute="trailing" secondItem="qo3-an-vqd" secondAttribute="trailing" constant="12" id="Jlr-qe-qmQ"/>
                                             <constraint firstItem="jWt-E5-EUY" firstAttribute="top" secondItem="fnF-ui-GP3" secondAttribute="top" constant="12" id="MJ0-FR-UuN"/>
-                                            <constraint firstAttribute="trailing" secondItem="idK-PW-LXd" secondAttribute="trailing" constant="12" id="MUG-yQ-lvP"/>
+                                            <constraint firstAttribute="trailing" secondItem="idK-PW-LXd" secondAttribute="trailing" constant="56" id="MUG-yQ-lvP"/>
                                             <constraint firstAttribute="trailing" secondItem="9Kg-ON-CGw" secondAttribute="trailing" constant="12" id="Oj9-CQ-A65"/>
                                             <constraint firstAttribute="trailing" secondItem="dln-9b-9gZ" secondAttribute="trailing" constant="12" id="UMw-dl-GEU"/>
                                             <constraint firstAttribute="trailing" secondItem="jWt-E5-EUY" secondAttribute="trailing" constant="12" id="Wfd-73-DTo"/>
@@ -712,7 +712,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fal-e5-MtV" userLabel="MainSubview">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="741.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="807.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пиво каждый день и круглый год!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="d6a-dT-tLb">
                                                 <rect key="frame" x="16" y="72" width="343" height="18"/>
@@ -780,18 +780,18 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-nk-u5L">
-                                                <rect key="frame" x="16" y="384" width="343" height="16"/>
+                                                <rect key="frame" x="16" y="450" width="343" height="16"/>
                                                 <fontDescription key="fontDescription" name="OktaNeue-Regular" family="Okta Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoDolina" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-3U-h17">
-                                                <rect key="frame" x="16" y="432.00000000000006" width="343" height="205.66666666666669"/>
+                                                <rect key="frame" x="16" y="498.00000000000006" width="343" height="205.66666666666669"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="7I5-3U-h17" secondAttribute="height" multiplier="15:9" id="3fU-bf-cof"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hvw-Nh-naU">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hvw-Nh-naU" userLabel="EmailStackView">
                                                 <rect key="frame" x="16" y="302" width="343" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZU-ra-17Z">
@@ -819,7 +819,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nY-q8-SN5">
-                                                <rect key="frame" x="55.666666666666657" y="669.66666666666663" width="264" height="40"/>
+                                                <rect key="frame" x="55.666666666666657" y="735.66666666666663" width="264" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="iGU-LZ-mbE"/>
                                                 </constraints>
@@ -831,16 +831,40 @@
                                                     <action selector="helpButtonTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="Xvt-eA-GLP"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bwb-RA-TT4" userLabel="InstaCalendarStackView">
+                                                <rect key="frame" x="16" y="368" width="343" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insta Beer.Calendar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8Q-nh-Ibw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJj-t1-RwF">
+                                                        <rect key="frame" x="293" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="RJj-t1-RwF" secondAttribute="height" multiplier="1:1" id="Vyd-sO-qEo"/>
+                                                            <constraint firstAttribute="width" constant="50" id="bu5-Ve-1DN"/>
+                                                        </constraints>
+                                                        <state key="normal" image="iconInstaVer2"/>
+                                                        <connections>
+                                                            <action selector="instaBeerTap:" destination="Nfn-ZB-V71" eventType="touchUpInside" id="bZx-Kt-dSF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="I1q-zC-grK" firstAttribute="top" secondItem="271-EA-ayl" secondAttribute="bottom" constant="16" id="0TB-yj-8nd"/>
+                                            <constraint firstItem="oiB-nk-u5L" firstAttribute="top" secondItem="bwb-RA-TT4" secondAttribute="bottom" constant="32" id="1te-2e-dgE"/>
                                             <constraint firstItem="hvw-Nh-naU" firstAttribute="top" secondItem="I1q-zC-grK" secondAttribute="bottom" constant="16" id="38j-qg-isQ"/>
                                             <constraint firstAttribute="bottom" secondItem="7nY-q8-SN5" secondAttribute="bottom" constant="32" id="4Xu-0X-OoF"/>
                                             <constraint firstAttribute="trailing" secondItem="oiB-nk-u5L" secondAttribute="trailing" constant="16" id="7Nq-ke-6fI"/>
                                             <constraint firstItem="7I5-3U-h17" firstAttribute="top" secondItem="oiB-nk-u5L" secondAttribute="bottom" constant="32" id="8oh-q0-tli"/>
                                             <constraint firstAttribute="trailing" secondItem="Yge-FN-GVL" secondAttribute="trailing" constant="16" id="9yM-QE-VSg"/>
                                             <constraint firstAttribute="trailing" secondItem="7I5-3U-h17" secondAttribute="trailing" constant="16" id="AJ2-d1-kHU"/>
+                                            <constraint firstItem="bwb-RA-TT4" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="Amu-XD-yid"/>
                                             <constraint firstItem="aVh-wX-RNn" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="Cv4-bB-eJg"/>
                                             <constraint firstAttribute="trailing" secondItem="hvw-Nh-naU" secondAttribute="trailing" constant="16" id="Fhc-UB-Axe"/>
                                             <constraint firstItem="7nY-q8-SN5" firstAttribute="centerX" secondItem="Fal-e5-MtV" secondAttribute="centerX" id="IN4-0S-0hK"/>
@@ -853,13 +877,14 @@
                                             <constraint firstItem="d6a-dT-tLb" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="Yq0-vq-W2O"/>
                                             <constraint firstAttribute="trailing" secondItem="I1q-zC-grK" secondAttribute="trailing" constant="16" id="d25-5E-A2j"/>
                                             <constraint firstItem="271-EA-ayl" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="d7x-h3-zAH"/>
+                                            <constraint firstItem="bwb-RA-TT4" firstAttribute="top" secondItem="hvw-Nh-naU" secondAttribute="bottom" constant="16" id="fCA-cj-yqJ"/>
                                             <constraint firstItem="Yge-FN-GVL" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="fPg-f3-KRR"/>
                                             <constraint firstItem="oiB-nk-u5L" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="hsJ-gb-yI2"/>
                                             <constraint firstItem="Yge-FN-GVL" firstAttribute="top" secondItem="d6a-dT-tLb" secondAttribute="bottom" constant="32" id="jdV-wQ-jm8"/>
                                             <constraint firstItem="hvw-Nh-naU" firstAttribute="leading" secondItem="Fal-e5-MtV" secondAttribute="leading" constant="16" id="lbo-ig-Jkt"/>
                                             <constraint firstAttribute="trailing" secondItem="271-EA-ayl" secondAttribute="trailing" constant="16" id="n6u-rZ-jFr"/>
                                             <constraint firstAttribute="trailing" secondItem="aVh-wX-RNn" secondAttribute="trailing" constant="16" id="r5S-cf-Bkj"/>
-                                            <constraint firstItem="oiB-nk-u5L" firstAttribute="top" secondItem="hvw-Nh-naU" secondAttribute="bottom" constant="32" id="rGR-9w-eQn"/>
+                                            <constraint firstAttribute="trailing" secondItem="bwb-RA-TT4" secondAttribute="trailing" constant="16" id="sTC-RI-t3W"/>
                                             <constraint firstItem="7nY-q8-SN5" firstAttribute="top" secondItem="7I5-3U-h17" secondAttribute="bottom" constant="32" id="ywl-bk-PXl"/>
                                         </constraints>
                                     </view>
@@ -886,6 +911,7 @@
                     <connections>
                         <outlet property="aboutLabel" destination="Yge-FN-GVL" id="y2y-hU-FU0"/>
                         <outlet property="emailLabel" destination="wZU-ra-17Z" id="zEe-sW-mxv"/>
+                        <outlet property="instaBeerLabel" destination="K8Q-nh-Ibw" id="FOJ-ZI-Gv1"/>
                         <outlet property="mainSubview" destination="Fal-e5-MtV" id="5aM-lI-68Z"/>
                         <outlet property="stepanLabel" destination="sM9-FM-FRU" id="yJf-UI-8Yd"/>
                         <outlet property="warnLabel" destination="oiB-nk-u5L" id="YZg-ig-1fX"/>
@@ -899,10 +925,10 @@
     </scenes>
     <designables>
         <designable name="VIi-wD-JGz">
-            <size key="intrinsicContentSize" width="107.66666666666667" height="20"/>
+            <size key="intrinsicContentSize" width="113" height="17"/>
         </designable>
         <designable name="ilw-wL-fvH">
-            <size key="intrinsicContentSize" width="123.33333333333333" height="30.333333333333332"/>
+            <size key="intrinsicContentSize" width="129.66666666666666" height="26"/>
         </designable>
     </designables>
     <resources>
