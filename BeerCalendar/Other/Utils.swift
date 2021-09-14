@@ -205,31 +205,31 @@ extension UIButton {
     
 }
 
-extension String {
-    
-    func htmlAttributedText(font: UIFont) -> NSAttributedString? {
-        do {
-            let htmlCSSString = "<style>" +
-                "html *" +
-                "{" +
-                "font-size: \(font.pointSize)pt !important;" +
-                "color: #232020 !important;" + // mb use UIColor.hexString
-                "font-family: \(font.familyName), Helvetica !important;" +
-                "}</style> \(self)"
-            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
-                return nil
-            }
-            return try NSAttributedString(data: data, options: [
-                .documentType: NSAttributedString.DocumentType.html,
-                .characterEncoding: String.Encoding.utf8.rawValue
-            ], documentAttributes: nil)
-        } catch  {
-            print(error)
-            return nil
-        }
-    }
-    
-}
+//extension String {
+//    
+//    func htmlAttributedText(font: UIFont) -> NSAttributedString? {
+//        do {
+//            let htmlCSSString = "<style>" +
+//                "html *" +
+//                "{" +
+//                "font-size: \(font.pointSize)pt !important;" +
+//                "color: #232020 !important;" + // mb use UIColor.hexString
+//                "font-family: \(font.familyName), Helvetica !important;" +
+//                "}</style> \(self)"
+//            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
+//                return nil
+//            }
+//            return try NSAttributedString(data: data, options: [
+//                .documentType: NSAttributedString.DocumentType.html,
+//                .characterEncoding: String.Encoding.utf8.rawValue
+//            ], documentAttributes: nil)
+//        } catch  {
+//            print(error)
+//            return nil
+//        }
+//    }
+//    
+//}
 
 extension NSAttributedString {
     

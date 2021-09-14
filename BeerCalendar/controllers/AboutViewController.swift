@@ -17,6 +17,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var yuriyLabel: UILabel!
     @IBOutlet weak var warnLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var instaBeerLabel: UILabel!
+    
     var delegate: MainViewControllerDelegate?
     
     
@@ -38,16 +40,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         ColorService.shared.setGradientBackgroundOnView(view: view, firstColor: UIColor(hex: firstColorStr), secondColor: UIColor(hex: secondColorStr), cornerRadius: 0)
 
         aboutLabel.textAlignment = .justified
-        let text = "Приложение <span class='bld'>Пивной Календарь</span> разработано коллаборацией <span class='bld'>Чугуниевая Долина</span>, дабы каждый имел возможность узнавать о новых сортах пенного напитка каждый день. Бумажную версию календаря можно заказать на <span class='bld'>Boomstarter</span>.<br><br>Все этикетки используются с разрешения и одобрения пивоварен. Отдельное спасибо <span class='bld'>Groteskly Yours Studio</span> за использованный в приложении шрифт Okta Neue.<br><br>По вопросам сотрудничества:"
+        let text = "Приложение <span class='bld'>Пивной Календарь</span> разработано коллаборацией талантов <span class='bld'>Чугуниевая Долина</span>, дабы каждый имел возможность узнавать о новых сортах пенного напитка каждый день. Бумажную версию календаря можно заказать на <span class='bld'>Boomstarter</span>.<br><br>Все этикетки используются с разрешения и одобрения пивоварен. Отдельное спасибо <span class='bld'>Groteskly Yours Studio</span> за использованный в приложении шрифт Okta Neue.<br><br>По вопросам сотрудничества:"
 
         aboutLabel.attributedText = NSAttributedString(html: text, fontName: "OktaNeue-Regular", fontSize: 16)
         
         
         let stepanText = "<span class = 'half'><span class='bld'>Степан Шмытинский</span><br>Идеи, продюссер</span>"
         let yuriyText = "<span class = 'half'><span class='bld'>Юрий Пашков</span><br>Идеи, программист</span>"
+        let instaBeerText = "<span class = 'half'><span class='bld'>Пивной календарь</span><br>Глянуть в Instagram</span>"
+        instaBeerLabel.attributedText = NSAttributedString(html: instaBeerText, fontName: "OktaNeue-Regular", fontSize: 15)
         stepanLabel.attributedText = NSAttributedString(html: stepanText, fontName: "OktaNeue-Regular", fontSize: 15)
         yuriyLabel.attributedText = NSAttributedString(html: yuriyText, fontName: "OktaNeue-Regular", fontSize: 15)
-        let warnText = "<center>Всё это бесконечно весело,<br>но помните:<br><span class = 'bld'>Чрезмерное употребление алкоголя может навредить вашему здоровью!</span></center>"
+        let warnText = "<center>Всё это бесконечно весело, но помните:<br><span class = 'bld'>Чрезмерное употребление алкоголя может навредить вашему здоровью!</span></center>"
         warnLabel.attributedText = NSAttributedString(html: warnText, fontName: "OktaNeue-Regular", fontSize: 16)
         
         let emailLabelText = "<span class = 'half'><span class='bld'>Электропочта</span><br>По любым вопросам</span>"
@@ -82,6 +86,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    @IBAction func instaBeerTap(_ sender: UIButton) {
+        sender.pressedEffect(scale: 0.9) {
+            if let url = URL(string: "https://www.instagram.com/beer.calendar/"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
     
     @IBAction func stepanButtonTap(_ sender: UIButton) {
         sender.pressedEffect(scale: 0.9) {

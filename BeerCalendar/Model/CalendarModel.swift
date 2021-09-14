@@ -67,7 +67,7 @@ class CalendarModel {
         return nil
     }
     
-    func getBeerForID(id: Int) -> BeerData? {
+    func getBeerForID(id: String) -> BeerData? {
         for i in 0..<beers.count {
             if beers[i].id == id {
                 return beers[i]
@@ -94,7 +94,7 @@ class CalendarModel {
         return false
     }
     
-    func setCurrentIndexForChoosenFavoriteBeer(beerID: Int) -> Bool {
+    func setCurrentIndexForChoosenFavoriteBeer(beerID: String) -> Bool {
         for i in 0..<beers.count {
             if beers[i].id == beerID {
                 currentIndex = i
@@ -113,7 +113,7 @@ class CalendarModel {
         }
     }
     
-    func getListOfFavoritesBeers(listOfBeersID: [Int]) -> [BeerData] {
+    func getListOfFavoritesBeers(listOfBeersID: [String]) -> [BeerData] {
         var resultArray = [BeerData]()
         for id in listOfBeersID {
             for beer in beers {
@@ -150,7 +150,7 @@ class CalendarModel {
     
     func showCrowdFinding() -> Bool {
         guard isCrowdFindingADShow else {return false}
-        if swipesCount > 5 {
+        if swipesCount > 15 {
             swipesCount = 0
             return true
         }

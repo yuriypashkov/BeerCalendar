@@ -42,7 +42,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     var messageViewModel: MessageViewModel!
     var newShareViewModel: NewShareViewModel!
     let activityIndicatorView = UIActivityIndicatorView()
-    var currentBeerID: Int = 0
+    var currentBeerID: String = ""
     var favoriteBeersModel = FavoriteBeersModel()
     var soundService = SoundService() // воспроизведение звуков
     let generator = UIImpactFeedbackGenerator(style: .heavy) // генератор вибрации
@@ -306,6 +306,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
                         print(error)
                     }
                 case .failure(let requestError): // если ошибка запроса - читаем данные из кэша и инициализируем модель. Если в кэше ничего нет - выводим ошибку о проблеме с подключением
+                    //print(requestError)
                     print("Problem with loading beers")
                     do {
                         let beerDataFromCache: [BeerData]? = try DataCache.instance.readCodable(forKey: "beerDataArray")
@@ -409,7 +410,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
     }
     
     func setUI(beer: BeerData) {
-        currentBeerID = beer.id ?? 0
+        currentBeerID = beer.id ?? ""
         
         errorImageView.alpha = 0
         errorLabel.alpha = 0
