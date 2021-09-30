@@ -17,6 +17,7 @@
 		21606D5826C2C78000A70CEA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5726C2C78000A70CEA /* InfoViewController.swift */; };
 		21606D5A26C2CBF700A70CEA /* BreweryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5926C2CBF700A70CEA /* BreweryData.swift */; };
 		21606D5C26C2D65E00A70CEA /* BreweriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */; };
+		216F608F2704E93A00F4E2D0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216F608E2704E93A00F4E2D0 /* NotificationManager.swift */; };
 		217BA5D326AEE48600E642F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D226AEE48600E642F2 /* AppDelegate.swift */; };
 		217BA5D526AEE48600E642F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D426AEE48600E642F2 /* SceneDelegate.swift */; };
 		217BA5D726AEE48600E642F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5D626AEE48600E642F2 /* MainViewController.swift */; };
@@ -66,6 +67,7 @@
 		21606D5726C2C78000A70CEA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		21606D5926C2CBF700A70CEA /* BreweryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryData.swift; sourceTree = "<group>"; };
 		21606D5B26C2D65E00A70CEA /* BreweriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesModel.swift; sourceTree = "<group>"; };
+		216F608E2704E93A00F4E2D0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		217BA5CF26AEE48600E642F2 /* BeerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217BA5D226AEE48600E642F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217BA5D426AEE48600E642F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				21B7F69126DBCAF700B5910E /* TimerManager.swift */,
 				212940FA26DCFC6100BD5550 /* DateValidator.swift */,
 				212940FC26DD263E00BD5550 /* AlertManager.swift */,
+				216F608E2704E93A00F4E2D0 /* NotificationManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */,
 				210E0C3826E038260045C3C2 /* AboutViewController.swift in Sources */,
 				217BA5EA26AEE4EF00E642F2 /* BeerData.swift in Sources */,
+				216F608F2704E93A00F4E2D0 /* NotificationManager.swift in Sources */,
 				218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */,
 				21B7F69226DBCAF700B5910E /* TimerManager.swift in Sources */,
 				217BA5F526B1942700E642F2 /* Utils.swift in Sources */,

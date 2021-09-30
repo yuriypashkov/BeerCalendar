@@ -7,17 +7,34 @@
 
 import UIKit
 import Kingfisher
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let notificationCenter = UNUserNotificationCenter.current()
+    
+    private func requestUserPermissionForLocalNotifications() {
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            guard granted else { return }
+            self.notificationCenter.getNotificationSettings { settings in
+                //print(settings)
+                guard settings.authorizationStatus == .authorized else { return }
+            }
+        }
+    }
     
     private func setupKingfisherSettings() {
         ImageCache.default.memoryStorage.config.totalCostLimit = 1024*1024*20 // ограничиваем KF Ram Cache до 20 mb, иначе он кеширует картинки в RAM и выжирает память при прокрутке страниц
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         setupKingfisherSettings()
+        
+        requestUserPermissionForLocalNotifications()
+        
+        NotificationManager.shared.sheduleNotification()
         
         return true
     }
