@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupKingfisherSettings()
         
-        requestUserPermissionForLocalNotifications()
+        //requestUserPermissionForLocalNotifications()
         
-        NotificationManager.shared.sheduleNotification()
+        //NotificationManager.shared.sheduleNotification()
         
         return true
     }

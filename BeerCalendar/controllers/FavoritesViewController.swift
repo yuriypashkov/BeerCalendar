@@ -64,22 +64,5 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillLayoutSubviews()
         //view.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
     }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        //print("Tableview Height: \(tableView.contentSize.height)")
-//        var newFrameHeight: CGFloat = 0
-//        //newFrameHeight = view.frame.size.height / 3
-//        if tableView.contentSize.height > view.frame.size.height / 2 {
-//            newFrameHeight = view.frame.size.height - tableView.contentSize.height
-//        } else {
-//            newFrameHeight = view.frame.size.height / 2
-//        }
-//        UIView.animate(withDuration: 0.5) {
-//            self.view.frame = CGRect(x: 0, y: newFrameHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//        }
-//    }
     
-    
-
 }

@@ -78,14 +78,6 @@ extension UIDevice {
 
 extension UIColor {
     
-//    var hexString: String? {
-//        guard let components = self.cgColor.components else { return nil}
-//        let r = components[0]
-//        let g = components[1]
-//        let b = components[2]
-//        return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
-//    }
-    
     convenience init(hex: String) {
         
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -204,32 +196,6 @@ extension UIButton {
     }
     
 }
-
-//extension String {
-//    
-//    func htmlAttributedText(font: UIFont) -> NSAttributedString? {
-//        do {
-//            let htmlCSSString = "<style>" +
-//                "html *" +
-//                "{" +
-//                "font-size: \(font.pointSize)pt !important;" +
-//                "color: #232020 !important;" + // mb use UIColor.hexString
-//                "font-family: \(font.familyName), Helvetica !important;" +
-//                "}</style> \(self)"
-//            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
-//                return nil
-//            }
-//            return try NSAttributedString(data: data, options: [
-//                .documentType: NSAttributedString.DocumentType.html,
-//                .characterEncoding: String.Encoding.utf8.rawValue
-//            ], documentAttributes: nil)
-//        } catch  {
-//            print(error)
-//            return nil
-//        }
-//    }
-//    
-//}
 
 extension NSAttributedString {
     
