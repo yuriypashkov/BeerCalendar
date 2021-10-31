@@ -150,7 +150,7 @@ class CalendarModel {
     
     func showCrowdFinding() -> Bool {
         guard isCrowdFindingADShow else {return false}
-        if swipesCount > 15 {
+        if swipesCount > 13 {
             swipesCount = 0
             return true
         }

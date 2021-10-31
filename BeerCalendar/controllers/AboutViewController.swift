@@ -42,7 +42,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         aboutLabel.textAlignment = .justified
         let text = "Приложение <span class='bld'>Пивной Календарь</span> разработано коллаборацией талантов <span class='bld'>Чугуниевая Долина</span>, дабы каждый имел возможность узнавать о новых сортах пенного напитка каждый день. Бумажную версию календаря можно заказать на <span class='bld'>Boomstarter</span>.<br><br>Все этикетки используются с разрешения и одобрения пивоварен. Отдельное спасибо <span class='bld'>Groteskly Yours Studio</span> за использованный в приложении шрифт Okta Neue.<br><br>По вопросам сотрудничества:"
 
-        aboutLabel.attributedText = NSAttributedString(html: text, fontName: "OktaNeue-Regular", fontSize: 16)
+        aboutLabel.attributedText = NSAttributedString(html: text, fontName: "OktaNeue-Normal", fontSize: 16)
         
         
         let stepanText = "<span class = 'half'><span class='bld'>Степан Шмытинский</span><br>Идеи, продюссер</span>"

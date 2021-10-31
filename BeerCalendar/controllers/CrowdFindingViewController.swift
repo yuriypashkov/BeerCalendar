@@ -21,9 +21,18 @@ class CrowdFindingViewController: UIViewController {
         if let urlStr = imageURL, let url = URL(string: urlStr) {
             mainImageView.kf.setImage(with: url)
         }
-        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnImage))
+        mainImageView.isUserInteractionEnabled = true
+        mainImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    @objc func tapOnImage() {
+        if let strUrl = jumpURL, let url = URL(string: strUrl), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:]) { finished in
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     @IBAction func goToButtonTap(_ sender: UIButton) {
         sender.pressedEffect(scale: 0.96) { [weak self] in

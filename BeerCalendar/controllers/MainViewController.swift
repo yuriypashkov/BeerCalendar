@@ -526,17 +526,18 @@ class MainViewController: UIViewController, MainViewControllerDelegate {
         switch view.frame.size.height {
         case 0...568:
             //print("SE 1th")
-            beerInfoTopConstraint.constant = 16
-            dateStackViewTopConstraint.constant = 16
-            beerDateDayLabel.font = beerDateDayLabel.font.withSize(56) //64 and 36
+            beerInfoTopConstraint.constant = 8
+            dateStackViewTopConstraint.constant = 12
+            beerDateDayLabel.font = beerDateDayLabel.font.withSize(44) //64 and 36
             beerDateMonthLabel.font = beerDateDayLabel.font.withSize(22)
+            beerNameLabel.font = beerNameLabel.font.withSize(22)
             beerInfoStackView.spacing = 6
         case 568...750:
             //print("SE 2th and Plus")
-            beerInfoTopConstraint.constant = 24
+            beerInfoTopConstraint.constant = 16
             dateStackViewTopConstraint.constant = 16
-            beerDateDayLabel.font = beerDateDayLabel.font.withSize(68)
-            beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(32)
+            beerDateDayLabel.font = beerDateDayLabel.font.withSize(52)
+            beerDateMonthLabel.font = beerDateMonthLabel.font.withSize(26)
             beerInfoStackView.spacing = 8
         default: break
         }

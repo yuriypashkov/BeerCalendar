@@ -31,9 +31,7 @@
 		217BA5F726B2E39E00E642F2 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217BA5F626B2E39E00E642F2 /* CalendarModel.swift */; };
 		218149E626C556270095FC98 /* CrowdFindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E526C556270095FC98 /* CrowdFindingViewController.swift */; };
 		218149E826C5794E0095FC98 /* CrowdFindingADData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218149E726C5794E0095FC98 /* CrowdFindingADData.swift */; };
-		218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */; };
 		218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */; };
-		218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */; };
 		218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */; };
 		218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F626CA88720095FC98 /* OktaNeue-Light.ttf */; };
 		218149F926CA887E0095FC98 /* OktaNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */; };
@@ -44,6 +42,7 @@
 		21BA81B926CAA73900A70099 /* FavoritesTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */; };
 		21BA81BB26CC270600A70099 /* NewShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BA26CC270600A70099 /* NewShareViewModel.swift */; };
 		21BA81BD26CC58F300A70099 /* PictureCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA81BC26CC58F200A70099 /* PictureCreator.swift */; };
+		21BE9159272EBA3800B1DEF5 /* OktaNeue-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 21BE9158272EBA3800B1DEF5 /* OktaNeue-SemiBold.otf */; };
 		21CC351226B9CADF000E0596 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351126B9CADF000E0596 /* MessageViewModel.swift */; };
 		21CC351426BAAFA5000E0596 /* FavoriteBeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */; };
 		21CC351726BAD5C5000E0596 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */; };
@@ -55,6 +54,7 @@
 		21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC352026BD4F85000E0596 /* pageSound1.mp3 */; };
 		21CC352726BD4FBB000E0596 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC352626BD4FBB000E0596 /* SoundService.swift */; };
 		21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 21CC352826BECB17000E0596 /* shortSound.mp3 */; };
+		21DB357B272F34EB0073E0EE /* OktaNeue-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 21DB357A272F34EB0073E0EE /* OktaNeue-Normal.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,9 +83,7 @@
 		217BA5F626B2E39E00E642F2 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		218149E526C556270095FC98 /* CrowdFindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingViewController.swift; sourceTree = "<group>"; };
 		218149E726C5794E0095FC98 /* CrowdFindingADData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrowdFindingADData.swift; sourceTree = "<group>"; };
-		218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-SemiBold.ttf"; sourceTree = "<group>"; };
 		218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Regular.ttf"; sourceTree = "<group>"; };
-		218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Normal.ttf"; sourceTree = "<group>"; };
 		218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Medium.ttf"; sourceTree = "<group>"; };
 		218149F626CA88720095FC98 /* OktaNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Light.ttf"; sourceTree = "<group>"; };
 		218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Bold.ttf"; sourceTree = "<group>"; };
@@ -96,6 +94,7 @@
 		21BA81B826CAA73900A70099 /* FavoritesTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewHeader.swift; sourceTree = "<group>"; };
 		21BA81BA26CC270600A70099 /* NewShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShareViewModel.swift; sourceTree = "<group>"; };
 		21BA81BC26CC58F200A70099 /* PictureCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCreator.swift; sourceTree = "<group>"; };
+		21BE9158272EBA3800B1DEF5 /* OktaNeue-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-SemiBold.otf"; sourceTree = "<group>"; };
 		21CC351126B9CADF000E0596 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		21CC351326BAAFA5000E0596 /* FavoriteBeersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeersModel.swift; sourceTree = "<group>"; };
 		21CC351626BAD5C5000E0596 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		21CC352026BD4F85000E0596 /* pageSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pageSound1.mp3; sourceTree = "<group>"; };
 		21CC352626BD4FBB000E0596 /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundService.swift; path = BeerCalendar/View/SoundService.swift; sourceTree = SOURCE_ROOT; };
 		21CC352826BECB17000E0596 /* shortSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shortSound.mp3; sourceTree = "<group>"; };
+		21DB357A272F34EB0073E0EE /* OktaNeue-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OktaNeue-Normal.otf"; sourceTree = "<group>"; };
 		60991F36888268AA1F37C508 /* Pods-BeerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerCalendar.release.xcconfig"; path = "Target Support Files/Pods-BeerCalendar/Pods-BeerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		A5FD2682AEA366B57B0E8504 /* Pods-BeerCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerCalendar.debug.xcconfig"; path = "Target Support Files/Pods-BeerCalendar/Pods-BeerCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		ACAFFC6AF7B7E32F4E3394B5 /* Pods_BeerCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,11 +204,11 @@
 		218149ED26CA88230095FC98 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				218149F226CA885A0095FC98 /* OktaNeue-Normal.ttf */,
-				218149EE26CA883F0095FC98 /* OktaNeue-SemiBold.ttf */,
 				218149FC26CA88D90095FC98 /* OktaNeue-LightItalic.ttf */,
 				218149F426CA88660095FC98 /* OktaNeue-Medium.ttf */,
+				21DB357A272F34EB0073E0EE /* OktaNeue-Normal.otf */,
 				218149F626CA88720095FC98 /* OktaNeue-Light.ttf */,
+				21BE9158272EBA3800B1DEF5 /* OktaNeue-SemiBold.otf */,
 				218149F826CA887E0095FC98 /* OktaNeue-Bold.ttf */,
 				218149F026CA884C0095FC98 /* OktaNeue-Regular.ttf */,
 				218149FA26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf */,
@@ -333,18 +333,18 @@
 				21CC352926BECB17000E0596 /* shortSound.mp3 in Resources */,
 				218149F126CA884C0095FC98 /* OktaNeue-Regular.ttf in Resources */,
 				217BA5DF26AEE48A00E642F2 /* LaunchScreen.storyboard in Resources */,
+				21DB357B272F34EB0073E0EE /* OktaNeue-Normal.otf in Resources */,
 				218149F726CA88720095FC98 /* OktaNeue-Light.ttf in Resources */,
 				218149FB26CA88A40095FC98 /* OktaNeue-MediumItalic.ttf in Resources */,
 				218149FD26CA88D90095FC98 /* OktaNeue-LightItalic.ttf in Resources */,
+				21BE9159272EBA3800B1DEF5 /* OktaNeue-SemiBold.otf in Resources */,
 				217BA5DC26AEE48A00E642F2 /* Assets.xcassets in Resources */,
 				21CC352126BD4F85000E0596 /* pageSound4.mp3 in Resources */,
 				21CC352526BD4F85000E0596 /* pageSound1.mp3 in Resources */,
 				21CC352226BD4F85000E0596 /* pageSound5.mp3 in Resources */,
 				21CC352326BD4F85000E0596 /* pageSound2.mp3 in Resources */,
 				21CC352426BD4F85000E0596 /* pageSound3.mp3 in Resources */,
-				218149F326CA885A0095FC98 /* OktaNeue-Normal.ttf in Resources */,
 				217BA5DA26AEE48600E642F2 /* Main.storyboard in Resources */,
-				218149EF26CA883F0095FC98 /* OktaNeue-SemiBold.ttf in Resources */,
 				218149F526CA88660095FC98 /* OktaNeue-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,7 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -584,6 +584,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.myOrg.BeerCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -598,7 +599,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4524FJSV52;
 				INFOPLIST_FILE = BeerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -606,6 +607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.myOrg.BeerCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

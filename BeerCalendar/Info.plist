@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -40,9 +40,9 @@
 	<string>Для сохранения изображения необходим доступ к Фото</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>OktaNeue-Normal.ttf</string>
-		<string>OktaNeue-SemiBold.ttf</string>
 		<string>OktaNeue-LightItalic.ttf</string>
+		<string>OktaNeue-Normal.otf</string>
+		<string>OktaNeue-SemiBold.otf</string>
 		<string>OktaNeue-Medium.ttf</string>
 		<string>OktaNeue-Light.ttf</string>
 		<string>OktaNeue-Bold.ttf</string>
